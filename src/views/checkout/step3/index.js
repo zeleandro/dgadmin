@@ -95,6 +95,7 @@ const Payment = ({
 				paymentMode,
 				address: checkout.shipping.address,
 				mobile: checkout.shipping.mobile.value,
+				status: 'Pendiente',
 				basket
 			}
 			dispatch(addOrder(order));
