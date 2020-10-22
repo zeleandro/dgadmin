@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Redirect } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { CHECKOUT_STEP_2 } from 'constants/routes';
 import useDocumentTitle from 'hooks/useDocumentTitle';
 import useScrollTop from 'hooks/useScrollTop';
@@ -12,6 +12,9 @@ import CreditPayment from './CreditPayment';
 import PayPalPayment from './PayPalPayment';
 import CashPayment from './CashPayment';
 import withAuth from '../hoc/withAuth';
+import { addOrder } from 'redux/actions/orderActions';
+import { clearBasket } from 'redux/actions/basketActions';
+import { stringify } from 'uuid';
 
 const Payment = ({
 	shipping,
@@ -32,6 +35,11 @@ const Payment = ({
 		expiry: { value: payment.data.expiry ? payment.data.expiry : '' },
 		ccv: { value: payment.data.ccv ? payment.data.ccv : '' }
 	});
+
+	//Cargar desde Redux
+	const basket = useSelector(state => state.basket);
+	const checkout = useSelector(state => state.checkout);
+	const profile = useSelector(state => state.profile);
 
 	const onCreditModeChange = (e) => {
 		setPaymentMode('credit');
@@ -79,6 +87,19 @@ const Payment = ({
 			// TODO: fire only if changed
 			savePaymentDetails();
 			// Do some action here. :)
+
+			const order = {
+				user: profile.fullname,
+				email: profile.email,
+				date: new Date().toISOString(),
+				paymentMode,
+				address: checkout.shipping.address,
+				mobile: checkout.shipping.mobile.value,
+				basket
+			}
+			dispatch(addOrder(order));
+			dispatch(clearBasket());
+
 		} else {
 			displayActionMessage('Debe seleccionar una forma de pago :)', 'info');
 		}

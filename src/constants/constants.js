@@ -59,3 +59,6 @@ export const EDIT_USER = 'EDIT_USER';
 export const LOADING = 'LOADING';
 export const IS_AUTHENTICATING = 'IS_AUTHENTICATING';
 export const SET_REQUEST_STATUS = 'SET_REQUEST_STATUS';
+
+export const ADD_ORDER = 'ADD_ORDER';
+export const ADD_ORDER_SUCCESS = 'ADD_ORDER_SUCCESS';

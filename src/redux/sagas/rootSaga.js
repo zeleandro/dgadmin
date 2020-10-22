@@ -3,6 +3,7 @@ import * as ACTION from 'constants/constants';
 import authSaga from './authSaga';
 import productSaga from './productSaga';
 import profileSaga from './profileSaga';
+import orderSaga from './orderSaga';
 
 function* rootSaga() {
 	yield takeLatest([
@@ -28,6 +29,9 @@ function* rootSaga() {
 		ACTION.UPDATE_EMAIL,
 		ACTION.UPDATE_PROFILE
 	], profileSaga);
+	yield takeLatest([
+		ACTION.ADD_ORDER
+	], orderSaga);
 }
 
 export default rootSaga;
