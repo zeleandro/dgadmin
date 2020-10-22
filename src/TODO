@@ -3,8 +3,9 @@ Checkout
 1. Cambiar el input que se pueda insertar un nro OK
 2. Checkout y con la misma funcionalidad OK
 3. Precompletar los datos del envio y telefono de contacto. (Sacar international shipping) OK
-4. Confirmacion: Solo elegir forma de pago y al guardar se guarda el carrito... 
-5. Guardar en la bd
+4. Confirmacion: Solo elegir forma de pago y al guardar se guarda el carrito... OK
+5. Guardar en la bd OK
+6. Pantalla de informacion que el pedido fue registrado
 
 Categorias
 1. Deberiamos tener un listado de categorias y poder filtrarlas. (definir si van a ser dinamicas o no)
