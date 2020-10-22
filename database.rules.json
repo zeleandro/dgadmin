@@ -58,7 +58,7 @@
           ".validate": "newData.isNumber()"
         },
         "imageCollection": {
-          ".validate": "newData.isArray()"
+          ".validate": "newData.isString()"
         }
       }
     }

@@ -10,6 +10,7 @@ import StepTracker from '../components/StepTracker';
 import Pagination from '../components/Pagination';
 import CreditPayment from './CreditPayment';
 import PayPalPayment from './PayPalPayment';
+import CashPayment from './CashPayment';
 import withAuth from '../hoc/withAuth';
 
 const Payment = ({
@@ -19,10 +20,10 @@ const Payment = ({
 	dispatch,
 	history
 }) => {
-	useDocumentTitle('Check Out Final Step | Salinaka');
+	useDocumentTitle('Check Out Paso 2 | DGLimpieza');
 	useScrollTop();
 
-	const [paymentMode, setPaymentMode] = useState(payment.type || 'paypal');
+	const [paymentMode, setPaymentMode] = useState(payment.type || 'cash');
 	const collapseCreditHeight = useRef(null);
 	const cardInputRef = useRef(null);
 	const [field, setField] = useState({
@@ -46,6 +47,11 @@ const Payment = ({
 		collapseCreditHeight.current.parentElement.style.height = '97px';
 	};
 
+	const onCashModeChange = () => {
+		setPaymentMode('cash');
+		collapseCreditHeight.current.parentElement.style.height = '97px';
+	};
+
 	const savePaymentDetails = () => {
 		const isChanged = Object.keys(field).some(key => field[key].value !== payment.data[key]) || paymentMode !== payment.type;
 
@@ -66,20 +72,15 @@ const Payment = ({
 	const onConfirm = (e) => {
 		e.preventDefault();
 		// eslint-disable-next-line no-extra-boolean-cast
-		const noError = Object.keys(field).every(key => !!field[key].value && !!!field[key].error);
 
 		if (!paymentMode) return;
-		if (paymentMode === 'credit') {
-			if (noError) {
-				displayActionMessage('Feature not ready yet :)', 'info');
-				// TODO: fire only if changed
-				savePaymentDetails();
-				// Do some action here. :)
-			} else {
-				displayActionMessage('All credentials for credit payment required!', 'error');
-			}
+		if (paymentMode === 'cash') {
+			displayActionMessage('Se ha registrado su pedido :)', 'info');
+			// TODO: fire only if changed
+			savePaymentDetails();
+			// Do some action here. :)
 		} else {
-			displayActionMessage('Feature not ready yet :)', 'info');
+			displayActionMessage('Debe seleccionar una forma de pago :)', 'info');
 		}
 	};
 
@@ -93,7 +94,14 @@ const Payment = ({
 			<div className="checkout">
 				<StepTracker current={3} />
 				<div className="checkout-step-3">
-					<CreditPayment
+					<h3 className="text-center">Forma de Pago</h3>
+					<br />
+					<span className="d-block padding-s">Opciones de pago</span>
+					<CashPayment
+						onCashModeChange={onCashModeChange}
+						paymentMode={paymentMode}
+					/>
+					{/* <CreditPayment
 						field={field}
 						onCreditModeChange={onCreditModeChange}
 						paymentMode={paymentMode}
@@ -106,7 +114,7 @@ const Payment = ({
 					<PayPalPayment
 						onPayPalModeChange={onPayPalModeChange}
 						paymentMode={paymentMode}
-					/>
+					/> */}
 					<br />
 					<div className="basket-total text-right">
 						<p className="basket-total-title">Total:</p>

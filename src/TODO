@@ -1,0 +1,23 @@
+
+Checkout
+1. Cambiar el input que se pueda insertar un nro OK
+2. Checkout y con la misma funcionalidad OK
+3. Precompletar los datos del envio y telefono de contacto. (Sacar international shipping) OK
+4. Confirmacion: Solo elegir forma de pago y al guardar se guarda el carrito... 
+5. Guardar en la bd
+
+Categorias
+1. Deberiamos tener un listado de categorias y poder filtrarlas. (definir si van a ser dinamicas o no)
+
+Admin
+1. Gestionar pedidos (CRUD)
+2. Gestionar usuarios (Futuro)
+
+Front
+1. Cambiar el template
+2. Agregar un menu
+
+Deploy
+. Se corre con npm run dev-server en forma local
+. Hay que ver el isArray() que le borre para el Deploy
+. Cuando se corre firebase deploy o firebase serve el problema es que toma del public... Y ahi no funciona

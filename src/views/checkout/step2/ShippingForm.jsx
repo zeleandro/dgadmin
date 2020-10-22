@@ -94,18 +94,18 @@ const ShippingForm = ({ setField, field }) => {
 							<span className="d-block padding-s">* Mobile Number</span>
 						)}
 						<PhoneInput
-							country={'ph'}
+							country={'ar'}
 							inputClass={`input-form d-block ${errorClassName('mobile')}`}
 							inputExtraProps={{ required: true }}
 							// eslint-disable-next-line quote-props
-							masks={{ 'ph': '+.. .... ... ....' }}
+							masks={{ 'ar': '+.. ..... ... ...' }}
 							onChange={onMobileInput}
 							placeholder="09264538861"
 							value={field.mobile.data.num}
 						/>
 					</div>
 				</div>
-				<div className="checkout-fieldset">
+				{/* <div className="checkout-fieldset">
 					<div className="checkout-field">
 						<span className="d-block padding-s">Shipping Option</span>
 						<div className="checkout-checkbox-field">
@@ -125,7 +125,7 @@ const ShippingForm = ({ setField, field }) => {
 							</label>
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);

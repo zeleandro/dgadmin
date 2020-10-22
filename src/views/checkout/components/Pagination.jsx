@@ -31,8 +31,8 @@ const Pagination = ({
 };
 
 Pagination.defaultProps = {
-	nextStepLabel: 'Next Step',
-	previousLabel: 'Go Back',
+	nextStepLabel: 'Siguiente',
+	previousLabel: 'Atrás',
 	previousVisible: true
 };
 

@@ -5,14 +5,14 @@ const ShippingTotal = ({ field, subtotal }) => (
 	<div className="checkout-total d-flex-end padding-right-m">
 		<table>
 			<tbody>
-				<tr>
+				{/* <tr>
 					<td>
 						<span className="d-block margin-0 padding-right-s text-right">International Shipping: &nbsp;</span>
 					</td>
 					<td>
 						<h4 className="basket-total-amount text-subtle text-right margin-0 ">{field.isInternational ? '$50.00' : '$0.00'}</h4>
 					</td>
-				</tr>
+				</tr> */}
 				<tr>
 					<td>
 						<span className="d-block margin-0 padding-right-s text-right">Subtotal: &nbsp;</span>

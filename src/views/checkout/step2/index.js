@@ -19,7 +19,7 @@ const ShippingDetails = ({
 	subtotal,
 	history
 }) => {
-	useDocumentTitle('Check Out Step 2 | Salinaka');
+	useDocumentTitle('Check Out Paso 2 | DGLimpieza');
 	useScrollTop();
 
 	const [field, setField] = useState({
@@ -71,7 +71,7 @@ const ShippingDetails = ({
 			<StepTracker current={2} />
 			<div className="checkout-step-2">
 				<h3 className="text-center">
-					Shipping Details
+					Datos de Envío
 				</h3>
 				<ShippingForm
 					field={field}

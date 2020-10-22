@@ -14,7 +14,7 @@ const StepTracker = ({ current }) => {
 						<div className="checkout-header-icon">
 							<h4 className="checkout-header-step">1</h4>
 						</div>
-						<h6 className="checkout-header-subtitle">Order Summary</h6>
+						<h6 className="checkout-header-subtitle">Resumen del Pedido</h6>
 					</div>
 				</li>
 				<li className={`checkout-header-list ${className(2)}`}>
@@ -22,7 +22,7 @@ const StepTracker = ({ current }) => {
 						<div className="checkout-header-icon">
 							<h4 className="checkout-header-step">2</h4>
 						</div>
-						<h6 className="checkout-header-subtitle">Shipping Details</h6>
+						<h6 className="checkout-header-subtitle">Envío</h6>
 					</div>
 				</li>
 				<li className={`checkout-header-list ${className(3)}`}>
@@ -30,7 +30,7 @@ const StepTracker = ({ current }) => {
 						<div className="checkout-header-icon">
 							<h4 className="checkout-header-step">3</h4>
 						</div>
-						<h6 className="checkout-header-subtitle">Payment</h6>
+						<h6 className="checkout-header-subtitle">Confirmación</h6>
 					</div>
 				</li>
 			</ul>

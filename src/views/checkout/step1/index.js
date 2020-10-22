@@ -15,7 +15,7 @@ const OrderSummary = ({
 	dispatch,
 	history
 }) => {
-	useDocumentTitle('Check Out Step 1 | Salinaka');
+	useDocumentTitle('Check Out Paso 1 | DGLimpieza');
 	useScrollTop();
 
 	const onClickPrevious = () => history.push('/');
@@ -25,8 +25,8 @@ const OrderSummary = ({
 		<div className="checkout">
 			<StepTracker current={1} />
 			<div className="checkout-step-1">
-				<h3 className="text-center">Order Summary</h3>
-				<span className="d-block text-center">Review items in your basket.</span>
+				<h3 className="text-center">Resumen del pedido</h3>
+				<span className="d-block text-center">Controle los productos en su carrito</span>
 				<br />
 				<div className="checkout-items">
 					{basket.map(product => (
@@ -49,7 +49,7 @@ const OrderSummary = ({
 					history={history}
 					onClickNext={onClickNext}
 					onClickPrevious={onClickPrevious}
-					previousLabel="Continue Shopping"
+					previousLabel="Continuar comprando"
 
 				/>
 			</div>

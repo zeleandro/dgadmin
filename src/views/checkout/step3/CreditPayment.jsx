@@ -45,9 +45,6 @@ const CreditPayment = React.forwardRef(({
 
 	return (
 		<form>
-			<h3 className="text-center">Payment</h3>
-			<br />
-			<span className="d-block padding-s">Payment Option</span>
 			<div className={`checkout-fieldset-collapse ${paymentMode === 'credit' ? 'is-selected-payment' : ''}`}>
 				<div className="checkout-field margin-0">
 					<div className="checkout-checkbox-field">

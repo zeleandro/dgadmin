@@ -20,12 +20,12 @@ export const clearBasket = () => ({
 	type: CLEAR_BASKET
 });
 
-export const addQtyItem = id => ({
+export const addQtyItem = product => ({
 	type: ADD_QTY_ITEM,
-	payload: id
+	payload: product
 });
 
-export const minusQtyItem = id => ({
+export const minusQtyItem = product => ({
 	type: MINUS_QTY_ITEM,
-	payload: id
+	payload: product
 });

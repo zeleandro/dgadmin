@@ -18,10 +18,10 @@ export default (state = [], action) => {
 			return [];
 		case ADD_QTY_ITEM:
 			return state.map((product) => {
-				if (product.id === action.payload) {
+				if (product.id === action.payload.id) {
 					return {
 						...product,
-						quantity: product.quantity + 1
+						quantity: action.payload.quantity
 					}
 				}
 				return product;
@@ -31,7 +31,7 @@ export default (state = [], action) => {
 				if (product.id === action.payload) {
 					return {
 						...product,
-						quantity: product.quantity - 1
+						quantity: action.payload.quantity
 					}
 				}
 				return product;

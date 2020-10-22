@@ -17,9 +17,9 @@ const BasketItem = ({ dispatch, product }) => {
 				product={product}
 			/>
 			<div className="basket-item-wrapper">
-				<div className="position-relative margin-right-m margin-left-s">
+				{/* <div className="position-relative margin-right-m margin-left-s">
 					<Badge count={product.quantity} />
-				</div>
+				</div> */}
 				<div className="basket-item-img-wrapper">
 					<ImageLoader
 						className="basket-item-img"
