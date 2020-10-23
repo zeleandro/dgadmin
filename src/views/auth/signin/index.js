@@ -33,7 +33,7 @@ const SignIn = (props) => {
 	const didMount = useDidMount();
 
 	useScrollTop();
-	useDocumentTitle('Sign In | Salinaka');
+	useDocumentTitle('DG Limpieza | Ingresar');
 	useEffect(() => {
 		if (didMount) {
 			setSignInStatus(authStatus);
@@ -102,7 +102,7 @@ const SignIn = (props) => {
 				<>
 					<div className={`signin ${signInStatus.message && (!authStatus.success && 'input-error')}`}>
 						<div className="signin-main">
-							<h3>Sign in to Salinaka</h3>
+							<h3>Ingresar a DG Limpieza</h3>
 							<br />
 							<div className="signin-wrapper">
 								<form onSubmit={onSubmitForm}>

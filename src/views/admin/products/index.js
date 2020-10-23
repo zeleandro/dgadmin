@@ -14,7 +14,7 @@ import FiltersToggle from 'components/ui/FiltersToggle';
 import ProductItem from '../components/ProductItem';
 
 const Products = ({ history }) => {
-	useDocumentTitle('Product List | Salinaka Admin');
+	useDocumentTitle('DG Limpieza | Productos');
 	useScrollTop();
 
 	const store = useSelector(state => ({

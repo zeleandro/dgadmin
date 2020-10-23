@@ -23,7 +23,7 @@ const Payment = ({
 	dispatch,
 	history
 }) => {
-	useDocumentTitle('Check Out Paso 2 | DGLimpieza');
+	useDocumentTitle('DG Limpieza | Check Out Paso 3');
 	useScrollTop();
 
 	const [paymentMode, setPaymentMode] = useState(payment.type || 'cash');

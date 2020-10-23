@@ -8,7 +8,7 @@ import { editProduct } from 'redux/actions/productActions';
 import ProductForm from '../components/ProductForm';
 
 const EditProduct = (props) => {
-	useDocumentTitle('Edit Product | Salinaka');
+	useDocumentTitle('DG Limpieza | Modificar Productos');
 	useScrollTop();
 	const { product, isLoading } = useSelector(state => ({
 		product: state.products.items.find(item => item.id === props.match.params.id),

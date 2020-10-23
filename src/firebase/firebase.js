@@ -166,6 +166,51 @@ class Firebase {
 	// //ORDER ACTIONS
 	// //-------------
 	addOrder = (id, order) => this.db.collection('orders').doc(id).set(order);
+
+	getOrders = (lastRefKey) => {
+		let didTimeout = false;
+
+		return new Promise(async (resolve, reject) => {
+			if (lastRefKey) {
+				try {
+					const query = this.db.collection('orders').orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey).limit(12);
+					const snapshot = await query.get();
+					const orders = [];
+					snapshot.forEach(doc => orders.push({ id: doc.id, ...doc.data() }));
+					const lastKey = snapshot.docs[snapshot.docs.length - 1];
+
+					resolve({ orders, lastKey });
+				} catch (e) {
+					reject(new Error(':( Failed to fetch orders.'));
+				}
+			} else {
+				const timeout = setTimeout(() => {
+					didTimeout = true;
+					reject(new Error('Request timeout, please try again'));
+				}, 15000);
+
+				try {
+					const totalQuery = await this.db.collection('orders').get();
+					const total = totalQuery.docs.length;
+					const query = this.db.collection('orders').orderBy(app.firestore.FieldPath.documentId()).limit(12);
+					const snapshot = await query.get();
+
+					clearTimeout(timeout);
+					if (!didTimeout) {
+						const orders = [];
+						snapshot.forEach(doc => orders.push({ id: doc.id, ...doc.data() }));
+						const lastKey = snapshot.docs[snapshot.docs.length - 1];
+
+						resolve({ orders, lastKey, total });
+					}
+				} catch (e) {
+					if (didTimeout) return;
+					console.log('Failed to fetch orders: An error occured while trying to fetch orders or there may be no orders ', e);
+					reject(new Error(':( Failed to fetch orders.'));
+				}
+			}
+		});
+	}
 }
 
 const firebase = new Firebase();

@@ -15,7 +15,7 @@ const OrderSummary = ({
 	dispatch,
 	history
 }) => {
-	useDocumentTitle('Check Out Paso 1 | DGLimpieza');
+	useDocumentTitle('DG Limpieza | Check Out Paso 1');
 	useScrollTop();
 
 	const onClickPrevious = () => history.push('/');

@@ -19,7 +19,7 @@ const ShippingDetails = ({
 	subtotal,
 	history
 }) => {
-	useDocumentTitle('Check Out Paso 2 | DGLimpieza');
+	useDocumentTitle('DG Limpieza | Check Out Paso 2');
 	useScrollTop();
 
 	const [field, setField] = useState({

@@ -3,12 +3,12 @@ import useDocumentTitle from 'hooks/useDocumentTitle';
 import useScrollTop from 'hooks/useScrollTop';
 
 const Dashboard = () => {
-	useDocumentTitle('Welcome | Admin Dashboard');
+	useDocumentTitle('DG Limpieza | Administracion');
 	useScrollTop();
 
 	return (
 		<div className="loader">
-			<h2>Welcome to admin dashboard</h2>
+			<h2>Bienvenido al Panel de Administración</h2>
 		</div>
 	);
 };

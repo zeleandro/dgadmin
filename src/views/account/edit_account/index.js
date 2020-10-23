@@ -21,7 +21,7 @@ import useScrollTop from 'hooks/useScrollTop';
 const EditProfile = (props) => {
 	const dispatch = useDispatch();
 
-	useDocumentTitle('Edit Account | Salinaka');
+	useDocumentTitle('DG Limpieza | Editar Cuenta');
 	useScrollTop();
 	useEffect(() => {
 		return () => {

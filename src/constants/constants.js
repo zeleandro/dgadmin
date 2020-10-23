@@ -62,3 +62,5 @@ export const SET_REQUEST_STATUS = 'SET_REQUEST_STATUS';
 
 export const ADD_ORDER = 'ADD_ORDER';
 export const ADD_ORDER_SUCCESS = 'ADD_ORDER_SUCCESS';
+export const GET_ORDERS = 'GET_ORDERS';
+export const GET_ORDERS_SUCCESS = 'GET_ORDERS_SUCCESS';

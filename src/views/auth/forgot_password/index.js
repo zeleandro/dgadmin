@@ -20,7 +20,7 @@ const ForgotPassword = () => {
 	const [field, setField] = useState({});
 
 	useScrollTop();
-	useDocumentTitle('Forgot Password | Salinaka');
+	useDocumentTitle('DG Limpieza | Restablecer cuenta');
 	useEffect(() => {
 		if (didMount) {
 			setForgotPWStatus(authStatus);

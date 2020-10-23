@@ -9,7 +9,7 @@ import ProductForm from '../components/ProductForm';
 
 const AddProduct = () => {
 	useScrollTop();
-	useDocumentTitle('Add New Product | Salinaka');
+	useDocumentTitle('DG Limpieza | Agregar Productos');
 	const isLoading = useSelector(state => state.app.loading);
 	const dispatch = useDispatch();
 
