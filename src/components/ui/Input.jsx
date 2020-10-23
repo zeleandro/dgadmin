@@ -38,11 +38,11 @@ const InputField = React.forwardRef(({
 			error = `${key} is invalid`;
 		} else if ((type === 'password' || field === 'password') && showError) {
 			if (val.length < 8) {
-				setErrorField(`${key} should be 8 characters long.`);
-				error = `${key} should be 8 characters long.`;
+				setErrorField(`${key} debe tener al menos 8 caracteres.`);
+				error = `${key} debe tener al menos 8 caracteres.`;
 			} else if (!passwordRegex.test(val)) {
-				setErrorField(`${key} should contain uppercase or special character.`);
-				error = `${key} should contain uppercase or special character.`;
+				setErrorField(`${key} debe tener mayúscula o caracter especial.`);
+				error = `${key} debe tener mayúscula o caracter especial.`;
 			} else {
 				setErrorField('');
 				error = '';
@@ -51,11 +51,11 @@ const InputField = React.forwardRef(({
 			val = val.replace(/[^a-zA-Z\s]/g, '').trimStart();
 
 			if (val.length < 5) {
-				setErrorField(`${key} must be at least 5 letters`);
-				error = `${key} must be at least 5 letters`
+				setErrorField(`${key} debe tener al menos 5 letras`);
+				error = `${key} debe tener al menos 5 letras`
 			} else if (nameRegex.test(val)) {
-				setErrorField(`${key} must not include special characters`);
-				error = `${key} must not include special characters`;
+				setErrorField(`${key} no debe tener caracteres extraños`);
+				error = `${key} no debe tener caracteres extraños`;
 			} else {
 				setErrorField('');
 				error = '';
@@ -66,8 +66,8 @@ const InputField = React.forwardRef(({
 		}
 
 		if (val.length === 0 && isRequired) {
-			setErrorField(`${key} is required`);
-			error = `${key} is required`;
+			setErrorField(`${key} es requerido`);
+			error = `${key} es requerido`;
 		}
 
 		onInputChange(val, error, e);

@@ -29,10 +29,10 @@ const ViewProduct = () => {
     const onAddToBasket = () => {
         if (foundOnBasket()) {
             dispatch(removeFromBasket(product.id));
-            displayActionMessage('Item removed from basket', 'info');
+            displayActionMessage('Producto eliminado del carrrito', 'info');
         } else {
             dispatch(addToBasket(product));
-            displayActionMessage('Item added to basket', 'success');
+            displayActionMessage('Producto agregado al carrito', 'success');
         }
     };
 
@@ -93,7 +93,7 @@ const ViewProduct = () => {
                         className={`button button-small ${foundOnBasket() ? 'button-border button-border-gray' : ''}`}
                         onClick={onAddToBasket}
                     >
-                        {foundOnBasket() ? 'Remove From Basket' : 'Add To Basket'}
+                        {foundOnBasket() ? 'Quitar del carrito' : 'Agregar al carrito'}
                     </button>
                 </div>
             </div>

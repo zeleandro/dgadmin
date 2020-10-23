@@ -17,6 +17,10 @@ Admin
 Front
 1. Cambiar el template
 2. Agregar un menu
+3. Logo y nombre
+4. Cambiar de idioma
+5. El titulo de la app no lo puedo cambiar
+
 
 Deploy
 . Se corre con npm run dev-server en forma local

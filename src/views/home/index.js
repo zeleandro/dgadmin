@@ -54,7 +54,7 @@ const Home = () => {
 							{isFiltered && (
 								<h5>
 									{store.filteredProducts.length > 0
-										&& `Found ${store.filteredProducts.length} ${store.filteredProducts.length > 1 ? 'products' : 'product'}`
+										&& `Se encontraron ${store.filteredProducts.length} ${store.filteredProducts.length > 1 ? 'productos' : 'producto'}`
 									}
 								</h5>
 							)}

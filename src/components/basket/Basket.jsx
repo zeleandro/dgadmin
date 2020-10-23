@@ -58,21 +58,21 @@ const Basket = (props) => {
 				isOpen={isModalOpen}
 				onRequestClose={onCloseModal}
 			>
-				<p className="text-center">You must sign in to continue checking out</p>
+				<p className="text-center">Debes estar logueado para continuar</p>
 				<br />
 				<div className="d-flex-center">
 					<button
 						className="button button-border button-border-gray button-small"
 						onClick={onCloseModal}
 					>
-						Continue shopping
+						Continuar comprando
 					</button>
 					&nbsp;
 					<button
 						className="button button-small"
 						onClick={onSignInClick}
 					>
-						Sign in to checkout
+						Ingresar para continuar
 					</button>
 				</div>
 			</Modal>
@@ -80,7 +80,7 @@ const Basket = (props) => {
 				<div className="basket-list">
 					<div className="basket-header">
 						<h3 className="basket-header-title">
-							My Basket &nbsp;
+							Mi Carrito &nbsp;
 							<span>({` ${basket.length} ${basket.length > 1 ? 'items' : 'item'}`})</span>
 						</h3>
 						<BasketToggle>
@@ -89,7 +89,7 @@ const Basket = (props) => {
 									className="basket-toggle button button-border button-border-gray button-small"
 									onClick={onClickToggle}
 								>
-									Close
+									Cerrar
 								</span>
 							)}
 						</BasketToggle>
@@ -98,12 +98,12 @@ const Basket = (props) => {
 							disabled={basket.length === 0}
 							onClick={onClearBasket}
 						>
-							<span>Clear Basket</span>
+							<span>Vaciar carrito</span>
 						</button>
 					</div>
 					{basket.length <= 0 && (
 						<div className="basket-empty">
-							<h5 className="basket-empty-msg">Your basket is empty</h5>
+							<h5 className="basket-empty-msg">Tu carrito está vacío</h5>
 						</div>
 					)}
 					{basket.map((product, i) => (
@@ -117,7 +117,7 @@ const Basket = (props) => {
 				</div>
 				<div className="basket-checkout">
 					<div className="basket-total">
-						<p className="basket-total-title">Subtotal Amout:</p>
+						<p className="basket-total-title">Subtotal:</p>
 						<h2 className="basket-total-amount">{calculateTotal()}</h2>
 					</div>
 					<button
@@ -125,7 +125,7 @@ const Basket = (props) => {
 						disabled={basket.length === 0 || pathname === '/checkout'}
 						onClick={onCheckOut}
 					>
-						Check Out
+						Finalizar
 					</button>
 				</div>
 			</div>

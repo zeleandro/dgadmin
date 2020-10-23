@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { ADMIN_PRODUCTS } from 'constants/routes';
+import { ADMIN_PRODUCTS, ADMIN_USERS } from 'constants/routes';
 
 const SideNavigation = () => {
 	return (
@@ -12,11 +12,17 @@ const SideNavigation = () => {
 						className="sidenavigation-menu"
 						to={ADMIN_PRODUCTS}
 					>
-						Products
+						Productos
 					</NavLink>
 				</div>
 				<div className="sidenavigation-item">
-					<a className="sidenavigation-menu">Users</a>
+					<NavLink
+						activeClassName="sidenavigation-menu-active"
+						className="sidenavigation-menu"
+						to={ADMIN_USERS}
+					>
+						Usuarios
+					</NavLink>
 				</div>
 			</div>
 		</aside>

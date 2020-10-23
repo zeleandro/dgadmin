@@ -15,7 +15,7 @@ const AdminNavigation = () => {
 		<nav className="navigation navigation-admin">
 			<div className="logo">
 				<Link to={ADMIN_DASHBOARD}>
-					<h2>ADMIN PANEL</h2>
+					<h2>PANEL DE ADMINISTRACIÓN</h2>
 				</Link>
 			</div>
 			<ul className="navigation-menu">

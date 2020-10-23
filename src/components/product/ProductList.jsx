@@ -34,14 +34,14 @@ const ProductList = (props) => {
 
 	return props.filteredProducts.length === 0 && !props.isLoading && !props.requestStatus ? (
 		<MessageDisplay
-			message="The are no items found."
-			desc="Try using correct filters or keyword."
+			message="No se encontraron productos"
+			desc="Pruebe usando filtros o palabras claves"
 		/>
 	) : props.requestStatus ? (
 		<MessageDisplay
 			message={props.requestStatus}
 			action={fetchProducts}
-			buttonLabel="Try Again"
+			buttonLabel="Intentar nuevamente"
 		/>
 	) : (
 				<>
@@ -53,7 +53,7 @@ const ProductList = (props) => {
 								disabled={isFetching}
 								onClick={fetchProducts}
 							>
-								{isFetching ? 'Fetching Items...' : 'Show More Items'}
+								{isFetching ? 'Buscando productos...' : 'Mostrar mas productos'}
 							</button>
 						</div>
 					)}

@@ -26,10 +26,10 @@ const ProductItem = ({
 	const onAddToBasket = () => {
 		if (isItemOnBasket) {
 			dispatch(removeFromBasket(product.id));
-			displayActionMessage('Item removed from basket', 'info');
+			displayActionMessage('Se eliminó el producto del carrito', 'info');
 		} else {
 			dispatch(addToBasket(product));
-			displayActionMessage('Item added to basket', 'success');
+			displayActionMessage('Se agregó el producto al carrito', 'success');
 		}
 	};
 
@@ -66,7 +66,7 @@ const ProductItem = ({
 						className={`product-card-button button-small button button-block ${isItemOnBasket ? 'button-border button-border-gray' : ''}`}
 						onClick={onAddToBasket}
 					>
-						{isItemOnBasket ? 'Remove from basket' : 'Add to basket'}
+						{isItemOnBasket ? 'Quitar del carrito' : 'Agregar al carrito'}
 					</button>
 				)}
 

@@ -61,16 +61,16 @@ const ProductAppliedFilters = ({ filter }) => {
 			)}
 			{filter.sortBy && (
 				<div className="pill-wrapper">
-					<span className="d-block">Sort By</span>
+					<span className="d-block">Ordenar por</span>
 					<div className="pill padding-right-l">
 						<h5 className="pill-content margin-0">
 							{filter.sortBy === 'price-desc'
-								? 'Price High - Low'
+								? 'Precio Mayor - Menor'
 								: filter.sortBy === 'price-asc'
-									? 'Price Low - High'
+									? 'Precio Menor - Mayor'
 									: filter.sortBy === 'name-desc'
-										? 'Name Z - A'
-										: 'Name A - Z'
+										? 'Nombre Z - A'
+										: 'Nombre A - Z'
 							}
 						</h5>
 						<div

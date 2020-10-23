@@ -73,7 +73,8 @@ const Navigation = ({ isAuth }) => {
 			>
 				<div className="logo">
 					<Link onClick={onClickLink} to="/">
-						<img src={logo} />
+						{/* <img src={logo} /> */}
+						<h3>DG Limpieza</h3>
 					</Link>
 				</div>
 				{pathname === ROUTE.HOME && (
@@ -93,7 +94,7 @@ const Navigation = ({ isAuth }) => {
 							history={history}
 						>
 							<button className="button-muted button-small">
-								More Filters &nbsp;<i className="fa fa-chevron-right" />
+								Mas Filtros &nbsp;<i className="fa fa-chevron-right" />
 							</button>
 						</FiltersToggle>
 					</>
@@ -129,7 +130,7 @@ const Navigation = ({ isAuth }) => {
 										onClick={onClickLink}
 										to={ROUTE.SIGNUP}
 									>
-										Sign Up
+										Registrarse
 									</NavLink>
 								)}
 								{pathname !== ROUTE.SIGNIN && (
@@ -140,7 +141,7 @@ const Navigation = ({ isAuth }) => {
 										onClick={onClickLink}
 										to={ROUTE.SIGNIN}
 									>
-										Sign In
+										Ingresar
 									</NavLink>
 								)}
 							</li>
