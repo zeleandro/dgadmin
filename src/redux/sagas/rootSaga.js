@@ -30,7 +30,8 @@ function* rootSaga() {
 		ACTION.UPDATE_PROFILE
 	], profileSaga);
 	yield takeLatest([
-		ACTION.ADD_ORDER
+		ACTION.ADD_ORDER,
+		ACTION.GET_ORDERS
 	], orderSaga);
 }
 

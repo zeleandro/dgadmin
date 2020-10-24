@@ -91,6 +91,7 @@ const Payment = ({
 			const order = {
 				user: profile.fullname,
 				email: profile.email,
+				userImage: profile.avatar,
 				date: new Date().toISOString(),
 				paymentMode,
 				address: checkout.shipping.address,

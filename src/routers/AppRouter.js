@@ -9,6 +9,10 @@ import Products from 'views/admin/products';
 import EditProduct from 'views/admin/edit_product';
 import AddProduct from 'views/admin/add_product';
 
+import Orders from 'views/admin/orders';
+
+import Users from 'views/admin/users';
+
 import ViewProduct from 'views/view_product';
 
 import ProductSearch from 'components/product/ProductSearch';
@@ -97,6 +101,14 @@ const AppRouter = () => (
 			<AdminRoute
 				component={EditProduct}
 				path={`${ROUTES.EDIT_PRODUCT}/:id`}
+			/>
+			<AdminRoute
+				component={Orders}
+				path={ROUTES.ADMIN_ORDERS}
+			/>
+			<AdminRoute
+				component={Users}
+				path={ROUTES.ADMIN_USERS}
 			/>
 			<PublicRoute component={PageNotFound} />
 		</Switch>

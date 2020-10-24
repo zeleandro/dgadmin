@@ -4,22 +4,22 @@ import React, { useEffect, useState } from 'react';
 import PropTypes, { object } from 'prop-types';
 import { useDispatch } from 'react-redux';
 
-import { getProducts } from 'redux/actions/productActions';
+import { getOrders } from 'redux/actions/orderActions';
 import { setLoading } from 'redux/actions/miscActions';
 import MessageDisplay from '../ui/MessageDisplay';
 
-const ProductList = (props) => {
+const OrderList = (props) => {
 	const [isFetching, setFetching] = useState(false);
 
 	const dispatch = useDispatch();
-	const fetchProducts = () => {
+	const fetchOrders = () => {
 		setFetching(true);
-		dispatch(getProducts(props.lastRefKey));
+		dispatch(getOrders(props.lastRefKey));
 	};
 
 	useEffect(() => {
-		if (props.productsCount === 0) {
-			fetchProducts();
+		if (props.ordersCount === 0) {
+			fetchOrders();
 		}
 
 		window.scrollTo(0, 0);
@@ -30,30 +30,30 @@ const ProductList = (props) => {
 		setFetching(false);
 	}, [props.lastRefKey]);
 
-	const foundOnBasket = id => props.basket.find(item => item.id === id);
+	const order = id => props.orders.find(item => item.id === id);
 
-	return props.filteredProducts.length === 0 && !props.isLoading && !props.requestStatus ? (
+	return props.filteredOrders.length === 0 && !props.isLoading && !props.requestStatus ? (
 		<MessageDisplay
-			message="No se encontraron productos"
+			message="No se encontraron pedidos"
 			desc="Pruebe usando filtros o palabras claves"
 		/>
 	) : props.requestStatus ? (
 		<MessageDisplay
 			message={props.requestStatus}
-			action={fetchProducts}
+			action={fetchOrders}
 			buttonLabel="Intentar nuevamente"
 		/>
 	) : (
 				<>
-					{props.children({ foundOnBasket })}
-					{props.productsCount < props.totalProductsCount && (
+					{props.children({ order })}
+					{props.ordersCount < props.totalOrdersCount && (
 						<div className="d-flex-center padding-l">
 							<button
 								className="button button-small"
 								disabled={isFetching}
-								onClick={fetchProducts}
+								onClick={fetchOrders}
 							>
-								{isFetching ? 'Buscando productos...' : 'Mostrar mas productos'}
+								{isFetching ? 'Buscando pedidos...' : 'Mostrar mas pedidos'}
 							</button>
 						</div>
 					)}
@@ -61,16 +61,16 @@ const ProductList = (props) => {
 			);
 };
 
-ProductList.propType = {
+OrderList.propType = {
 	filter: PropTypes.object,
 	basket: PropTypes.arrayOf(object),
-	filteredProducts: PropTypes.arrayOf(PropTypes.object),
-	products: PropTypes.arrayOf(object),
+	filteredOrders: PropTypes.arrayOf(PropTypes.object),
+	orders: PropTypes.arrayOf(object),
 	isLoading: PropTypes.bool.isRequired,
 	requestStatus: PropTypes.string.isRequired,
-	productsCount: PropTypes.number.isRequired,
-	totalProductsCount: PropTypes.number.isRequired,
-	filteredProductsLength: PropTypes.number.isRequired,
+	ordersCount: PropTypes.number.isRequired,
+	totalOrdersCount: PropTypes.number.isRequired,
+	filteredOrdersLength: PropTypes.number.isRequired,
 };
 
-export default ProductList;
+export default OrderList;

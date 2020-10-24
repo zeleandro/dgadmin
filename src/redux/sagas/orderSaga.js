@@ -5,11 +5,15 @@ import firebase from 'firebase/firebase';
 import {
 	LOADING,
 	SET_REQUEST_STATUS,
-	ADD_ORDER
+	ADD_ORDER,
+	GET_ORDER,
+	GET_ORDERS
 } from 'constants/constants';
 
 import {
-	addOrderSuccess
+	addOrderSuccess,
+	getOrderSuccess,
+	getOrdersSuccess
 } from '../actions/orderActions';
 import { setLoading, setRequestStatus } from 'redux/actions/miscActions'
 
@@ -36,13 +40,13 @@ function* orderSaga({ type, payload }) {
 	switch (type) {
 		case ADD_ORDER:
 			try {
-                yield initRequest();
-                
-                const key = yield call(firebase.generateKey);
+				yield initRequest();
+
+				const key = yield call(firebase.generateKey);
 
 				const order = {
-                    ...payload
-                };
+					...payload
+				};
 
 				yield call(firebase.addOrder, key, order);
 				yield put(addOrderSuccess({
@@ -54,6 +58,23 @@ function* orderSaga({ type, payload }) {
 			} catch (e) {
 				yield handleError(e);
 				yield handleAction(undefined, `Item failed to add: ${e.message_}`, 'error');
+			}
+			break;
+		case GET_ORDERS:
+			try {
+				yield initRequest();
+				const state = yield select();
+				const result = yield call(firebase.getOrders, payload);
+
+				yield put(getOrdersSuccess({
+					orders: result.orders,
+					lastKey: result.lastKey ? result.lastKey : state.orders.lastRefKey,
+					total: result.total ? result.total : state.orders.total
+				}));
+				// yield put({ type: SET_LAST_REF_KEY, payload: result.lastKey });
+				yield put(setLoading(false));
+			} catch (e) {
+				yield handleError(e);
 			}
 			break;
 		default:
