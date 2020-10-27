@@ -167,6 +167,8 @@ class Firebase {
 	// //-------------
 	addOrder = (id, order) => this.db.collection('orders').doc(id).set(order);
 
+	editOrder = (id, updates) => this.db.collection('orders').doc(id).update(updates);
+
 	getOrder = (id) => this.db.collection('orders').doc(id).get();
 
 	getOrders = (lastRefKey) => {

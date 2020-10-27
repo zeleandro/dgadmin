@@ -18,7 +18,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 		price: { value: product ? defaultProduct.price : 0 },
 		maxQuantity: { value: product ? defaultProduct.maxQuantity : 0 },
 		description: { value: product ? defaultProduct.description : '' },
-		keywords: { value: product ? defaultProduct.keywords : ['gago'] },
+		keywords: { value: product ? defaultProduct.keywords : [''] },
 		imageUrl: { value: product ? defaultProduct.image : '' },
 		imageCollection: { value: product ? defaultProduct.imageCollection : [] }
 	});

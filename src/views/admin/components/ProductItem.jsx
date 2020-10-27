@@ -72,17 +72,17 @@ const ProductItem = ({ product, history }) => {
 							className="button button-border button-small"
 							onClick={onClickEdit}
 						>
-							Edit
+							Editar
 						</button>
 						&nbsp;
 						<button
 							className="button button-border button-small button-danger"
 							onClick={onDeleteProduct}
 						>
-							Delete
+							Borrar
 						</button>
 						<div className="item-action-confirm">
-							<h5>Are you sure you want to delete this?</h5>
+							<h5>Confirma que desea eliminar el producto?</h5>
 							<button
 								className="button button-small button-border"
 								onClick={onCancelDelete}
@@ -94,7 +94,7 @@ const ProductItem = ({ product, history }) => {
 								className="button button-small button-danger"
 								onClick={onConfirmDelete}
 							>
-								Yes
+								Si
 							</button>
 						</div>
 					</div>

@@ -1,5 +1,6 @@
 import {
 	ADD_ORDER_SUCCESS,
+	EDIT_ORDER_SUCCESS,
 	GET_ORDER_SUCCESS,
 	GET_ORDERS_SUCCESS
 } from 'constants/constants';
@@ -11,6 +12,11 @@ export default (state = {
 }, action) => {
 	switch (action.type) {
 		case ADD_ORDER_SUCCESS:
+			return {
+				...state,
+				items: [...state.items, action.payload]
+			};
+		case EDIT_ORDER_SUCCESS:
 			return {
 				...state,
 				items: [...state.items, action.payload]

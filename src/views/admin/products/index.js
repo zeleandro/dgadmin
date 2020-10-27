@@ -54,14 +54,14 @@ const Products = ({ history }) => {
 					productsCount={store.productsCount}
 				>
 					<button className="button-muted button-small">
-						More Filters &nbsp;<i className="fa fa-chevron-right" />
+						Mas Filtros &nbsp;<i className="fa fa-chevron-right" />
 					</button>
 				</FiltersToggle>
 				<button
 					className="button button-small"
 					onClick={onClickAddProduct}
 				>
-					Add New Product
+					Nuevo Producto
 				</button>
 			</div>
 			<div className="product-admin-items">

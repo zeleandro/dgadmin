@@ -7,6 +7,7 @@ export const ADMIN_USERS = '/admin/users';
 export const ADMIN_ORDERS = '/admin/orders';
 export const ADD_PRODUCT = '/admin/add';
 export const EDIT_PRODUCT = '/admin/edit';
+export const EDIT_ORDER = '/admin/order';
 export const SEARCH = '/search';
 export const SIGNIN = '/signin';
 export const SIGNOUT = '/signout';

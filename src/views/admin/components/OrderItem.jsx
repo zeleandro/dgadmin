@@ -5,13 +5,14 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { useDispatch } from 'react-redux';
 import ImageLoader from 'components/ui/ImageLoader';
 import { displayMoney, displayDate, displayActionMessage } from 'helpers/utils';
+import { EDIT_ORDER } from 'constants/routes';
 
 const OrderItem = ({ order, history }) => {
 	const dispatch = useDispatch();
 	const orderRef = useRef(null);
 
 	const onClickEdit = () => {
-
+		history.push(`${EDIT_ORDER}/${order.id}`);
 	};
 
 	const calculateTotal = (order) => {
@@ -86,7 +87,7 @@ OrderItem.propTypes = {
 	order: PropTypes.shape({
 		id: PropTypes.string,
 		user: PropTypes.string,
-		date: PropTypes.number,
+		date: PropTypes.string,
 		email: PropTypes.string,
 		address: PropTypes.string
 	})

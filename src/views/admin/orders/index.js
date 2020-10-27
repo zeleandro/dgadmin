@@ -7,6 +7,8 @@ import useScrollTop from 'hooks/useScrollTop';
 import { selectFilter } from 'selectors/selector';
 import OrderList from 'components/order/OrderList';
 import Boundary from 'components/ui/Boundary';
+import SearchBar from 'components/ui/SearchBar';
+import FiltersToggle from 'components/ui/FiltersToggle';
 import OrderItem from '../components/OrderItem';
 
 const Orders = ({ history }) => {
@@ -32,6 +34,22 @@ const Orders = ({ history }) => {
 					Pedidos &nbsp;
 					({`${store.ordersCount} / ${store.totalOrdersCount}`})
 				</h3>
+				<SearchBar
+					filter={store.filter}
+					isLoading={store.isLoading}
+					ordersCount={store.ordersCount}
+				/>
+				&nbsp;
+				<FiltersToggle
+					filter={store.filter}
+					isLoading={store.isLoading}
+					orders={store.orders}
+					ordersCount={store.ordersCount}
+				>
+					<button className="button-muted button-small">
+						Mas Filtros &nbsp;<i className="fa fa-chevron-right" />
+					</button>
+				</FiltersToggle>
 			</div>
 			<div className="product-admin-items">
 				<OrderList {...store}>
@@ -59,9 +77,9 @@ const Orders = ({ history }) => {
 							)}
 							{store.orders.length === 0 ? new Array(10).fill({}).map((order, index) => (
 								<OrderItem
-								key={`product-skeleton ${index}`}
-								order={order}
-							/>
+									key={`product-skeleton ${index}`}
+									order={order}
+								/>
 							)) : store.orders.items.map(order => (
 								<OrderItem
 									key={order.id}

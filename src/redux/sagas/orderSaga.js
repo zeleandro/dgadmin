@@ -6,12 +6,14 @@ import {
 	LOADING,
 	SET_REQUEST_STATUS,
 	ADD_ORDER,
+	EDIT_ORDER,
 	GET_ORDER,
 	GET_ORDERS
 } from 'constants/constants';
 
 import {
 	addOrderSuccess,
+	editOrderSuccess,
 	getOrderSuccess,
 	getOrdersSuccess
 } from '../actions/orderActions';
@@ -58,6 +60,28 @@ function* orderSaga({ type, payload }) {
 			} catch (e) {
 				yield handleError(e);
 				yield handleAction(undefined, `Item failed to add: ${e.message_}`, 'error');
+			}
+			break;
+		case EDIT_ORDER:
+			try {
+				yield initRequest();
+
+				const key = payload.id;
+
+				const order = {
+					...payload
+				};
+
+				yield call(firebase.editOrder, key, order);
+				yield put(editOrderSuccess({
+					id: key,
+					...order
+				}));
+				// yield handleAction(ADMIN_ORDERS, 'Order succesfully added', 'success');
+				yield put(setLoading(false));
+			} catch (e) {
+				yield handleError(e);
+				yield handleAction(undefined, `Item failed to edit: ${e.message_}`, 'error');
 			}
 			break;
 		case GET_ORDERS:
