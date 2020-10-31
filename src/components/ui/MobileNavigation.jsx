@@ -15,7 +15,6 @@ const Navigation = (props) => {
 	const onClickLink = (e) => {
 		if (props.isAuthenticating) e.preventDefault();
 	};
-
 	return (
 		<nav className="mobile-navigation">
 			<div className="mobile-navigation-main">
@@ -30,7 +29,6 @@ const Navigation = (props) => {
 						<button
 							className="button-link navigation-menu-link basket-toggle"
 							onClick={onClickToggle}
-							disabled={props.disabledPaths.includes(pathname)}
 						>
 
 							<Badge count={props.basketLength}>

@@ -34,44 +34,44 @@ const ProductItem = ({
 	};
 
 	return (
-		<SkeletonTheme color="#e1e1e1" highlightColor="#f2f2f2">
-			<div
-				className={`product-card ${!product.id ? 'product-loading' : ''}`}
-				style={{
-					border: isItemOnBasket ? '1px solid #cacaca' : '',
-					boxShadow: isItemOnBasket ? '0 10px 15px rgba(0, 0, 0, .07)' : 'none'
-				}}
-			>
-				{isItemOnBasket && <i className="fa fa-check product-card-check" />}
-				<div
-					className="product-card-content"
-					onClick={onClickItem}
-				>
-					<div className="product-card-img-wrapper">
-						{product.image ? (
+		<div className="col-lg-3 col-md-12">
+		<div className={`card ${!product.id ? 'product-loading' : ''}`}
+			style={{
+				border: isItemOnBasket ? '1px solid #cacaca' : '',
+				boxShadow: isItemOnBasket ? '0 10px 15px rgba(0, 0, 0, .07)' : 'none'
+			}}
+		>
+			{isItemOnBasket && <i className="fa fa-check product-card-check" />}
+			<div className="product-card-img-wrapper" onClick={onClickItem}>
+				{product.image ? (
 							<ImageLoader
 								className="product-card-img"
 								src={product.image}
 							/>
 						) : <Skeleton width={'100%'} height={'90%'} />}
-					</div>
-					<div className="product-details">
-						<h5 className="product-card-name text-overflow-ellipsis margin-auto">{product.name || <Skeleton width={80} />}</h5>
-						<p className="product-card-brand">{product.brand || <Skeleton width={60} />}</p>
-						<h4 className="product-card-price">{product.price ? displayMoney(product.price) : <Skeleton width={40} />}</h4>
-					</div>
+			</div>
+			<div className="card-body">
+				<div className="product-item2-desc">
+					<h4 className="font-weight-semibold text-dark">{product.brand || <Skeleton width={80} />}</h4>
+					<p>{product.name || <Skeleton width={60} />}</p>
 				</div>
-				{product.id && (
-					<button
-						className={`product-card-button button-small button button-block ${isItemOnBasket ? 'button-border button-border-gray' : ''}`}
-						onClick={onAddToBasket}
-					>
-						{isItemOnBasket ? 'Quitar del carrito' : 'Agregar al carrito'}
-					</button>
-				)}
 
 			</div>
-		</SkeletonTheme>
+			<div className="card-footer">
+				<div className="product-item-wrap d-flex">
+				<button className={`btn btn-info btn-lg mr-auto ${isItemOnBasket ? 'btn btn-danger btn-lg mr-auto' : ''}`} onClick={onAddToBasket}>
+						{isItemOnBasket ? 'Quitar del carrito' : 'Agregar al carrito'}
+						</button>
+					<div className="product-item-price">
+						<span className="newprice text-dark">${product.price}</span>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		</div>
+		
+		
 	);
 };
 

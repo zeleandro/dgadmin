@@ -47,7 +47,11 @@ const Home = () => {
 
 	return (
 		<>
-			<section className="product-list-wrapper">
+			<div class="col-xl-12 col-lg-12 col-md-12">
+				<div class="card mb-lg-0">	
+					<div class="card-body">
+						
+
 				{!store.requestStatus && (
 					<div className="product-list-header">
 						<div className="product-list-header-title">
@@ -66,11 +70,11 @@ const Home = () => {
 					<ProductList {...store}>
 						{({ foundOnBasket }) => (
 							<>
-								<div
-									className="product-list"
-									ref={productListWrapper}
-									style={{ gridTemplateColumns: `repeat(${columnCount}, 160px)` }}
-								>
+								<div class="item2-gl ">
+							
+									<div class="tab-content">
+										<div class="tab-pane active show" id="tab-12">
+											<div class="row">
 									{store.filteredProducts.length === 0 ? new Array(12).fill({}).map((product, index) => (
 										<ProductItem
 											isItemOnBasket={false}
@@ -85,12 +89,20 @@ const Home = () => {
 											product={product}
 										/>
 									))}
+									</div>
 								</div>
+							</div>
+						</div>
 							</>
 						)}
 					</ProductList>
 				</Boundary>
-			</section>
+
+					</div>
+				</div>
+
+			</div>		
+			
 		</>
 	);
 };
