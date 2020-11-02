@@ -4,6 +4,9 @@ import authSaga from './authSaga';
 import productSaga from './productSaga';
 import profileSaga from './profileSaga';
 import orderSaga from './orderSaga';
+import userSaga from './userSaga';
+import brandSaga from './brandSaga';
+import categorySaga from './categorySaga';
 
 function* rootSaga() {
 	yield takeLatest([
@@ -34,6 +37,21 @@ function* rootSaga() {
 		ACTION.EDIT_ORDER,
 		ACTION.GET_ORDERS
 	], orderSaga);
+	yield takeLatest([
+		ACTION.GET_USERS
+	], userSaga);
+	yield takeLatest([
+		ACTION.ADD_BRAND,
+		ACTION.EDIT_BRAND,
+		ACTION.REMOVE_BRAND,
+		ACTION.GET_BRANDS
+	], brandSaga);
+	yield takeLatest([
+		ACTION.ADD_CATEGORY,
+		ACTION.EDIT_CATEGORY,
+		ACTION.REMOVE_CATEGORY,
+		ACTION.GET_CATEGORIES
+	], categorySaga);
 }
 
 export default rootSaga;

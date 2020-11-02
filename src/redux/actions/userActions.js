@@ -3,7 +3,9 @@ import {
 	GET_USER,
 	ADD_USER,
 	EDIT_USER,
-	DELETE_USER
+	DELETE_USER,
+	GET_USERS,
+	GET_USERS_SUCCESS
 } from 'constants/constants';
 
 // insert in profile array
@@ -31,4 +33,14 @@ export const editUser = updates => ({
 export const deleteUser = id => ({
 	type: DELETE_USER,
 	payload: id
+});
+
+export const getUsers = lastRef => ({
+	type: GET_USERS,
+	payload: lastRef
+});
+
+export const getUsersSuccess = users => ({
+	type: GET_USERS_SUCCESS,
+	payload: users
 });

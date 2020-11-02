@@ -7,6 +7,8 @@ import checkoutReducer from './checkoutReducer';
 import userReducer from './userReducer';
 import miscReducer from './miscReducer';
 import orderReducer from './orderReducer';
+import categoryReducer from './categoryReducer';
+import brandReducer from './brandReducer';
 
 const rootReducer = {
 	products: productReducer,
@@ -17,7 +19,9 @@ const rootReducer = {
 	users: userReducer,
 	checkout: checkoutReducer,
 	app: miscReducer,
-	orders: orderReducer
+	orders: orderReducer,
+	categories: categoryReducer,
+	brands: brandReducer
 };
 
 export default rootReducer;

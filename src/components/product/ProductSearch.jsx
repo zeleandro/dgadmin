@@ -67,7 +67,7 @@ const ProductSearch = (props) => {
 				<div className="product-search-recent">
 					<div className="product-search-recent-header">
 						<h5>Búsquedas recientes</h5>
-						<h5 onClick={onClearRecentSearch} style={{ color: 'red' }}>Clear</h5>
+						<h5 onClick={onClearRecentSearch} style={{ color: 'red' }}>Limpiar</h5>
 					</div>
 					{filter.recent.map((item, index) => (
 						<div className="pill-wrapper" key={`${item}${index}`}>

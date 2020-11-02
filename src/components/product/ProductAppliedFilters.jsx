@@ -28,7 +28,7 @@ const ProductAppliedFilters = ({ filter }) => {
 		<div className="product-applied-filters">
 			{filter.keyword && (
 				<div className="pill-wrapper">
-					<span className="d-block">Keyword</span>
+					<span className="d-block">Palabra clave</span>
 					<div className="pill padding-right-l">
 						<h5 className="pill-content margin-0">{filter.keyword}</h5>
 						<div className="pill-remove" onClick={onRemoveKeywordFilter}>
@@ -39,7 +39,7 @@ const ProductAppliedFilters = ({ filter }) => {
 			)}
 			{filter.brand && (
 				<div className="pill-wrapper">
-					<span className="d-block">Brand</span>
+					<span className="d-block">Marca</span>
 					<div className="pill padding-right-l">
 						<h5 className="pill-content margin-0">{filter.brand}</h5>
 						<div className="pill-remove" onClick={onRemoveBrandFilter}>
@@ -50,7 +50,7 @@ const ProductAppliedFilters = ({ filter }) => {
 			)}
 			{(!!filter.minPrice || !!filter.maxPrice) && (
 				<div className="pill-wrapper">
-					<span className="d-block">Price Range</span>
+					<span className="d-block">Rango de Precios</span>
 					<div className="pill padding-right-l">
 						<h5 className="pill-content margin-0">${filter.minPrice} - ${filter.maxPrice}</h5>
 						<div className="pill-remove" onClick={onRemovePriceRangeFilter}>

@@ -14,6 +14,9 @@ import EditOrder from 'views/admin/edit_order';
 
 import Users from 'views/admin/users';
 
+import Categories from 'views/admin/categories';
+import Brands from 'views/admin/brands';
+
 import ViewProduct from 'views/view_product';
 
 import ProductSearch from 'components/product/ProductSearch';
@@ -114,6 +117,14 @@ const AppRouter = () => (
 			<AdminRoute
 				component={Users}
 				path={ROUTES.ADMIN_USERS}
+			/>
+			<AdminRoute
+				component={Categories}
+				path={ROUTES.ADMIN_CATEGORIES}
+			/>
+			<AdminRoute
+				component={Brands}
+				path={ROUTES.ADMIN_BRANDS}
 			/>
 			<PublicRoute component={PageNotFound} />
 		</Switch>

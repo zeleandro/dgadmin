@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 import useDocumentTitle from 'hooks/useDocumentTitle';
 import useScrollTop from 'hooks/useScrollTop';
+import OrderAppliedFilters from 'components/order/OrderAppliedFilters';
 import { selectFilter } from 'selectors/selector';
 import OrderList from 'components/order/OrderList';
 import Boundary from 'components/ui/Boundary';
@@ -55,6 +56,7 @@ const Orders = ({ history }) => {
 				<OrderList {...store}>
 					{() => (
 						<>
+							<OrderAppliedFilters filter={store.filter} />
 							{(
 								<div className="grid grid-product grid-count-6">
 									<div className="grid-col" />
