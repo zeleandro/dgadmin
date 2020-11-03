@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { resetFilter, applyFilter } from 'redux/actions/filterActions';
 import { selectMax, selectMin } from 'selectors/selector';
+
+import { getBrands } from 'redux/actions/brandActions';
+import { getCategories } from 'redux/actions/categoryActions';
 
 import PriceRange from './PriceRange';
 
@@ -10,6 +13,7 @@ const Filters = (props) => {
 	const [isMounted, setMounted] = useState(false);
 	const [field, setFilter] = useState({
 		brand: props.filter.brand,
+		category: props.filter.category,
 		minPrice: props.filter.minPrice,
 		maxPrice: props.filter.maxPrice,
 		sortBy: props.filter.sortBy
@@ -31,14 +35,37 @@ const Filters = (props) => {
 	}, [props.filter]);
 
 
+	const brands = useSelector(state => state.brands.items)
+	const categories = useSelector(state => state.categories.items)
+
+	const fetchBrands = () => {
+		dispatch(getBrands());
+	};
+	const fetchCategories = () => {
+		dispatch(getCategories());
+	};
+
+	useEffect(() => {
+		if (brands.length === 0) {
+			fetchBrands();
+		}
+		if (categories.length === 0) {
+			fetchCategories();
+		}
+	}, []);
+
 	const onPriceChange = (min, max) => {
 		setFilter({ ...field, minPrice: min, maxPrice: max });
 	};
 
 	const onBrandFilterChange = (e) => {
 		const val = e.target.value;
-
 		setFilter({ ...field, brand: val });
+	};
+
+	const onCategoryFilterChange = (e) => {
+		const val = e.target.value;
+		setFilter({ ...field, category: val });
 	};
 
 	const onSortFilterChange = (e) => {
@@ -61,7 +88,7 @@ const Filters = (props) => {
 	};
 
 	const onResetFilter = () => {
-		const filterFields = ['brand', 'minPrice', 'maxPrice', 'sortBy'];
+		const filterFields = ['brand', 'category', 'minPrice', 'maxPrice', 'sortBy'];
 
 		if (filterFields.some(key => !!props.filter[key])) {
 			dispatch(resetFilter());
@@ -80,16 +107,41 @@ const Filters = (props) => {
 					<h5 className="text-subtle">Cargando filtros</h5>
 				) : (
 						<select
+							name="brand"
 							className="filters-brand"
 							value={field.brand}
 							disabled={props.isLoading || props.productsCount === 0}
 							onChange={onBrandFilterChange}
 						>
 							<option value="">Todas las marcas</option>
-							<option value="dgclean">DGClean</option>
-							<option value="generica">Generica</option>
-							<option value="marca">Marca</option>
-							<option value="otramarca">Otra Marca</option>
+							{
+								brands.map(item => (
+									<option key={item.id} value={item.name.toLowerCase()}>{item.name}</option>
+								))
+							}
+						</select>
+					)}
+			</div>
+			<div className="filters-field">
+				<span>Categoría</span>
+				<br />
+				<br />
+				{props.productsCount === 0 && props.isLoading ? (
+					<h5 className="text-subtle">Cargando filtros</h5>
+				) : (
+						<select
+							name="category"
+							className="filters-brand"
+							value={field.category}
+							disabled={props.isLoading || props.productsCount === 0}
+							onChange={onCategoryFilterChange}
+						>
+							<option value="">Todas las categorías</option>
+							{
+								categories.map(item => (
+									<option key={item.id} value={item.name.toLowerCase()}>{item.name}</option>
+								))
+							}
 						</select>
 					)}
 			</div>
@@ -135,14 +187,14 @@ const Filters = (props) => {
 					onClick={onApplyFilter}
 				>
 					Aplicar filtros
-        </button>
+        		</button>
 				<button
 					className="filters-button button button-border button-small"
 					disabled={props.isLoading || props.productsCount === 0}
 					onClick={onResetFilter}
 				>
 					Borrar filtros
-        </button>
+        		</button>
 			</div>
 		</div>
 	);

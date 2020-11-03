@@ -1,6 +1,7 @@
 import {
 	SET_TEXT_FILTER,
 	SET_BRAND_FILTER,
+	SET_CATEGORY_FILTER,
 	SET_MAX_PRICE_FILTER,
 	SET_MIN_PRICE_FILTER,
 	RESET_FILTER,
@@ -17,6 +18,11 @@ export const setTextFilter = keyword => ({
 export const setBrandFilter = brand => ({
 	type: SET_BRAND_FILTER,
 	payload: brand
+});
+
+export const setCategoryFilter = category => ({
+	type: SET_CATEGORY_FILTER,
+	payload: category
 });
 
 export const setMinPriceFilter = min => ({
