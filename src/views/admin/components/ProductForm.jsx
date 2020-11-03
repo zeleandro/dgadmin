@@ -5,6 +5,7 @@ import Input from 'components/ui/Input';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getBrands } from 'redux/actions/brandActions';
+import { getCategories } from 'redux/actions/categoryActions';
 
 import useFileHandler from 'hooks/useFileHandler';
 import PropTypes from 'prop-types';
@@ -18,6 +19,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 	const [field, setField] = useState({
 		name: { value: product ? defaultProduct.name : '' },
 		brand: { value: product ? defaultProduct.brand : '' },
+		category: { value: product ? defaultProduct.category : '' },
 		price: { value: product ? defaultProduct.price : 0 },
 		maxQuantity: { value: product ? defaultProduct.maxQuantity : 0 },
 		description: { value: product ? defaultProduct.description : '' },
@@ -33,25 +35,39 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 		removeImage
 	} = useFileHandler({ image: {}, imageCollection: field.imageCollection.value });
 
-	// const [brands, setBrands] = useState([]);
 	const brands = useSelector(state => state.brands.items)
+	const categories = useSelector(state => state.categories.items)
 	const dispatch = useDispatch();
 
 	const fetchBrands = () => {
 		dispatch(getBrands());
-		console.log(brands);
+	};
+	const fetchCategories = () => {
+		dispatch(getCategories());
 	};
 
 	useEffect(() => {
 		if (brands.length === 0) {
 			fetchBrands();
 		}
+		if (categories.length === 0) {
+			fetchCategories();
+		}
 	});
 
-	const onChange = (e) => {
+	const onChangeBrand = (e) => {
 		switch (e.target.name) {
 			case 'brand': {
 				onProductBrandInput(e.target.value)
+			}
+			default: { }
+		}
+	}
+
+	const onChangeCategory = (e) => {
+		switch (e.target.name) {
+			case 'category': {
+				onProductCategoryInput(e.target.value)
 			}
 			default: { }
 		}
@@ -67,6 +83,10 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 
 	const onProductBrandInput = (value, error) => {
 		setField({ ...field, brand: { value, error } });
+	};
+
+	const onProductCategoryInput = (value, error) => {
+		setField({ ...field, category: { value, error } });
 	};
 
 	const onProductPriceInput = (value, error) => {
@@ -88,7 +108,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 
 		if (field.name.value
 			&& field.price.value
-			&& field.maxQuantity.value
+			// && field.maxQuantity.value
 			&& (imageFile.image.file || field.imageUrl.value)
 			&& noError
 		) {
@@ -123,7 +143,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 								label="* Product Name"
 								maxLength={60}
 								onInputChange={onProductNameInput}
-								placeholder="Takla"
+								placeholder="Nombre"
 								readOnly={isLoading}
 								style={{ textTransform: 'capitalize' }}
 								type="text"
@@ -132,30 +152,29 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 						</div>
 						&nbsp;
 						<div className="product-form-field">
-							<Input
-								field="brand"
-								isRequired
-								label="* Product Brand"
-								maxLength={40}
-								onInputChange={onProductBrandInput}
-								placeholder="Bulus"
-								readOnly={isLoading}
-								style={{ textTransform: 'capitalize' }}
-								type="text"
-								value={field.brand.value}
-							/>
-						</div>
-
-						<div className="product-form-field">
 							<select
 								name="brand"
 								className="filters-brand"
 								value={field.brand.value}
-								onChange={onChange}
+								onChange={onChangeBrand}
 							>
 								{
 									brands.map(item => (
-										<option value={item.name}>{item.name}</option>
+										<option key={item.id} value={item.name}>{item.name}</option>
+									))
+								}
+							</select>
+						</div>
+						<div className="product-form-field">
+							<select
+								name="category"
+								className="filters-category"
+								value={field.category.value}
+								onChange={onChangeCategory}
+							>
+								{
+									categories.map(item => (
+										<option key={item.id} value={item.name}>{item.name}</option>
 									))
 								}
 							</select>
@@ -298,6 +317,7 @@ ProductForm.propTypes = {
 	product: PropTypes.shape({
 		name: PropTypes.string,
 		brand: PropTypes.string,
+		category: PropTypes.string,
 		price: PropTypes.number,
 		maxQuantity: PropTypes.number,
 		description: PropTypes.string,

@@ -15,7 +15,7 @@ export const getCategories = lastRef => ({
 	payload: lastRef
 });
 
-export const getCategoriesSuccess = categorys => ({
+export const getCategoriesSuccess = categories => ({
 	type: GET_CATEGORIES_SUCCESS,
 	payload: categories
 });

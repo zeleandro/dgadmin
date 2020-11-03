@@ -309,6 +309,55 @@ class Firebase {
 			}
 		});
 	}
+
+	// // CATEGORIES ACTIONS
+	// // ---------
+	getCategory = (id) => this.db.collection('categories').doc(id).get();
+
+	getCategories = (lastRefKey) => {
+		let didTimeout = false;
+
+		return new Promise(async (resolve, reject) => {
+			if (lastRefKey) {
+				try {
+					const query = this.db.collection('categories').orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey).limit(12);
+					const snapshot = await query.get();
+					const categories = [];
+					snapshot.forEach(doc => categories.push({ id: doc.id, ...doc.data() }));
+					const lastKey = snapshot.docs[snapshot.docs.length - 1];
+
+					resolve({ categories, lastKey });
+				} catch (e) {
+					reject(new Error(':( Failed to fetch categories.'));
+				}
+			} else {
+				const timeout = setTimeout(() => {
+					didTimeout = true;
+					reject(new Error('Request timeout, please try again'));
+				}, 15000);
+
+				try {
+					const totalQuery = await this.db.collection('categories').get();
+					const total = totalQuery.docs.length;
+					const query = this.db.collection('categories').orderBy(app.firestore.FieldPath.documentId()).limit(12);
+					const snapshot = await query.get();
+
+					clearTimeout(timeout);
+					if (!didTimeout) {
+						const categories = [];
+						snapshot.forEach(doc => categories.push({ id: doc.id, ...doc.data() }));
+						const lastKey = snapshot.docs[snapshot.docs.length - 1];
+
+						resolve({ categories, lastKey, total });
+					}
+				} catch (e) {
+					if (didTimeout) return;
+					console.log('Failed to fetch categories: An error occured while trying to fetch categories or there may be no categories ', e);
+					reject(new Error(':( Failed to fetch categories.'));
+				}
+			}
+		});
+	}
 }
 
 const firebase = new Firebase();

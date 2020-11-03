@@ -57,6 +57,9 @@ const ProductItem = ({ product, history }) => {
 						<span>{product.brand || <Skeleton width={50} />}</span>
 					</div>
 					<div className="grid-col">
+						<span>{product.category || <Skeleton width={50} />}</span>
+					</div>
+					<div className="grid-col">
 						<span>{product.price ? displayMoney(product.price) : <Skeleton width={30} />}</span>
 					</div>
 					<div className="grid-col">
