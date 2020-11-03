@@ -73,11 +73,11 @@ const Filters = (props) => {
 	return (
 		<div className="filters">
 			<div className="filters-field">
-				<span>Brand</span>
+				<span>Marca</span>
 				<br />
 				<br />
 				{props.productsCount === 0 && props.isLoading ? (
-					<h5 className="text-subtle">Loading Filter</h5>
+					<h5 className="text-subtle">Cargando filtros</h5>
 				) : (
 						<select
 							className="filters-brand"
@@ -85,16 +85,16 @@ const Filters = (props) => {
 							disabled={props.isLoading || props.productsCount === 0}
 							onChange={onBrandFilterChange}
 						>
-							<option value="">All Brands</option>
-							<option value="salt">Salt Maalat</option>
-							<option value="betsin">Betsin Maalat</option>
-							<option value="black">Black Kibal</option>
-							<option value="sexbomb">Sexbomb</option>
+							<option value="">Todas las marcas</option>
+							<option value="dgclean">DGClean</option>
+							<option value="generica">Generica</option>
+							<option value="marca">Marca</option>
+							<option value="otramarca">Otra Marca</option>
 						</select>
 					)}
 			</div>
 			<div className="filters-field">
-				<span>Sort By</span>
+				<span>Ordenar por</span>
 				<br />
 				<br />
 				<select
@@ -103,19 +103,19 @@ const Filters = (props) => {
 					disabled={props.isLoading || props.productsCount === 0}
 					onChange={onSortFilterChange}
 				>
-					<option value="">None</option>
-					<option value="name-asc">Name Ascending A - Z</option>
-					<option value="name-desc">Name Descending Z - A</option>
-					<option value="price-desc">Price High - Low</option>
-					<option value="price-asc">Price Low - High</option>
+					<option value="">Nada</option>
+					<option value="name-asc">Nombre Ascendente A - Z</option>
+					<option value="name-desc">Nombre Descendente Z - A</option>
+					<option value="price-desc">Precio Mayor - Menor</option>
+					<option value="price-asc">Precio Menor - Mayor</option>
 				</select>
 			</div>
 			<div className="filters-field">
-				<span>Price Range</span>
+				<span>Rango de Precios</span>
 				<br />
 				<br />
 				{(props.productsCount === 0 && props.isLoading) || max === 0 ? (
-					<h5 className="text-subtle">Loading Filter</h5>
+					<h5 className="text-subtle">Cargando Filtros</h5>
 				) : (
 						<PriceRange
 							min={min}
@@ -134,14 +134,14 @@ const Filters = (props) => {
 					disabled={props.isLoading || props.productsCount === 0}
 					onClick={onApplyFilter}
 				>
-					Apply filters
+					Aplicar filtros
         </button>
 				<button
 					className="filters-button button button-border button-small"
 					disabled={props.isLoading || props.productsCount === 0}
 					onClick={onResetFilter}
 				>
-					Reset filters
+					Borrar filtros
         </button>
 			</div>
 		</div>

@@ -90,6 +90,51 @@ class Firebase {
 
 	setAuthPersistence = () => this.auth.setPersistence(app.auth.Auth.Persistence.LOCAL);
 
+	getUsers = (lastRefKey) => {
+		let didTimeout = false;
+
+		return new Promise(async (resolve, reject) => {
+			if (lastRefKey) {
+				try {
+					const query = this.db.collection('users').orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey).limit(12);
+					const snapshot = await query.get();
+					const users = [];
+					snapshot.forEach(doc => users.push({ id: doc.id, ...doc.data() }));
+					const lastKey = snapshot.docs[snapshot.docs.length - 1];
+
+					resolve({ users, lastKey });
+				} catch (e) {
+					reject(new Error(':( Failed to fetch users.'));
+				}
+			} else {
+				const timeout = setTimeout(() => {
+					didTimeout = true;
+					reject(new Error('Request timeout, please try again'));
+				}, 15000);
+
+				try {
+					const totalQuery = await this.db.collection('users').get();
+					const total = totalQuery.docs.length;
+					const query = this.db.collection('users').orderBy(app.firestore.FieldPath.documentId()).limit(12);
+					const snapshot = await query.get();
+
+					clearTimeout(timeout);
+					if (!didTimeout) {
+						const users = [];
+						snapshot.forEach(doc => users.push({ id: doc.id, ...doc.data() }));
+						const lastKey = snapshot.docs[snapshot.docs.length - 1];
+
+						resolve({ users, lastKey, total });
+					}
+				} catch (e) {
+					if (didTimeout) return;
+					console.log('Failed to fetch users: An error occured while trying to fetch users or there may be no users ', e);
+					reject(new Error(':( Failed to fetch users.'));
+				}
+			}
+		});
+	}
+
 	// // PRODUCT ACTIONS
 	// // ---------
 	getProduct = (id) => this.db.collection('products').doc(id).get();
@@ -211,6 +256,55 @@ class Firebase {
 					if (didTimeout) return;
 					console.log('Failed to fetch orders: An error occured while trying to fetch orders or there may be no orders ', e);
 					reject(new Error(':( Failed to fetch orders.'));
+				}
+			}
+		});
+	}
+
+	// // BRANDS ACTIONS
+	// // ---------
+	getBrand = (id) => this.db.collection('brands').doc(id).get();
+
+	getBrands = (lastRefKey) => {
+		let didTimeout = false;
+
+		return new Promise(async (resolve, reject) => {
+			if (lastRefKey) {
+				try {
+					const query = this.db.collection('brands').orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey).limit(12);
+					const snapshot = await query.get();
+					const brands = [];
+					snapshot.forEach(doc => brands.push({ id: doc.id, ...doc.data() }));
+					const lastKey = snapshot.docs[snapshot.docs.length - 1];
+
+					resolve({ brands, lastKey });
+				} catch (e) {
+					reject(new Error(':( Failed to fetch brands.'));
+				}
+			} else {
+				const timeout = setTimeout(() => {
+					didTimeout = true;
+					reject(new Error('Request timeout, please try again'));
+				}, 15000);
+
+				try {
+					const totalQuery = await this.db.collection('brands').get();
+					const total = totalQuery.docs.length;
+					const query = this.db.collection('brands').orderBy(app.firestore.FieldPath.documentId()).limit(12);
+					const snapshot = await query.get();
+
+					clearTimeout(timeout);
+					if (!didTimeout) {
+						const brands = [];
+						snapshot.forEach(doc => brands.push({ id: doc.id, ...doc.data() }));
+						const lastKey = snapshot.docs[snapshot.docs.length - 1];
+
+						resolve({ brands, lastKey, total });
+					}
+				} catch (e) {
+					if (didTimeout) return;
+					console.log('Failed to fetch brands: An error occured while trying to fetch brands or there may be no brands ', e);
+					reject(new Error(':( Failed to fetch brands.'));
 				}
 			}
 		});

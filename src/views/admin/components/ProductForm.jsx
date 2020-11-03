@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CircularProgress from 'components/ui/CircularProgress';
 import ImageLoader from 'components/ui/ImageLoader';
 import Input from 'components/ui/Input';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { getBrands } from 'redux/actions/brandActions';
 
 import useFileHandler from 'hooks/useFileHandler';
 import PropTypes from 'prop-types';
@@ -29,6 +32,30 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 		onFileChange,
 		removeImage
 	} = useFileHandler({ image: {}, imageCollection: field.imageCollection.value });
+
+	// const [brands, setBrands] = useState([]);
+	const brands = useSelector(state => state.brands.items)
+	const dispatch = useDispatch();
+
+	const fetchBrands = () => {
+		dispatch(getBrands());
+		console.log(brands);
+	};
+
+	useEffect(() => {
+		if (brands.length === 0) {
+			fetchBrands();
+		}
+	});
+
+	const onChange = (e) => {
+		switch (e.target.name) {
+			case 'brand': {
+				onProductBrandInput(e.target.value)
+			}
+			default: { }
+		}
+	}
 
 	const sanitizeNumber = (num) => {
 		return Number(num.toString().replace(/^0*/, ''));
@@ -117,6 +144,21 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 								type="text"
 								value={field.brand.value}
 							/>
+						</div>
+
+						<div className="product-form-field">
+							<select
+								name="brand"
+								className="filters-brand"
+								value={field.brand.value}
+								onChange={onChange}
+							>
+								{
+									brands.map(item => (
+										<option value={item.name}>{item.name}</option>
+									))
+								}
+							</select>
 						</div>
 					</div>
 					<div className="product-form-field product-textarea">
