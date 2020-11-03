@@ -53,7 +53,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 		if (categories.length === 0) {
 			fetchCategories();
 		}
-	});
+	}, []);
 
 	const onChangeBrand = (e) => {
 		switch (e.target.name) {
