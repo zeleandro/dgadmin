@@ -70,9 +70,9 @@ const SearchBar = ({
 
 	return (
 		<>
-			<div className="searchbar" ref={searchbarRef}>
+			<div ref={searchbarRef}>
 				<input
-					className="search-input searchbar-input"
+					className="form-control input-lg border-right-0"
 					onChange={onSearchChange}
 					onKeyUp={onKeyUp}
 					onFocus={onFocusInput}

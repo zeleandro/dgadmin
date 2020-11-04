@@ -77,28 +77,6 @@ const Navigation = ({ isAuth }) => {
 						<h3>DG Limpieza</h3>
 					</Link>
 				</div>
-				{pathname === ROUTE.HOME && (
-					<>
-						<SearchBar
-							isLoading={store.isLoading}
-							filter={store.filter}
-							history={history}
-							productsLength={store.productsLength}
-						/>
-						&nbsp;
-						<FiltersToggle
-							filter={store.filter}
-							isLoading={store.isLoading}
-							products={store.products}
-							productsLength={store.productsLength}
-							history={history}
-						>
-							<button className="button-muted button-small">
-								Mas Filtros &nbsp;<i className="fa fa-chevron-right" />
-							</button>
-						</FiltersToggle>
-					</>
-				)}
 				<ul className="navigation-menu">
 					<li className="navigation-menu-item">
 						<BasketToggle>

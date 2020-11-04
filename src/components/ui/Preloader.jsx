@@ -4,7 +4,7 @@ import CircularProgress from './CircularProgress';
 
 const Preloader = () => (
 	<div className="preloader">
-		<img src={logo} />
+		<img width="20" height="20" src={logo} />
 		<CircularProgress />
 	</div>
 );

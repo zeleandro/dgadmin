@@ -80,7 +80,7 @@ const Filters = (props) => {
 					<h5 className="text-subtle">Cargando filtros</h5>
 				) : (
 						<select
-							className="filters-brand"
+							className="form-control select2-show-search border-bottom-0 select2-hidden-accessible"
 							value={field.brand}
 							disabled={props.isLoading || props.productsCount === 0}
 							onChange={onBrandFilterChange}
@@ -98,7 +98,7 @@ const Filters = (props) => {
 				<br />
 				<br />
 				<select
-					className="filters-sort-by d-block"
+					className="form-control select2-show-search border-bottom-0 select2-hidden-accessible"
 					value={field.sortBy}
 					disabled={props.isLoading || props.productsCount === 0}
 					onChange={onSortFilterChange}
@@ -130,14 +130,14 @@ const Filters = (props) => {
 			</div>
 			<div className="filters-action">
 				<button
-					className="filters-button button button-small"
+					className="btn btn-success"
 					disabled={props.isLoading || props.productsCount === 0}
 					onClick={onApplyFilter}
 				>
 					Aplicar filtros
         </button>
 				<button
-					className="filters-button button button-border button-small"
+					className="btn btn-info"
 					disabled={props.isLoading || props.productsCount === 0}
 					onClick={onResetFilter}
 				>
