@@ -5,14 +5,14 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { useDispatch } from 'react-redux';
 import ImageLoader from 'components/ui/ImageLoader';
 import { displayMoney, displayDate, displayActionMessage } from 'helpers/utils';
-// import { EDIT_user } from 'constants/routes';
+import { EDIT_USER } from 'constants/routes';
 
 const UserItem = ({ user, history }) => {
 	const dispatch = useDispatch();
 	const userRef = useRef(null);
 
 	const onClickEdit = () => {
-		// history.push(`${EDIT_USER}/${user.id}`);
+		history.push(`${EDIT_USER}/${user.id}`);
 	};
 
 	return (

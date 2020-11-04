@@ -13,6 +13,7 @@ import Orders from 'views/admin/orders';
 import EditOrder from 'views/admin/edit_order';
 
 import Users from 'views/admin/users';
+import EditUser from 'views/admin/edit_user'
 
 import Categories from 'views/admin/categories';
 import Brands from 'views/admin/brands';
@@ -117,6 +118,10 @@ const AppRouter = () => (
 			<AdminRoute
 				component={Users}
 				path={ROUTES.ADMIN_USERS}
+			/>
+			<AdminRoute
+				component={EditUser}
+				path={`${ROUTES.EDIT_USER}/:id`}
 			/>
 			<AdminRoute
 				component={Categories}
