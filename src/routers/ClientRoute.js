@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Basket from 'components/basket/Basket';
 import Navigation from 'components/ui/Navigation';
 import Footer from 'components/ui/Footer';
+import Banner from 'components/ui/Banner';
 
 import { SIGNIN, ADMIN_DASHBOARD } from 'constants/routes';
 
@@ -24,6 +25,7 @@ const PrivateRoute = ({
 						<>
 							<Navigation isAuth={isAuth} />
 							<Basket isAuth={isAuth} />
+							<Banner />
 							<main className="content">
 								<Component {...props} />
 							</main>

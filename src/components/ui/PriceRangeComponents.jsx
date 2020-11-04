@@ -240,7 +240,7 @@ export function Track({ source, target, getTrackProps, disabled }) {
                 transform: 'translate(0%, -50%)',
                 height: 14,
                 zIndex: 1,
-                backgroundColor: disabled ? '#ffd993' : '#ffa500',
+                backgroundColor: disabled ? '#467fcf' : '#467fcf',
                 borderRadius: 7,
                 cursor: 'pointer',
                 left: `${source.percent}%`,

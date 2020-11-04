@@ -9,6 +9,7 @@ import { SIGNIN, SIGNUP, ADMIN_DASHBOARD } from 'constants/routes';
 import Basket from 'components/basket/Basket';
 import Navigation from 'components/ui/Navigation';
 import Footer from 'components/ui/Footer';
+import Banner from 'components/ui/Banner';
 
 const PublicRoute = ({
 	userType,
@@ -35,6 +36,7 @@ const PublicRoute = ({
 								<>
 									<Navigation isAuth={isAuth} />
 									<Basket isAuth={isAuth} />
+									<Banner />
 									<main className="content">
 										<Component {...props} />
 									</main>
