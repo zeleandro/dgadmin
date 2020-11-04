@@ -6,7 +6,7 @@ import { applyFilter } from 'redux/actions/filterActions';
 
 const ProductAppliedFilters = ({ filter }) => {
 	const dispatch = useDispatch();
-	const fields = ['brand', 'minPrice', 'maxPrice', 'sortBy', 'keyword'];
+	const fields = ['brand', 'category', 'minPrice', 'maxPrice', 'sortBy', 'keyword'];
 
 	const onRemoveKeywordFilter = () => {
 		dispatch(applyFilter({ keyword: '' }));
@@ -18,6 +18,10 @@ const ProductAppliedFilters = ({ filter }) => {
 
 	const onRemoveBrandFilter = () => {
 		dispatch(applyFilter({ brand: '' }));
+	};
+
+	const onRemoveCategoryFilter = () => {
+		dispatch(applyFilter({ category: '' }));
 	};
 
 	const onRemoveSortFilter = () => {
@@ -43,6 +47,17 @@ const ProductAppliedFilters = ({ filter }) => {
 					<div className="pill padding-right-l">
 						<h5 className="pill-content margin-0">{filter.brand}</h5>
 						<div className="pill-remove" onClick={onRemoveBrandFilter}>
+							<h5 className="margin-0 text-subtle"><i className="fa fa-times-circle" /></h5>
+						</div>
+					</div>
+				</div>
+			)}
+			{filter.category && (
+				<div className="pill-wrapper">
+					<span className="d-block">Categoría</span>
+					<div className="pill padding-right-l">
+						<h5 className="pill-content margin-0">{filter.category}</h5>
+						<div className="pill-remove" onClick={onRemoveCategoryFilter}>
 							<h5 className="margin-0 text-subtle"><i className="fa fa-times-circle" /></h5>
 						</div>
 					</div>
@@ -89,6 +104,7 @@ const ProductAppliedFilters = ({ filter }) => {
 ProductAppliedFilters.propType = {
 	filter: PropTypes.shape({
 		brand: PropTypes.string,
+		category: PropTypes.string,
 		keyword: PropTypes.string,
 		minPrice: PropTypes.number,
 		maxPrice: PropTypes.number

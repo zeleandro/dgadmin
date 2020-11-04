@@ -1,6 +1,7 @@
 import {
 	SET_TEXT_FILTER,
 	SET_BRAND_FILTER,
+	SET_CATEGORY_FILTER,
 	SET_MAX_PRICE_FILTER,
 	SET_MIN_PRICE_FILTER,
 	RESET_FILTER,
@@ -13,6 +14,7 @@ const initState = {
 	recent: [],
 	keyword: '',
 	brand: '',
+	category: '',
 	minPrice: 0,
 	maxPrice: 0,
 	sortBy: ''
@@ -30,6 +32,11 @@ export default (state = initState, action) => {
 			return {
 				...state,
 				brand: action.payload
+			};
+		case SET_CATEGORY_FILTER:
+			return {
+				...state,
+				category: action.payload
 			};
 		case SET_MAX_PRICE_FILTER:
 			return {

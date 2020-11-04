@@ -43,7 +43,7 @@ const Home = () => {
 
 	const productListWrapper = useRef(null);
 
-	const isFiltered = ['keyword', 'brand', 'minPrice', 'maxPrice', 'sortBy'].some(key => !!store.filter[key]);
+	const isFiltered = ['keyword', 'brand', 'category', 'minPrice', 'maxPrice', 'sortBy'].some(key => !!store.filter[key]);
 
 	return (
 		<>
