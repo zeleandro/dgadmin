@@ -20,15 +20,15 @@ const UserForm = ({ user, onSubmit, isLoading }) => {
         dateJoined: { value: user ? defaultUser.dateJoined : '' },
         address: { value: user ? defaultUser.address : '' },
         keywords: { value: user ? defaultUser.keywords : [''] },
-        rol: { value: user ? defaultUser.rol : '' }
+        role: { value: user ? defaultUser.role : '' }
     });
 
     const dispatch = useDispatch();
 
-    const onChangeRol = (e) => {
+    const onChangeRole = (e) => {
         switch (e.target.name) {
-            case 'rol': {
-                onUserRolInput(e.target.value)
+            case 'role': {
+                onUserRoleInput(e.target.value)
             }
             default: { }
         }
@@ -54,8 +54,8 @@ const UserForm = ({ user, onSubmit, isLoading }) => {
         setField({ ...field, address: { value, error } });
     };
 
-    const onUserRolInput = (value, error) => {
-        setField({ ...field, rol: { value, error } });
+    const onUserRoleInput = (value, error) => {
+        setField({ ...field, role: { value, error } });
     };
 
     const onSubmitForm = (e) => {
@@ -119,17 +119,17 @@ const UserForm = ({ user, onSubmit, isLoading }) => {
                         </div>
                         <div className="product-form-field">
                             <select
-                                name="rol"
+                                name="role"
                                 className="filters-category"
-                                value={field.rol.value}
-                                onChange={onChangeRol}
+                                value={field.role.value}
+                                onChange={onChangeRole}
                             >
-                                <option value="USER">User</option>
-                                <option value="ADMIN">Admin</option>
+                                <option value="USER">Usuario</option>
+                                <option value="ADMIN">Administrador</option>
                             </select>
                         </div>
                     </div>
-                    <div className="product-form-field product-textarea">
+                    <div className="product-form-field">
                         <Input
                             field="mobile"
                             isRequired={false}
@@ -141,12 +141,24 @@ const UserForm = ({ user, onSubmit, isLoading }) => {
                             value={field.mobile.value.value}
                         />
                     </div>
+                    <div className="product-form-field">
+                        <Input
+                            field="address"
+                            isRequired={false}
+                            label="* Dirección"
+                            onInputChange={onUserMobileInput}
+                            placeholder="Calle y Nro"
+                            readOnly={isLoading}
+                            type="text"
+                            value={field.address.value}
+                        />
+                    </div>
                     <div className="d-flex">
                         <div className="product-form-field">
                             <Input
                                 field="keywords"
                                 isRequired
-                                label="* Palabras Claves"
+                                label="Palabras Claves"
                                 maxLength={60}
                                 placeholder="Palabras Claves"
                                 readOnly={isLoading}
