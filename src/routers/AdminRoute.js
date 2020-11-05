@@ -4,6 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 import AdminNavigation from 'components/ui/AdminNavigation';
 import AdminSidePanel from 'components/ui/AdminSidePanel';
+import '../styles/styleadmin.scss';
 
 const AdminRoute = ({ component: Component, ...rest }) => {
 	const isAuth = useSelector(state => !!state.auth.id && state.auth.role === 'ADMIN');
