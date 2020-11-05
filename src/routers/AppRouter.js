@@ -16,7 +16,12 @@ import Users from 'views/admin/users';
 import EditUser from 'views/admin/edit_user'
 
 import Categories from 'views/admin/categories';
+import EditCategory from 'views/admin/edit_category'
+import AddCategory from 'views/admin/add_category'
+
 import Brands from 'views/admin/brands';
+import EditBrand from 'views/admin/edit_brand'
+import AddBrand from 'views/admin/add_brand'
 
 import ViewProduct from 'views/view_product';
 
@@ -128,8 +133,24 @@ const AppRouter = () => (
 				path={ROUTES.ADMIN_CATEGORIES}
 			/>
 			<AdminRoute
+				component={EditCategory}
+				path={`${ROUTES.EDIT_CATEGORY}/:id`}
+			/>
+			<AdminRoute
+				component={AddCategory}
+				path={`${ROUTES.ADD_CATEGORY}`}
+			/>
+			<AdminRoute
 				component={Brands}
 				path={ROUTES.ADMIN_BRANDS}
+			/>
+			<AdminRoute
+				component={EditBrand}
+				path={`${ROUTES.EDIT_BRAND}/:id`}
+			/>
+			<AdminRoute
+				component={AddBrand}
+				path={`${ROUTES.ADD_BRAND}`}
 			/>
 			<PublicRoute component={PageNotFound} />
 		</Switch>

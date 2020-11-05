@@ -146,7 +146,7 @@ const UserForm = ({ user, onSubmit, isLoading }) => {
                             field="address"
                             isRequired={false}
                             label="* Dirección"
-                            onInputChange={onUserMobileInput}
+                            onInputChange={onUserAddressInput}
                             placeholder="Calle y Nro"
                             readOnly={isLoading}
                             type="text"

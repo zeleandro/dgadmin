@@ -44,15 +44,12 @@ export const removeCategorySuccess = id => ({
 	payload: id
 });
 
-export const editCategory = (id, updates) => ({
+export const editCategory = category => ({
 	type: EDIT_CATEGORY,
-	payload: {
-		id,
-		updates
-	}
+	payload: category
 });
 
-export const editCategorySuccess = updates => ({
+export const editCategorySuccess = category => ({
 	type: EDIT_CATEGORY_SUCCESS,
-	payload: updates
+	payload: category
 });

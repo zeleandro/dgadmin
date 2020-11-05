@@ -62,7 +62,7 @@ function* brandSaga({ type, payload }) {
             try {
                 yield initRequest();
 
-                const key = yield call(firebase.generateKey);
+                const key = yield call(firebase.generateBrandKey);
 
                 const brand = {
                     ...payload

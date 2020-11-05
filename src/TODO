@@ -1,4 +1,3 @@
-
 Checkout
 1. Cambiar el input que se pueda insertar un nro OK
 2. Checkout y con la misma funcionalidad OK
@@ -20,6 +19,35 @@ Front
 3. Logo y nombre
 4. Cambiar de idioma
 5. El titulo de la app no lo puedo cambiar
+
+1. Abajo del buscador tiene que estar el menu 
+- Productos (se tienen que ver las categorias) y desde ahi se filtran los productos (igualito a sina)
+- Ofertas
+- Contacto
+- Nosotros (sacar del otro repo)
+
+2. Sacar los filtros
+
+3. La marca es por defecto DGClean
+
+Secadores y Escurridores
+Trapos
+Plasticos
+Bolsas
+Varios
+Liquidos
+Cabos
+Alfombras
+Esponjas
+Aerosoles
+Desinfeccion
+Pileta
+Papeles
+Dispenser
+Aromatizacion
+Escobas y Escobillones
+Venenos e Insecticidas
+
 
 
 Deploy

@@ -62,7 +62,7 @@ function* categoriesaga({ type, payload }) {
             try {
                 yield initRequest();
 
-                const key = yield call(firebase.generateKey);
+                const key = yield call(firebase.generateCategoryKey);
 
                 const category = {
                     ...payload
@@ -73,7 +73,7 @@ function* categoriesaga({ type, payload }) {
                     id: key,
                     ...category
                 }));
-                yield handleAction(ADMIN_CATEGORYS, 'Item succesfully added', 'success');
+                yield handleAction(ADMIN_CATEGORIES, 'Item succesfully added', 'success');
                 yield put(setLoading(false));
             } catch (e) {
                 yield handleError(e);
@@ -84,14 +84,16 @@ function* categoriesaga({ type, payload }) {
             try {
                 yield initRequest();
 
-                let newUpdates = { ...payload.updates };
+                const key = payload.id;
 
-                newUpdates = { ...newUpdates };
+				const category = {
+					...payload
+                };
 
-                yield call(firebase.editCategory, payload.id, newUpdates);
+                yield call(firebase.editCategory, key, category);
                 yield put(editCategorySuccess({
-                    id: payload.id,
-                    updates: newUpdates
+                    id: key,
+                    ...category
                 }));
                 yield handleAction(ADMIN_CATEGORIES, 'Item succesfully edited', 'success');
                 yield put(setLoading(false));

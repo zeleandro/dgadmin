@@ -309,6 +309,10 @@ class Firebase {
 			}
 		});
 	}
+	generateBrandKey = () => this.db.collection('brands').doc().id;
+	addBrand = (id, brand) => this.db.collection('brands').doc(id).set(brand);
+	editBrand = (id, updates) => this.db.collection('brands').doc(id).update(updates);
+	removeBrand = id => this.db.collection('brands').doc(id).delete();
 
 	// // CATEGORIES ACTIONS
 	// // ---------
@@ -358,6 +362,11 @@ class Firebase {
 			}
 		});
 	}
+
+	generateCategoryKey = () => this.db.collection('categories').doc().id;
+	addCategory = (id, category) => this.db.collection('categories').doc(id).set(category);
+	editCategory = (id, updates) => this.db.collection('categories').doc(id).update(updates);
+	removeCategory = id => this.db.collection('categories').doc(id).delete();
 }
 
 const firebase = new Firebase();
