@@ -3,16 +3,18 @@ export const displayDate = (timestamp) => {
 	const date = new Date(timestamp);
 
 	const monthNames = [
-		'January', 'February', 'March', 'April', 'May', 'June', 'July',
-		'August', 'September', 'October', 'November', 'December'
+		'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+		'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
 	];
 
 	const day = date.getDate();
 	const monthIndex = date.getMonth();
 	const year = date.getFullYear();
+	const hour = date.getHours();
+	const minute = date.getMinutes();
 
 	// return day + ' ' + monthNames[monthIndex] + ' ' + year;
-	return `${monthNames[monthIndex]} ${day}, ${year}`;
+	return `${day} de ${monthNames[monthIndex]} de ${year}`;
 };
 
 export const displayMoney = (n) => {

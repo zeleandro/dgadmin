@@ -144,7 +144,7 @@ const EditProfile = (props) => {
 	return (
 		<Boundary>
 			<div className="edit-user">
-				<h3 className="text-center">Edit Account Details</h3>
+				<h3 className="text-center">Editar Cuenta</h3>
 				<div className="user-profile-banner">
 					<div className="user-profile-banner-wrapper">
 						<ImageLoader
@@ -203,10 +203,10 @@ const EditProfile = (props) => {
 				</div>
 				<div className="user-profile-details">
 					<Input
-						label="* Full Name"
+						label="* Nombre Completo"
 						maxLength={40}
 						readOnly={isLoading}
-						placeholder="Your Full Name"
+						placeholder="Nombre Completo"
 						onInputChange={onFullNameChange}
 						isRequired={true}
 						field="fullname"
@@ -226,10 +226,10 @@ const EditProfile = (props) => {
 						value={field.email.value}
 					/>
 					<Input
-						label="Address"
+						label="Dirección"
 						maxLength={120}
 						readOnly={isLoading}
-						placeholder="eg: #245 Brgy. Maligalig, Arayat Pampanga, Philippines"
+						placeholder="Calle 123 Dpto A"
 						onInputChange={onAddressChange}
 						isRequired={false}
 						field="address"
@@ -238,17 +238,17 @@ const EditProfile = (props) => {
 						value={field.address.value}
 					/>
 					{field.mobile.error ? <span className="input-message">{field.mobile.error}</span> : (
-						<span className="d-block padding-s">Mobile</span>
+						<span className="d-block padding-s">Teléfono Celular</span>
 					)}
 					<PhoneInput
-						country={'ph'}
+						country={'ar'}
 						disabled={isLoading}
 						inputClass={`input-form d-block ${field.mobile.error ? 'input-error' : ''}`}
 						inputExtraProps={{ required: true }}
 						// eslint-disable-next-line quote-props
-						masks={{ 'ph': '+.. .... ... ....' }}
+						masks={{ 'ar': '+.. .... ... ....' }}
 						onChange={onMobileChange}
-						placeholder="Enter your mobile number"
+						placeholder="0123456789"
 						readOnly={isLoading}
 						value={field.mobile.data.num}
 					/>
@@ -259,7 +259,7 @@ const EditProfile = (props) => {
 							disabled={isLoading}
 							onClick={() => props.history.push(ACCOUNT)}
 						>
-							Back to Profile
+							Volver al Perfil
             </button>
 						<button
 							className="button w-100-mobile"
@@ -267,7 +267,7 @@ const EditProfile = (props) => {
 							onClick={onSubmitUpdate}
 						>
 							<CircularProgress visible={isLoading} theme="light" />
-							{isLoading ? 'Updating Profile' : 'Update Profile'}
+							{isLoading ? 'Guardando Perfil' : 'Guardar Perfil'}
 						</button>
 					</div>
 				</div>
@@ -277,12 +277,12 @@ const EditProfile = (props) => {
 				onRequestClose={onCloseModal}
 			>
 				<div className="text-center padding-l">
-					<h4>Confirm Update</h4>
+					<h4>Confirmar</h4>
 					<p>
-						To continue updating profile including your &nbsp;
+						Para actualizar su perfil incluyendo su &nbsp;
             <strong>email</strong>,
             <br />
-            please confirm by entering your password
+            por favor ingrese su contraseña
           </p>
 					<input
 						className="input-form d-block"
@@ -297,7 +297,7 @@ const EditProfile = (props) => {
 						className="button"
 						onClick={onConfirmUpdate}
 					>
-						Confirm
+						Confirmar
         </button>
 				</div>
 				<button

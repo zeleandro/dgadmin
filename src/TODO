@@ -1,3 +1,8 @@
+Deploy
+. Se corre con npm run dev-server en forma local
+. Hay que ver el isArray() que le borre para el Deploy
+. Cuando se corre firebase deploy o firebase serve el problema es que toma del public... Y ahi no funciona
+
 Checkout
 1. Cambiar el input que se pueda insertar un nro OK
 2. Checkout y con la misma funcionalidad OK
@@ -6,51 +11,63 @@ Checkout
 5. Guardar en la bd OK
 6. Pantalla de informacion que el pedido fue registrado
 
-Categorias
-1. Deberiamos tener un listado de categorias y poder filtrarlas. (definir si van a ser dinamicas o no)
-
 Admin
 1. Gestionar pedidos (CRUD)
 2. Gestionar usuarios (Futuro)
+3. Gestionar categorias (CRUD)
+4. Gestionar marcas (CRUD)
 
 Front
 1. Cambiar el template
 2. Agregar un menu
 3. Logo y nombre
 4. Cambiar de idioma
-5. El titulo de la app no lo puedo cambiar
 
+
+Nuevos requerimientos 
 1. Abajo del buscador tiene que estar el menu 
 - Productos (se tienen que ver las categorias) y desde ahi se filtran los productos (igualito a sina)
 - Ofertas
 - Contacto
 - Nosotros (sacar del otro repo)
 
-2. Sacar los filtros
+2. La pantalla principal se tienen que ver las categorias en forma de tarjetas sin imagenes
+Agregar estas categorias
+- Secadores y Escurridores
+- Trapos
+- Plasticos
+- Bolsas
+- Varios
+- Liquidos
+- Cabos
+- Alfombras
+- Esponjas
+- Aerosoles
+- Desinfeccion
+- Pileta
+- Papeles
+- Dispenser
+- Aromatizacion
+- Escobas y Escobillones
+- Venenos e Insecticidas
 
-3. La marca es por defecto DGClean
+3. Sacar los filtros (los podemos dejar mas chiquitos nomas)
 
-Secadores y Escurridores
-Trapos
-Plasticos
-Bolsas
-Varios
-Liquidos
-Cabos
-Alfombras
-Esponjas
-Aerosoles
-Desinfeccion
-Pileta
-Papeles
-Dispenser
-Aromatizacion
-Escobas y Escobillones
-Venenos e Insecticidas
+4. En el registro del cliente si o si nombre, celular, direccion, mail OK
+cambiar a +54, porque a Diego le aparece a +63
 
+5. Modificar cantidades en pedidos del admin y poder agregar productos
 
+6. IVA si pone con tarjeta
 
-Deploy
-. Se corre con npm run dev-server en forma local
-. Hay que ver el isArray() que le borre para el Deploy
-. Cuando se corre firebase deploy o firebase serve el problema es que toma del public... Y ahi no funciona
+7. La marca es por defecto DGClean (en el alta de productos) OK
+
+8. Ordenar los pedidos por fecha (de mas nuevo a mas viejos) y con filtros de estado
+
+9. Agregar si esta en oferta el Producto
+
+10. Parsear las cantidades a int
+
+11. Arreglar que se vea el input para poder modificar las cantidades
+
+12. Como fondo del banner quiere una imagen

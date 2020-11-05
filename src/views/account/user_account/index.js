@@ -12,7 +12,7 @@ const UserOrdersTab = lazy(() => import('../tab/UserOrdersTab'));
 const Loader = () => (
 	<div className="loader" style={{ minHeight: '80vh' }}>
 		<CircularProgress />
-		<h6>Loading ... </h6>
+		<h6>Cargando ... </h6>
 	</div>
 );
 
@@ -21,17 +21,17 @@ const UserAccount = () => {
 	useDocumentTitle('DG Limpieza | Mi Cuenta');
 	return (
 		<UserTab>
-			<div index={0} label="Account">
+			<div index={0} label="Cuenta">
 				<Suspense fallback={<Loader />}>
 					<UserAccountTab />
 				</Suspense>
 			</div>
-			<div index={1} label="My Wish List">
+			<div index={1} label="Mi Lista de Deseos">
 				<Suspense fallback={<Loader />}>
 					<UserWishListTab />
 				</Suspense>
 			</div>
-			<div index={2} label="My Orders">
+			<div index={2} label="Mis Pedidos">
 				<Suspense fallback={<Loader />}>
 					<UserOrdersTab />
 				</Suspense>

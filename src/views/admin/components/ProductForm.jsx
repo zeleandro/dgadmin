@@ -18,14 +18,15 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 	};
 	const [field, setField] = useState({
 		name: { value: product ? defaultProduct.name : '' },
-		brand: { value: product ? defaultProduct.brand : '' },
+		brand: { value: product ? defaultProduct.brand : 'DGClean' },
 		category: { value: product ? defaultProduct.category : '' },
 		price: { value: product ? defaultProduct.price : 0 },
 		maxQuantity: { value: product ? defaultProduct.maxQuantity : 0 },
 		description: { value: product ? defaultProduct.description : '' },
 		keywords: { value: product ? defaultProduct.keywords : [''] },
 		imageUrl: { value: product ? defaultProduct.image : '' },
-		imageCollection: { value: product ? defaultProduct.imageCollection : [] }
+		imageCollection: { value: product ? defaultProduct.imageCollection : [] },
+		onSale: { value: product ? defaultProduct.onSale : false }
 	});
 
 	const {
@@ -108,7 +109,6 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 
 		if (field.name.value
 			&& field.price.value
-			// && field.maxQuantity.value
 			&& (imageFile.image.file || field.imageUrl.value)
 			&& noError
 		) {
@@ -140,7 +140,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 							<Input
 								field="name"
 								isRequired
-								label="* Product Name"
+								label="* Nombre del Producto"
 								maxLength={60}
 								onInputChange={onProductNameInput}
 								placeholder="Nombre"
@@ -152,12 +152,14 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 						</div>
 						&nbsp;
 						<div className="product-form-field">
+							<span class="d-block padding-s">Marca</span>
 							<select
 								name="brand"
 								className="filters-brand"
 								value={field.brand.value}
 								onChange={onChangeBrand}
 							>
+								<option value=''>Seleccione una Marca</option>
 								{
 									brands.map(item => (
 										<option key={item.id} value={item.name}>{item.name}</option>
@@ -166,12 +168,14 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 							</select>
 						</div>
 						<div className="product-form-field">
+						<span class="d-block padding-s">Categoría</span>
 							<select
 								name="category"
 								className="filters-category"
 								value={field.category.value}
 								onChange={onChangeCategory}
 							>
+								<option value=''>Seleccione una Categoría</option>
 								{
 									categories.map(item => (
 										<option key={item.id} value={item.name}>{item.name}</option>
@@ -185,10 +189,10 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 							cols={37}
 							field="description"
 							isRequired={false}
-							label="Product Description"
+							label="Descripción del Producto"
 							maxLength={200}
 							onInputChange={onProductDescriptionInput}
-							placeholder="Nice Description"
+							placeholder="Descripción que la verá el cliente"
 							readOnly={isLoading}
 							rows={5}
 							type="textarea"
@@ -200,9 +204,9 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 							<Input
 								field="price"
 								isRequired
-								label="* Price"
+								label="* Precio"
 								onInputChange={onProductPriceInput}
-								placeholder="Product Price"
+								placeholder="Solo números"
 								readOnly={isLoading}
 								type="number"
 								value={field.price.value}
@@ -212,15 +216,15 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 						<div className="product-form-field">
 							<Input
 								field="maxQuantity"
-								isRequired
-								label="* Stock Total"
+								label="Stock"
 								onInputChange={onProductMaxQuantityInput}
-								placeholder="Stock Total"
+								placeholder="Stock"
 								readOnly={isLoading}
 								type="number"
 								value={field.maxQuantity.value}
 							/>
 						</div>
+						&nbsp;
 					</div>
 					<div className="product-form-field">
 						<span className="d-block padding-s">Image Collection</span>
@@ -235,7 +239,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 						/>
 						{!isFileLoading && (
 							<label htmlFor="product-input-file-collection">
-								Choose Images
+								Elegir Imágenes
 							</label>
 						)}
 					</div>
@@ -254,7 +258,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 										<button
 											className="product-form-delete-image"
 											onClick={() => removeImage({ id: image.id, name: 'imageCollection' })}
-											title="Delete Image"
+											title="Borrar Imagen"
 											type="button"
 										>
 											<i className="fa fa-times-circle" />
@@ -275,13 +279,13 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 								theme="light"
 								visible={isLoading}
 							/>
-							{isLoading ? 'Saving Product' : 'Save Product'}
+							{isLoading ? 'Guardando Producto' : 'Guardar Producto'}
 						</button>
 					</div>
 				</div>
 				<div className="product-form-file">
 					<div className="product-form-field">
-						<span className="d-block padding-s">* Thumbnail</span>
+						<span className="d-block padding-s">* Principal</span>
 						<input
 							disabled={isLoading}
 							hidden
@@ -292,7 +296,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 						/>
 						{!isFileLoading && (
 							<label htmlFor="product-input-file">
-								Choose Image
+								Elegir Imágen
 							</label>
 						)}
 					</div>
@@ -323,7 +327,8 @@ ProductForm.propTypes = {
 		description: PropTypes.string,
 		keywords: PropTypes.arrayOf(PropTypes.string),
 		image: PropTypes.string,
-		imageCollection: PropTypes.arrayOf(PropTypes.object)
+		imageCollection: PropTypes.arrayOf(PropTypes.object),
+		onSale: PropTypes.bool
 	})
 };
 

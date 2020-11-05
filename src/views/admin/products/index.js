@@ -38,7 +38,7 @@ const Products = ({ history }) => {
 		<Boundary>
 			<div className="product-admin-header">
 				<h3 className="product-admin-header-title">
-					Products &nbsp;
+					Productos &nbsp;
 					({`${store.productsCount} / ${store.totalProductsCount}`})
 				</h3>
 				<SearchBar
@@ -73,22 +73,22 @@ const Products = ({ history }) => {
 								<div className="grid grid-product grid-count-6">
 									<div className="grid-col" />
 									<div className="grid-col">
-										<h5>Name</h5>
+										<h5>Nombre</h5>
 									</div>
 									<div className="grid-col">
-										<h5>Brand</h5>
+										<h5>Marca</h5>
 									</div>
 									<div className="grid-col">
-										<h5>Category</h5>
+										<h5>Categoría</h5>
 									</div>
 									<div className="grid-col">
-										<h5>Price</h5>
+										<h5>Precio</h5>
 									</div>
 									<div className="grid-col">
-										<h5>Date Added</h5>
+										<h5>Fecha de carga</h5>
 									</div>
 									<div className="grid-col">
-										<h5>Qty</h5>
+										<h5>Cantidad</h5>
 									</div>
 								</div>
 							)}

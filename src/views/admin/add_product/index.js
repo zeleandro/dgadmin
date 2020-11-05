@@ -19,7 +19,7 @@ const AddProduct = () => {
 
 	return (
 		<div className="product-form-container">
-			<h2>Add New Product</h2>
+			<h2>Agregar Nuevo Producto</h2>
 			<ProductForm
 				isLoading={isLoading}
 				onSubmit={onSubmit}
