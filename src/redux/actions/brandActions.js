@@ -44,15 +44,12 @@ export const removeBrandSuccess = id => ({
 	payload: id
 });
 
-export const editBrand = (id, updates) => ({
+export const editBrand = brand => ({
 	type: EDIT_BRAND,
-	payload: {
-		id,
-		updates
-	}
+	payload: brand
 });
 
-export const editBrandSuccess = updates => ({
+export const editBrandSuccess = brand => ({
 	type: EDIT_BRAND_SUCCESS,
-	payload: updates
+	payload: brand
 });

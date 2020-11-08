@@ -84,14 +84,16 @@ function* brandSaga({ type, payload }) {
             try {
                 yield initRequest();
 
-                let newUpdates = { ...payload.updates };
+                const key = payload.id;
 
-                newUpdates = { ...newUpdates };
+				const brand = {
+					...payload
+                };
 
-                yield call(firebase.editBrand, payload.id, newUpdates);
+                yield call(firebase.editBrand, key, brand);
                 yield put(editBrandSuccess({
-                    id: payload.id,
-                    updates: newUpdates
+                    id: key,
+                    ...brand
                 }));
                 yield handleAction(ADMIN_BRANDS, 'Item succesfully edited', 'success');
                 yield put(setLoading(false));

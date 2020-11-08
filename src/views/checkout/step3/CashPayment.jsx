@@ -18,7 +18,7 @@ const CashPayment = ({ paymentMode, onCashModeChange }) => {
 						htmlFor="payment-cash-checkbox"
 					>
 						<div className="d-flex-grow-1 margin-left-s">
-							<h4 className="margin-0">cash</h4>
+							<h4 className="margin-0">Efectivo</h4>
 							<span className="text-subtle d-block margin-top-s">
 								Pago en efectivo en la entrega.
 							</span>

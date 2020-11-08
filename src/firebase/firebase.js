@@ -271,7 +271,7 @@ class Firebase {
 		return new Promise(async (resolve, reject) => {
 			if (lastRefKey) {
 				try {
-					const query = this.db.collection('brands').orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey).limit(12);
+					const query = this.db.collection('brands').orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey).limit(100);
 					const snapshot = await query.get();
 					const brands = [];
 					snapshot.forEach(doc => brands.push({ id: doc.id, ...doc.data() }));
@@ -290,7 +290,7 @@ class Firebase {
 				try {
 					const totalQuery = await this.db.collection('brands').get();
 					const total = totalQuery.docs.length;
-					const query = this.db.collection('brands').orderBy(app.firestore.FieldPath.documentId()).limit(12);
+					const query = this.db.collection('brands').orderBy(app.firestore.FieldPath.documentId()).limit(100);
 					const snapshot = await query.get();
 
 					clearTimeout(timeout);
@@ -324,7 +324,7 @@ class Firebase {
 		return new Promise(async (resolve, reject) => {
 			if (lastRefKey) {
 				try {
-					const query = this.db.collection('categories').orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey).limit(12);
+					const query = this.db.collection('categories').orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey).limit(100);
 					const snapshot = await query.get();
 					const categories = [];
 					snapshot.forEach(doc => categories.push({ id: doc.id, ...doc.data() }));
@@ -343,7 +343,7 @@ class Firebase {
 				try {
 					const totalQuery = await this.db.collection('categories').get();
 					const total = totalQuery.docs.length;
-					const query = this.db.collection('categories').orderBy(app.firestore.FieldPath.documentId()).limit(12);
+					const query = this.db.collection('categories').orderBy(app.firestore.FieldPath.documentId()).limit(100);
 					const snapshot = await query.get();
 
 					clearTimeout(timeout);

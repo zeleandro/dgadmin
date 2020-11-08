@@ -89,7 +89,7 @@ const Basket = (props) => {
 									className="basket-toggle button button-border button-border-gray button-small"
 									onClick={onClickToggle}
 								>
-									Cerrar
+									Seguir Comprando
 								</span>
 							)}
 						</BasketToggle>
@@ -114,12 +114,12 @@ const Basket = (props) => {
 							dispatch={dispatch}
 						/>
 					))}
-				</div>
-				<div className="basket-checkout">
 					<div className="basket-total">
-						<p className="basket-total-title">Subtotal:</p>
+						<p className="basket-total-title">Subtotal General:</p>
 						<h2 className="basket-total-amount">{calculateTotal()}</h2>
 					</div>
+				</div>
+				<div className="basket-checkout">
 					<button
 						className="basket-checkout-button button"
 						disabled={basket.length === 0 || pathname === '/checkout'}

@@ -8,9 +8,9 @@ import { setPaymentDetails } from 'redux/actions/checkoutActions';
 import { displayMoney, displayActionMessage } from 'helpers/utils';
 import StepTracker from '../components/StepTracker';
 import Pagination from '../components/Pagination';
-import CreditPayment from './CreditPayment';
-import PayPalPayment from './PayPalPayment';
 import CashPayment from './CashPayment';
+import CardPayment from './CardPayment';
+import TransferPayment from './TransferPayment';
 import withAuth from '../hoc/withAuth';
 import { addOrder } from 'redux/actions/orderActions';
 import { clearBasket } from 'redux/actions/basketActions';
@@ -27,6 +27,7 @@ const Payment = ({
 	useScrollTop();
 
 	const [paymentMode, setPaymentMode] = useState(payment.type || 'cash');
+	const [taxes, setTaxes] = useState(0);
 	const collapseCreditHeight = useRef(null);
 	const cardInputRef = useRef(null);
 	const [field, setField] = useState({
@@ -41,22 +42,35 @@ const Payment = ({
 	const checkout = useSelector(state => state.checkout);
 	const profile = useSelector(state => state.profile);
 
-	const onCreditModeChange = (e) => {
-		setPaymentMode('credit');
-		const parent = e.target.closest('.checkout-fieldset-collapse');
-		const checkBoxContainer = e.target.closest('.checkout-checkbox-field');
+	// const onCreditModeChange = (e) => {
+	// 	setPaymentMode('credit');
+	// 	const parent = e.target.closest('.checkout-fieldset-collapse');
+	// 	const checkBoxContainer = e.target.closest('.checkout-checkbox-field');
 
-		cardInputRef.current.focus();
-		parent.style.height = `${checkBoxContainer.offsetHeight + collapseCreditHeight.current.offsetHeight}px`;
-	};
+	// 	cardInputRef.current.focus();
+	// 	parent.style.height = `${checkBoxContainer.offsetHeight + collapseCreditHeight.current.offsetHeight}px`;
+	// };
 
-	const onPayPalModeChange = () => {
-		setPaymentMode('paypal');
-		collapseCreditHeight.current.parentElement.style.height = '97px';
-	};
+	// const onPayPalModeChange = () => {
+	// 	setPaymentMode('paypal');
+	// 	collapseCreditHeight.current.parentElement.style.height = '97px';
+	// };
 
 	const onCashModeChange = () => {
 		setPaymentMode('cash');
+		setTaxes(0);
+		collapseCreditHeight.current.parentElement.style.height = '97px';
+	};
+
+	const onTransferModeChange = () => {
+		setPaymentMode('transfer');
+		setTaxes(subtotal * 0.21);
+		collapseCreditHeight.current.parentElement.style.height = '97px';
+	};
+
+	const onCardModeChange = () => {
+		setPaymentMode('card');
+		setTaxes(subtotal * 0.21);
 		collapseCreditHeight.current.parentElement.style.height = '97px';
 	};
 
@@ -82,7 +96,7 @@ const Payment = ({
 		// eslint-disable-next-line no-extra-boolean-cast
 
 		if (!paymentMode) return;
-		if (paymentMode === 'cash') {
+		if (paymentMode) {
 			displayActionMessage('Se ha registrado su pedido :)', 'info');
 			// TODO: fire only if changed
 			savePaymentDetails();
@@ -94,6 +108,7 @@ const Payment = ({
 				userImage: profile.avatar,
 				date: new Date().toISOString(),
 				paymentMode,
+				taxes,
 				address: checkout.shipping.address,
 				mobile: checkout.shipping.mobile.value,
 				status: 'Pendiente',
@@ -124,6 +139,14 @@ const Payment = ({
 						onCashModeChange={onCashModeChange}
 						paymentMode={paymentMode}
 					/>
+					<TransferPayment
+						onTransferModeChange={onTransferModeChange}
+						paymentMode={paymentMode}
+					/>
+					<CardPayment
+						onCardModeChange={onCardModeChange}
+						paymentMode={paymentMode}
+					/>
 					{/* <CreditPayment
 						field={field}
 						onCreditModeChange={onCreditModeChange}
@@ -140,8 +163,20 @@ const Payment = ({
 					/> */}
 					<br />
 					<div className="basket-total text-right">
+						<p className="basket-total-title">Subtotal:</p>
+						<h3 className="basket-total-amount">
+							{displayMoney(subtotal)}
+						</h3>
+						<p className="basket-total-title">IVA:</p>
+						<h3 className="basket-total-amount">
+							{displayMoney(taxes)}
+						</h3>
+					</div>
+					<div className="basket-total text-right">
 						<p className="basket-total-title">Total:</p>
-						<h2 className="basket-total-amount">{displayMoney(subtotal + (shipping.isInternational ? 50 : 0))}</h2>
+						<h2 className="basket-total-amount">
+							{displayMoney(subtotal + taxes)}
+						</h2>
 					</div>
 					<br />
 					<Pagination
