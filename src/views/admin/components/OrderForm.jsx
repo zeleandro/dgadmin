@@ -8,6 +8,7 @@ import { displayMoney } from 'helpers/utils';
 import useFileHandler from 'hooks/useFileHandler';
 import PropTypes from 'prop-types';
 import BasketItem from 'components/basket/BasketItem';
+import { parse } from '@babel/core';
 
 const OrderForm = ({ order, onSubmit, isLoading }) => {
 	const defaultOrder = {
@@ -38,6 +39,8 @@ const OrderForm = ({ order, onSubmit, isLoading }) => {
 		});
 
 		defaultOrder.status = status;
+		defaultOrder.paymentMode = paymentMode;
+		defaultOrder.taxes = taxes;
 
 		onSubmit({
 			...defaultOrder,
@@ -54,27 +57,35 @@ const OrderForm = ({ order, onSubmit, isLoading }) => {
 			for (const [id, data] of Object.entries(defaultOrder.basket))
 				basket.push(data);
 		}
+		calculateTotal();
 	});
 
 	const [status, setStatus] = useState(defaultOrder.status)
+	const [paymentMode, setPaymentMode] = useState(defaultOrder.paymentMode)
+	const [total, setTotal] = useState(0)
+	const [taxes, setTaxes] = useState(0)
 	const onChange = (e) => {
 		switch (e.target.name) {
 			case 'status': {
 				setStatus(e.target.value)
+			}
+			case 'paymentMode': {
+				setPaymentMode(e.target.value)
 			}
 			default: { }
 		}
 	}
 
 	const calculateTotal = () => {
-		let total = 0;
-
 		if (basket.length !== 0) {
 			const result = basket.map(product => product.price * product.quantity).reduce((a, b) => a + b);
-			total = result.toFixed(2);
+			setTotal(result.toFixed(2));
 		}
-
-		return displayMoney(total);
+		if (paymentMode !== 'cash') {
+			setTaxes(total * 0.21)
+		} else {
+			setTaxes(0)
+		}
 	};
 
 	return (
@@ -128,6 +139,19 @@ const OrderForm = ({ order, onSubmit, isLoading }) => {
 							</select>
 						</div>
 						&nbsp;
+						<div className="product-form-field">
+							<select
+								name="paymentMode"
+								className="filters-paymentMode"
+								value={paymentMode}
+								onChange={onChange}
+							>
+								<option value="cash">Efectivo</option>
+								<option value="card">Tarjeta</option>
+								<option value="transfer">Transferencia</option>
+							</select>
+						</div>
+						&nbsp;
 					</div>
 					<div className="product-admin-items">
 						<>
@@ -150,8 +174,12 @@ const OrderForm = ({ order, onSubmit, isLoading }) => {
 					<br />
 					<div className="basket-checkout">
 						<div className="basket-total">
+							<p className="basket-total-title">SubTotal:</p>
+							<h3 className="basket-total-amount">{displayMoney(total)}</h3>
+							<p className="basket-total-title">IVA:</p>
+							<h3 className="basket-total-amount">{displayMoney(taxes)}</h3>
 							<p className="basket-total-title">Total:</p>
-							<h2 className="basket-total-amount">{calculateTotal()}</h2>
+							<h2 className="basket-total-amount">{displayMoney(parseFloat(total) + parseFloat(taxes))}</h2>
 						</div>
 					</div>
 
@@ -185,6 +213,7 @@ OrderForm.propTypes = {
 		address: PropTypes.string,
 		mobile: PropTypes.string,
 		date: PropTypes.string,
+		paymentMode: PropTypes.string,
 		basket: PropTypes.arrayOf(PropTypes.object)
 	})
 };
