@@ -11,6 +11,7 @@ import Boundary from 'components/ui/Boundary';
 import SearchBar from 'components/ui/SearchBar';
 import FiltersToggle from 'components/ui/FiltersToggle';
 import OrderItem from '../components/OrderItem';
+import { useState, useEffect } from 'react';
 
 const Orders = ({ history }) => {
 	useDocumentTitle('DG Limpieza | Pedidos');
@@ -25,6 +26,12 @@ const Orders = ({ history }) => {
 		ordersCount: state.orders.items.length,
 		totalOrdersCount: state.orders.total
 	}));
+
+	const [status, setStatus] = useState('Pendiente');
+
+	const onStatusFilterChange = (e) => {
+		setStatus(e.target.value);
+	}
 
 	// TODO insufficient permission
 	// TODO fix filters modal
@@ -41,16 +48,18 @@ const Orders = ({ history }) => {
 					ordersCount={store.ordersCount}
 				/>
 				&nbsp;
-				<FiltersToggle
-					filter={store.filter}
-					isLoading={store.isLoading}
-					orders={store.orders}
-					ordersCount={store.ordersCount}
+				<select
+					className="form-control select2-show-search border-bottom-0 select2-hidden-accessible"
+					name="status"
+					className="filters-brand"
+					value={status}
+					onChange={onStatusFilterChange}
 				>
-					<button className="button-muted button-small">
-						Mas Filtros &nbsp;<i className="fa fa-chevron-right" />
-					</button>
-				</FiltersToggle>
+					<option value="Pendiente">Pendientes</option>
+					<option value="Entregado">Entregados</option>
+					<option value="Cancelado">Cancelados</option>
+
+				</select>
 			</div>
 			<div className="product-admin-items">
 				<OrderList {...store}>
@@ -82,7 +91,9 @@ const Orders = ({ history }) => {
 									key={`product-skeleton ${index}`}
 									order={order}
 								/>
-							)) : store.orders.items.map(order => (
+							)) : store.orders.items
+								.filter(order => order.status === status)
+								.map(order => (
 								<OrderItem
 									key={order.id}
 									order={order}

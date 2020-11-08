@@ -23,7 +23,8 @@ const OrderForm = ({ order, onSubmit, isLoading }) => {
 		status: { value: order ? defaultOrder.status : [''] },
 		email: { value: order ? defaultOrder.email : '' },
 		paymentMode: { value: order ? defaultOrder.paymentMode : '' },
-		basket: { value: order ? defaultOrder.basket : [] }
+		basket: { value: order ? defaultOrder.basket : [] },
+		comment: { value: order ? defaultOrder.comment : '' }
 	});
 	const dispatch = useDispatch();
 	const profile = useSelector(state => state.profile);
@@ -41,6 +42,7 @@ const OrderForm = ({ order, onSubmit, isLoading }) => {
 		defaultOrder.status = status;
 		defaultOrder.paymentMode = paymentMode;
 		defaultOrder.taxes = taxes;
+		defaultOrder.comment = field.comment.value;
 
 		onSubmit({
 			...defaultOrder,
@@ -64,6 +66,7 @@ const OrderForm = ({ order, onSubmit, isLoading }) => {
 	const [paymentMode, setPaymentMode] = useState(defaultOrder.paymentMode)
 	const [total, setTotal] = useState(0)
 	const [taxes, setTaxes] = useState(0)
+
 	const onChange = (e) => {
 		switch (e.target.name) {
 			case 'status': {
@@ -88,6 +91,10 @@ const OrderForm = ({ order, onSubmit, isLoading }) => {
 		}
 	};
 
+	const onOrderCommentInput = (value, error) => {
+		setField({ ...field, comment: { value, error } });
+	};
+
 	return (
 		<div>
 			<form
@@ -109,23 +116,24 @@ const OrderForm = ({ order, onSubmit, isLoading }) => {
 								</address>
 							</div>
 						</div>
+						<div class="invoice-header">
+							<Input
+								field="comment"
+								label="Observaciones"
+								maxLength={60}
+								placeholder="Comentarios"
+								readOnly={isLoading}
+								type="textarea"
+								value={field.comment.value}
+								onInputChange={onOrderCommentInput}
+							/>
+						</div>
 					</div>
 				</div>
 
 				<div className="product-form-inputs">
 					<div className="d-flex">
 						<div className="product-form-field">
-							{/* <Input
-								field="status"
-								isRequired
-								label="* Estado"
-								maxLength={60}
-								placeholder="Estado"
-								readOnly={isLoading}
-								style={{ textTransform: 'capitalize' }}
-								type="text"
-								value={field.status.value}
-							/> */}
 							<select
 								name="status"
 								className="filters-brand"
@@ -133,7 +141,6 @@ const OrderForm = ({ order, onSubmit, isLoading }) => {
 								onChange={onChange}
 							>
 								<option value="Pendiente">Pendiente</option>
-								<option value="Preparacion">En preparacion</option>
 								<option value="Entregado">Entregado</option>
 								<option value="Cancelado">Cancelado</option>
 							</select>
