@@ -1,14 +1,10 @@
 import React, { Component, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CircularProgress from 'components/ui/CircularProgress';
-import ImageLoader from 'components/ui/ImageLoader';
 import Input from 'components/ui/Input';
 import { displayMoney } from 'helpers/utils';
-
-import useFileHandler from 'hooks/useFileHandler';
 import PropTypes from 'prop-types';
 import BasketItem from 'components/basket/BasketItem';
-import { parse } from '@babel/core';
 
 const OrderForm = ({ order, onSubmit, isLoading }) => {
 	const defaultOrder = {
@@ -42,7 +38,9 @@ const OrderForm = ({ order, onSubmit, isLoading }) => {
 		defaultOrder.status = status;
 		defaultOrder.paymentMode = paymentMode;
 		defaultOrder.taxes = taxes;
-		defaultOrder.comment = field.comment.value;
+		if (field.comment.value) {
+			defaultOrder.comment = field.comment.value;
+		}
 
 		onSubmit({
 			...defaultOrder,
@@ -221,7 +219,8 @@ OrderForm.propTypes = {
 		mobile: PropTypes.string,
 		date: PropTypes.string,
 		paymentMode: PropTypes.string,
-		basket: PropTypes.arrayOf(PropTypes.object)
+		basket: PropTypes.arrayOf(PropTypes.object),
+		comment: PropTypes.string,
 	})
 };
 

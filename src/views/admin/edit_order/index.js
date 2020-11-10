@@ -20,8 +20,6 @@ const EditOrder = (props) => {
 		dispatch(editOrder(updates));
     };
 
-    // console.log(order);
-
 	return (
 		<div className="product-form-container">
 			{!order && <Redirect to="/dashboard/orders" />}
