@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 
 import 'normalize.css/normalize.css';
 import 'react-phone-input-2/lib/style.css';
-import 'styles/style.scss';
+//import 'styles/style.scss';
 import WebFont from 'webfontloader';
 
 import Preloader from 'components/ui/Preloader';

@@ -121,7 +121,7 @@ const Basket = (props) => {
 				</div>
 				<div className="basket-checkout">
 					<button
-						className="basket-checkout-button button"
+						className="btn btn-info btn-lg mr-auto "
 						disabled={basket.length === 0 || pathname === '/checkout'}
 						onClick={onCheckOut}
 					>

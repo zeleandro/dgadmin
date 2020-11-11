@@ -86,6 +86,7 @@
 
 .basket-item-details {
   flex-grow: 1;
+  max-width: 25%;
 }
 
 .basket-item-name {
@@ -168,4 +169,9 @@
 
 .basket-control-count {
   margin: 5px;
+}
+
+.basket-item-subtotal{
+  flex-grow: 1;
+  max-width: 25%;
 }
