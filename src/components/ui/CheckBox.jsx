@@ -1,11 +1,22 @@
-import React, { Component, PropTypes } from 'react';
+import React, { useState, PropTypes } from 'react';
 
-class Checkbox extends Component {
+const CheckBoxField = React.forwardRef(({
+    className,
+    type,
+    field,
+    label,
+    showError,
+    showLabel,
+    isRequired,
+    onInputChange,
+    validate,
+    ...rest
+}, ref) => {
     state = {
         isChecked: false,
     }
 
-    toggleCheckboxChange = () => {
+    const toggleCheckboxChange = () => {
         const { handleCheckboxChange, label } = this.props;
 
         this.setState(({ isChecked }) => (
@@ -17,30 +28,29 @@ class Checkbox extends Component {
         handleCheckboxChange(label);
     }
 
-    render() {
-        const { label } = this.props;
-        const { isChecked } = this.state;
 
-        return (
-            <div className="checkbox">
-                <label>
-                    <input
-                        type="checkbox"
-                        value={label}
-                        checked={isChecked}
-                        onChange={this.toggleCheckboxChange}
-                    />
+    const { label } = this.props;
+    const { isChecked } = this.state;
 
-                    {label}
-                </label>
-            </div>
-        );
-    }
-}
+    return (
+        <div className="checkbox">
+            <label>
+                <input
+                    type="checkbox"
+                    value={label}
+                    checked={isChecked}
+                    onChange={this.toggleCheckboxChange}
+                />
 
-// Checkbox.propTypes = {
-//     label: PropTypes.string.isRequired,
-//     handleCheckboxChange: PropTypes.func.isRequired,
-// };
+                {label}
+            </label>
+        </div>
+    );
+});
 
-export default Checkbox;
+Checkbox.propTypes = {
+    label: PropTypes.string.isRequired,
+    handleCheckboxChange: PropTypes.func.isRequired,
+};
+
+export default CheckBoxField;

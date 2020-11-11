@@ -74,6 +74,15 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 		}
 	}
 
+	const onChangeOnSale = (e) => {
+		switch (e.target.name) {
+			case 'onSale': {
+				onProductOnSaleInput(e.target.checked)
+			}
+			default: { }
+		}
+	}
+
 	const sanitizeNumber = (num) => {
 		return Number(num.toString().replace(/^0*/, ''));
 	};
@@ -100,6 +109,10 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 
 	const onProductMaxQuantityInput = (value, error) => {
 		setField({ ...field, maxQuantity: { value: sanitizeNumber(value), error } });
+	};
+
+	const onProductOnSaleInput = (value, error) => {
+		setField({ ...field, onSale: { value, error } });
 	};
 
 	const onSubmitForm = (e) => {
@@ -168,7 +181,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 							</select>
 						</div>
 						<div className="product-form-field">
-						<span class="d-block padding-s">Categoría</span>
+							<span class="d-block padding-s">Categoría</span>
 							<select
 								name="category"
 								className="filters-category"
@@ -223,6 +236,20 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 								type="number"
 								value={field.maxQuantity.value}
 							/>
+						</div>
+						&nbsp;
+						&nbsp;
+						<div className="product-form-field">
+							<label>
+								En Oferta:
+          						<input
+									name="onSale"
+									type="checkbox"
+									checked={field.onSale.value}
+									onChange={onChangeOnSale}
+								>
+								</input>
+							</label>
 						</div>
 						&nbsp;
 					</div>
