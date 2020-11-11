@@ -68,15 +68,10 @@ const Navigation = ({ isAuth }) => {
 		/>
 	) : (
 			<nav
-				className="navigation"
+				className="top-bar"
 				ref={navbar}
 			>
-				<div className="logo">
-					<Link onClick={onClickLink} to="/">
-						{/* <img src={logo} /> */}
-						<h3>DG Limpieza</h3>
-					</Link>
-				</div>
+				
 				<ul className="navigation-menu">
 					<li className="navigation-menu-item">
 						<BasketToggle>

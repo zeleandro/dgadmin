@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import React from 'react';
+import React , {useState} from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -9,6 +9,9 @@ import Footer from 'components/ui/Footer';
 import Banner from 'components/ui/Banner';
 
 import { SIGNIN, ADMIN_DASHBOARD } from 'constants/routes';
+import Menu from 'components/ui/Menu';
+import '../styles/style.scss';
+
 
 const PrivateRoute = ({
 	isAuth,
@@ -17,14 +20,21 @@ const PrivateRoute = ({
 	path,
 	...rest
 }) => (
+	
 		<Route
 			{...rest}
 			component={props => (
 				isAuth && userType === 'USER'
 					? (
 						<>
+						<div className="header-main">
 							<Navigation isAuth={isAuth} />
 							<Basket isAuth={isAuth} />
+							
+							<div className={`sticky-wrapper${isSticky ? ' is-sticky' : ''}`} ref={ref}>
+								<Menu estilo={`${isSticky ? ' stiki' : ''}`} movil={`${isSticky ? ' sticky-pin' : ''}`}/>
+							</div>
+							</div>
 							<Banner />
 							<main className="content">
 								<Component {...props} />
@@ -46,5 +56,7 @@ const mapStateToProps = ({ auth }) => ({
 	isAuth: !!auth.id && !!auth.role,
 	userType: auth.role
 });
+
+
 
 export default connect(mapStateToProps)(PrivateRoute);

@@ -35,7 +35,7 @@ const BasketItem = ({ dispatch, product }) => {
 						<span>{` (x ${product.quantity}) `}</span>
 					</h5>
 				</div>
-				<div className="basket-item-details">
+				<div className="basket-item-subtotal">
 					<h5 className="basket-item-name">
 						Subtotal
 					</h5>
