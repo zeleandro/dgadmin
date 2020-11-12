@@ -15,6 +15,26 @@ const InputField = React.forwardRef(({
 	const [value, setValue] = useState('');
 	const [errorField, setErrorField] = useState('');
 
+	const translate = (word) => {
+		switch (word) {
+			case 'Fullname': {
+				return 'Nombre'
+			}
+			case 'Password': {
+				return 'Contraseña'
+			}
+			case 'Address': {
+				return 'Dirección'
+			}
+			case 'Mobile': {
+				return 'Celular'
+			}
+			default: {
+
+			}
+		}
+	}
+
 	const onFieldChange = (e) => {
 		let val = e.target.value;
 		let error = '';
@@ -34,15 +54,15 @@ const InputField = React.forwardRef(({
 				error = testResult;
 			}
 		} else if ((type === 'email' || field === 'email') && !regex.test(val)) {
-			setErrorField(`${key} is invalid`);
-			error = `${key} is invalid`;
+			setErrorField(`${translate(key)} es inválido`);
+			error = `${translate(key)} es inválido`;
 		} else if ((type === 'password' || field === 'password') && showError) {
-			if (val.length < 8) {
-				setErrorField(`${key} debe tener al menos 8 caracteres.`);
-				error = `${key} debe tener al menos 8 caracteres.`;
-			} else if (!passwordRegex.test(val)) {
-				setErrorField(`${key} debe tener mayúscula o caracter especial.`);
-				error = `${key} debe tener mayúscula o caracter especial.`;
+			if (val.length < 6) {
+				setErrorField(`${translate(key)} debe tener al menos 6 caracteres.`);
+				error = `${translate(key)} debe tener al menos 6 caracteres.`;
+			// } else if (!passwordRegex.test(val)) {
+			// 	setErrorField(`${translate(key)} debe tener mayúscula o caracter especial.`);
+			// 	error = `${translate(key)} debe tener mayúscula o caracter especial.`;
 			} else {
 				setErrorField('');
 				error = '';
@@ -51,11 +71,11 @@ const InputField = React.forwardRef(({
 			val = val.replace(/[^a-zA-Z\s]/g, '').trimStart();
 
 			if (val.length < 5) {
-				setErrorField(`${key} debe tener al menos 5 letras`);
-				error = `${key} debe tener al menos 5 letras`
+				setErrorField(`${translate(key)} debe tener al menos 5 letras`);
+				error = `${translate(key)} debe tener al menos 5 letras`
 			} else if (nameRegex.test(val)) {
-				setErrorField(`${key} no debe tener caracteres extraños`);
-				error = `${key} no debe tener caracteres extraños`;
+				setErrorField(`${translate(key)} no debe tener caracteres extraños`);
+				error = `${translate(key)} no debe tener caracteres extraños`;
 			} else {
 				setErrorField('');
 				error = '';
@@ -66,8 +86,8 @@ const InputField = React.forwardRef(({
 		}
 
 		if (val.length === 0 && isRequired) {
-			setErrorField(`${key} es requerido`);
-			error = `${key} es requerido`;
+			setErrorField(`${translate(key)} es requerido`);
+			error = `${translate(key)} es requerido`;
 		}
 
 		onInputChange(val, error, e);

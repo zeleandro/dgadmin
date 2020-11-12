@@ -47,6 +47,14 @@ const SignUp = (props) => {
 		setField({ ...field, password: { value, error } });
 	};
 
+	const onAddressInput = (value, error) => {
+		setField({ ...field, address: { value, error } });
+	};
+
+	const onMobileInput = (value, error) => {
+		setField({ ...field, mobile: { value, error } });
+	};
+
 	const onTogglePasswordVisibility = () => setPasswordHidden(!passwordHidden);
 
 	const onClickSignIn = () => props.history.push('/signin');
@@ -59,7 +67,9 @@ const SignUp = (props) => {
 			dispatch(signUp({
 				fullname: field.fullname.value.trim(),
 				email: field.email.value.trim().toLowerCase(),
-				password: field.password.value.trim()
+				password: field.password.value.trim(),
+				address: field.address.value.trim(),
+				mobile: field.mobile.value.trim()
 			}));
 		}
 	};
@@ -89,13 +99,39 @@ const SignUp = (props) => {
 								<Input
 									field="fullname"
 									isRequired
-									label="* Full Name"
+									label="* Nombre Completo"
 									maxLength={40}
 									onInputChange={onFullnameInput}
-									placeholder="John Doe"
+									placeholder="Nombre y Apellido"
 									readOnly={isSigningUp}
 									style={{ textTransform: 'capitalize' }}
 									type="text"
+								/>
+							</div>
+							<div className="signup-field">
+								<Input
+									field="address"
+									isRequired
+									label="* Dirección"
+									maxLength={60}
+									onInputChange={onAddressInput}
+									placeholder="Domicilio de entrega"
+									readOnly={isSigningUp}
+									style={{ textTransform: 'capitalize' }}
+									type="text"
+								/>
+							</div>
+							<div className="signup-field">
+								<Input
+									field="mobile"
+									isRequired
+									label="* Número de Celular"
+									maxLength={40}
+									onInputChange={onMobileInput}
+									placeholder="Solo números"
+									readOnly={isSigningUp}
+									style={{ textTransform: 'capitalize' }}
+									type="number"
 								/>
 							</div>
 							<div className="signup-field">
@@ -105,7 +141,7 @@ const SignUp = (props) => {
 									label="* Email"
 									maxLength={40}
 									onInputChange={onEmailInput}
-									placeholder="test@example.com"
+									placeholder="test@ejemplo.com"
 									readOnly={isSigningUp}
 									type="email"
 								/>
@@ -116,10 +152,10 @@ const SignUp = (props) => {
 										<Input
 											field="password"
 											isRequired
-											label="* Password"
+											label="* Contraseña"
 											maxLength={40}
 											onInputChange={onPasswordInput}
-											placeholder="Password"
+											placeholder="Contraseña"
 											readOnly={isSigningUp}
 											ref={passwordField}
 											style={{ marginBottom: 0 }}
@@ -145,21 +181,21 @@ const SignUp = (props) => {
 									type="submit"
 								>
 									<CircularProgress visible={isSigningUp} theme="light" />
-									{isSigningUp ? 'Signing Up' : 'Sign Up'}
+									{isSigningUp ? 'Registrando' : 'Registrarme'}
 								</button>
 							</div>
 						</form>
 					</div>
 					<div className="signin-message">
 						<span className="signin-info">
-							<strong>Already have an account?</strong>
+							<strong>Ya tiene cuenta?</strong>
 						</span>
 						<button
 							className="button button-small button-border button-border-gray"
 							disabled={isSigningUp}
 							onClick={onClickSignIn}
 						>
-							Sign In
+							Ingresar
 						</button>
 					</div>
 				</>

@@ -45,8 +45,8 @@ const ForgotPassword = () => {
 					{authStatus.message}
 				</h5>
 			)}
-			<h3>Forgot Your Password?</h3>
-			<p>Enter your email address and we will send you a password reset email.</p>
+			<h3>Olvidó su contraseña?</h3>
+			<p>Ingrese su email y le enviaremos un correo para restablecerla.</p>
 			<br />
 			<Input
 				field="email"
@@ -69,7 +69,7 @@ const ForgotPassword = () => {
 					theme="light"
 					visible={isSendingForgotPWRequest}
 				/>
-				{isSendingForgotPWRequest ? 'Sending Password Reset Email' : 'Send Password Reset Email'}
+				{isSendingForgotPWRequest ? 'Enviando email para restablecer contraseña' : 'Enviar email para restablecer contraseña'}
 			</button>
 		</div>
 	);

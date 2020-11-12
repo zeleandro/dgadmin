@@ -110,7 +110,7 @@ const SignIn = (props) => {
 										<Input
 											label="Email"
 											readOnly={isSigningIn}
-											placeholder="text@example.com"
+											placeholder="text@ejemplo.com"
 											onInputChange={onEmailInput}
 											isRequired={true}
 											field="email"
@@ -119,9 +119,9 @@ const SignIn = (props) => {
 									</div>
 									<div className="signin-field">
 										<Input
-											label="Password"
+											label="Contraseña"
 											readOnly={isSigningIn}
-											placeholder="Your Password"
+											placeholder="Su Contraseña"
 											onInputChange={onPasswordInput}
 											isRequired={true}
 											showError={false}
@@ -136,7 +136,7 @@ const SignIn = (props) => {
 											style={{ textDecoration: 'underline' }}
 											to={FORGOT_PASSWORD}
 										>
-											<span>Forgot password?</span>
+											<span>Olvidó su contraseña?</span>
 										</Link>
 										<button
 											className="button signin-button"
@@ -147,13 +147,13 @@ const SignIn = (props) => {
 												theme="light"
 												visible={isSigningIn && providerSelected === 'signin'}
 											/>
-											{isSigningIn && providerSelected === 'signin' ? 'Signing In' : 'Sign In'}
+											{isSigningIn && providerSelected === 'signin' ? 'Ingresando' : 'Ingresar'}
 										</button>
 									</div>
 								</form>
 							</div>
 						</div>
-						<div className="signin-divider">
+						{/* <div className="signin-divider">
 							<h6>OR</h6>
 						</div>
 						<div className="signin-provider">
@@ -193,18 +193,18 @@ const SignIn = (props) => {
 									)}
 								<span>Sign in with GitHub</span>
 							</button>
-						</div>
+						</div> */}
 					</div>
 					<div className="signin-message">
 						<span className="signin-info">
-							<strong>Don't have an account?</strong>
+							<strong>No tiene cuenta?</strong>
 						</span>
 						<button
 							className="button button-small button-border button-border-gray"
 							disabled={isSigningIn}
 							onClick={onSignUp}
 						>
-							Sign Up
+							Regístrese
             </button>
 					</div>
 				</>

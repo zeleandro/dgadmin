@@ -6,13 +6,13 @@ const Error = ({ history }) => {
 
 	return (
 		<div className="page-not-found">
-			<h1>:( An error has occured. Please try again.</h1>
+			<h1>:( Ha ocurrido un error. Intente nuevamente.</h1>
 			<br />
 			<button
 				className="button"
 				onClick={() => history.push('/')}
 			>
-				Try Again
+				Intentar nuevamente
 			</button>
 		</div>
 

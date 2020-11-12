@@ -103,8 +103,15 @@ function* authSaga({ type, payload }) {
 					avatar: defaultAvatar,
 					banner: defaultBanner,
 					email: payload.email,
-					address: '',
-					mobile: {},
+					address: payload.address,
+					mobile: {
+						data: {
+							countryCode: "ar",
+							dialCode: "54",
+							num: payload.mobile
+						},
+						value: payload.mobile
+					},
 					role: 'USER',
 					dateJoined: ref.user.metadata.creationTime || new Date().getTime()
 				};
