@@ -30,10 +30,7 @@ const PrivateRoute = ({
 						<div className="header-main">
 							<Navigation isAuth={isAuth} />
 							<Basket isAuth={isAuth} />
-							
-							<div className={`sticky-wrapper${isSticky ? ' is-sticky' : ''}`} ref={ref}>
-								<Menu estilo={`${isSticky ? ' stiki' : ''}`} movil={`${isSticky ? ' sticky-pin' : ''}`}/>
-							</div>
+							<Menu />
 							</div>
 							<Banner />
 							<main className="content">

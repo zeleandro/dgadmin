@@ -30,7 +30,7 @@ const UserNav = ({ profile, isAuthenticating }) => {
 	};
 
 	return isAuthenticating ? (
-		<div className="user-nav">
+		<div className="user-nav ">
 			<span>Signing Out</span>
 			<CircularProgress />
 		</div>
@@ -49,7 +49,7 @@ const UserNav = ({ profile, isAuthenticating }) => {
 					/>
 				</div>
 				<div className="icon-caret user-caret" />
-				<div className="user-nav-sub">
+				<div className="user-nav-sub nav-zindex">
 					{profile.role !== 'ADMIN' && (
 						<Link
 							to={ACCOUNT}
