@@ -51,7 +51,7 @@ const Navigation = (props) => {
 											onClick={onClickLink}
 											to={SIGNIN}
 										>
-											Sign In
+											Ingresar
 										</Link>
 									</li>
 								)}
