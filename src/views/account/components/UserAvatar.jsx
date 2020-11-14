@@ -30,8 +30,8 @@ const UserNav = ({ profile, isAuthenticating }) => {
 	};
 
 	return isAuthenticating ? (
-		<div className="user-nav ">
-			<span>Signing Out</span>
+		<div className="user-nav">
+			<span>Saliendo</span>
 			<CircularProgress />
 		</div>
 	) : (
@@ -55,7 +55,7 @@ const UserNav = ({ profile, isAuthenticating }) => {
 							to={ACCOUNT}
 							className="user-nav-sub-link"
 						>
-							View Account
+							Ver Cuenta
 							<i className="fa fa-user" />
 						</Link>
 					)}
@@ -65,7 +65,7 @@ const UserNav = ({ profile, isAuthenticating }) => {
 								className="user-nav-sub-link margin-0 d-flex"
 								onClick={onSignOut}
 							>
-								Sign Out
+								Salir
 								<i className="fa fa-sign-out-alt" />
 							</h6>
 						)}

@@ -32,6 +32,10 @@ import ForgotPassword from 'views/auth/forgot_password';
 import UserAccount from 'views/account/user_account';
 import EditAccount from 'views/account/edit_account';
 import Home from 'views/home';
+import Category from 'views/category';
+import Sale from 'views/sale';
+import About from 'views/about';
+import Contact from 'views/contact';
 import CheckOutStep1 from 'views/checkout/step1';
 import CheckOutStep2 from 'views/checkout/step2';
 import CheckOutStep3 from 'views/checkout/step3';
@@ -55,6 +59,26 @@ const AppRouter = () => (
 				component={Home}
 				exact
 				path={ROUTES.HOME}
+			/>
+			<PublicRoute
+				component={Category}
+				exact
+				path={ROUTES.CATEGORY}
+			/>
+			<PublicRoute
+				component={Sale}
+				exact
+				path={ROUTES.SALE}
+			/>
+			<PublicRoute
+				component={About}
+				exact
+				path={ROUTES.ABOUT}
+			/>
+			<PublicRoute
+				component={Contact}
+				exact
+				path={ROUTES.CONTACT}
 			/>
 			<PublicRoute
 				component={SignUp}

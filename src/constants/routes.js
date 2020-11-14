@@ -1,5 +1,9 @@
 export const HOME = '/';
 export const ACCOUNT = '/account';
+export const CATEGORY = '/category';
+export const SALE = '/sale';
+export const CONTACT = '/contact';
+export const ABOUT = '/about';
 export const ACCOUNT_EDIT = '/account/edit';
 export const ADMIN_DASHBOARD = '/admin/dashboard';
 export const ADMIN_PRODUCTS = '/admin/products';
