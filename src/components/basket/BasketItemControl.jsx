@@ -4,22 +4,17 @@ import { addQtyItem, minusQtyItem } from 'redux/actions/basketActions';
 
 const BasketItemControl = ({ product, dispatch }) => {
 	 const onAddQty = () => {
-	 	//if (product.quantity < product.maxQuantity) {
-			setQuantity(quantity+1);
-			dispatch(addQtyItem({id: product.id, quantity:quantity}))
-			
-	 	//}
+		
+			setQuantity(parseInt(quantity)+1);
+			dispatch(addQtyItem({id: product.id, quantity}))
+		
 	 };
 
-	 useEffect(() => {
-		// Update the document title using the browser API
-		console.log(quantity);
-	  });
 	 const onMinusQty = () => {
-	 	//if ((product.maxQuantity >= product.quantity) && product.quantity !== 0) {
+	 	if (product.quantity !== 0) {
 			setQuantity(quantity-1)
 			dispatch(addQtyItem({id: product.id, quantity}))
-	 	//}
+	 	}
 	 };
 
     const [quantity, setQuantity] = useState(product.quantity)
@@ -34,8 +29,9 @@ const BasketItemControl = ({ product, dispatch }) => {
     }
 
 	return (
+		<React.Fragment>
 		<div className="basket-item-control">
-			<button
+			{/*<button
 				className="button button-border button-border-gray button-small basket-control basket-control-add"
 				
 				onClick={onAddQty}
@@ -48,12 +44,13 @@ const BasketItemControl = ({ product, dispatch }) => {
 				onClick={onMinusQty}
 			>
 				-
-			</button>
-			{/*  <input type="text" class="form-control text-center h-5" name="quantity" value={quantity}
-                onChange={onChange}></input>*/}
+			</button>*/}
+			
 			
 		</div>
-	);
+			<input type="number" class="form-control h-5 input-basket" name="quantity" value={quantity}
+			onChange={onChange}></input>
+			</React.Fragment>)
 };
 
 BasketItemControl.propType = {
