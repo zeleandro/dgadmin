@@ -20,7 +20,7 @@ const ViewProduct = () => {
         product: state.products.items.find(item => item.id === id),
         basket: state.basket
     }));
-    useDocumentTitle(`View ${store.product ? store.product.name : 'Item'}`);
+    useDocumentTitle(`Ver ${store.product ? store.product.name : 'Item'}`);
 
     const [selectedImage, setSelectedImage] = useState(store.product ? store.product.image : '');
     const [product, setProduct] = useState(store.product || null);
@@ -81,8 +81,12 @@ const ViewProduct = () => {
             </div>
             <div className="product-modal-details">
                 <h3>{product.name}</h3>
-                <span className="text-subtle">Brand: &nbsp;</span>
+                <span className="text-subtle">Marca: &nbsp;</span>
                 <span><strong>{product.brand}</strong></span>
+                <br />
+                <br />
+                <span className="text-subtle">Categoría: &nbsp;</span>
+                <span><strong>{product.category}</strong></span>
                 <br />
                 <br />
                 <span>{product.description}</span>

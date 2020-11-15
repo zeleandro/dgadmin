@@ -1,6 +1,7 @@
 export const HOME = '/';
 export const ACCOUNT = '/account';
 export const CATEGORY = '/category';
+export const PRODUCT = '/products';
 export const SALE = '/sale';
 export const CONTACT = '/contact';
 export const ABOUT = '/about';
@@ -28,3 +29,4 @@ export const CHECKOUT_STEP_1 = '/checkout/step1';
 export const CHECKOUT_STEP_2 = '/checkout/step2';
 export const CHECKOUT_STEP_3 = '/checkout/step3';
 export const VIEW_PRODUCT = '/product/:id';
+export const PRODUCTS_BY_CATEGORY = '/products/:category';

@@ -32,6 +32,8 @@ import ForgotPassword from 'views/auth/forgot_password';
 import UserAccount from 'views/account/user_account';
 import EditAccount from 'views/account/edit_account';
 import Home from 'views/home';
+import Product from 'views/products';
+import ProductByCategory from 'views/products';
 import Category from 'views/category';
 import Sale from 'views/sale';
 import About from 'views/about';
@@ -64,6 +66,15 @@ const AppRouter = () => (
 				component={Category}
 				exact
 				path={ROUTES.CATEGORY}
+			/>
+			<PublicRoute
+				component={Product}
+				exact
+				path={ROUTES.PRODUCT}
+			/>
+			<PublicRoute
+				component={ProductByCategory}
+				path={`${ROUTES.PRODUCTS_BY_CATEGORY}`}
 			/>
 			<PublicRoute
 				component={Sale}

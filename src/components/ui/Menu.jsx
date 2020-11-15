@@ -27,8 +27,13 @@ const Menu = (props) => {
 						<div className={`overlapblackbg${isMenu ? ' dos-activo' : ''}`} onClick={handleMenu} ></div>
 							<ul className={`horizontalMenu-list${isMenu ? ' tres-activo' : ''}`}>
 							<li aria-haspopup="true">
-								<Link to="/" onClick={handleMenu}>
+								<Link to="/products" onClick={handleMenu}>
 									Productos
+                                </Link>
+							</li>
+							<li aria-haspopup="true">
+								<Link to="/category" onClick={handleMenu}>
+									Categorías
                                 </Link>
 							</li>
 							<li aria-haspopup="true">
@@ -36,11 +41,6 @@ const Menu = (props) => {
 									Ofertas
                                 </Link>
 							</li>
-							{/* <li aria-haspopup="true">
-								<Link to="/novedades" onClick={handleMenu}>
-									Novedades
-                                </Link>
-							</li> */}
 							<li aria-haspopup="true">
 								<Link to="/about" onClick={handleMenu}>
 									Sobre DG
