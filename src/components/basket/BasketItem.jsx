@@ -43,13 +43,15 @@ const BasketItem = ({ dispatch, product }) => {
 						<span>{displayMoney(product.price * product.quantity)}</span>
 					</h5>
 				</div>
-
+				<div align="right"> 
 				<button
 					className="basket-item-remove button button-border button-border-gray button-small"
 					onClick={onRemoveFromBasket}
 				>
 					<i className="fa fa-trash" />
 				</button>
+				</div> 
+				
 			</div>
 		</div>
 	);
