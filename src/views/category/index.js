@@ -39,9 +39,9 @@ const Category = () => {
 
     return (
         <>
-            <div class="col-xl-12 col-lg-12 col-md-12">
-                <div class="card mb-lg-0">
-                    <div class="card-body">
+            <div className="col-xl-12 col-lg-12 col-md-12">
+                <div className="card mb-lg-0">
+                    <div className="card-body">
                         {!store.requestStatus && (
                             <div className="product-list-header">
                                 <div className="product-list-header-title">
@@ -59,10 +59,10 @@ const Category = () => {
                             <CategoryList {...store}>
                                 {() => (
                                     <>
-                                        <div class="item2-gl ">
-                                            <div class="tab-content">
-                                                <div class="tab-pane active show" id="tab-12">
-                                                    <div class="row">
+                                        <div className="item2-gl ">
+                                            <div className="tab-content">
+                                                <div className="tab-pane active show" id="tab-12">
+                                                    <div className="row">
                                                         {store.categories.length === 0 ? new Array(12).fill({}).map((category, index) => (
                                                             <CategoryItem
                                                                 key={`product-skeleton ${index}`}

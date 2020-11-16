@@ -48,7 +48,7 @@ const BasketItemControl = ({ product, dispatch }) => {
 			
 			
 		</div>
-			<input type="number" class="form-control h-5 input-basket" name="quantity" value={quantity}
+			<input type="number" className="form-control h-5 input-basket" name="quantity" value={quantity}
 			onChange={onChange}></input>
 			</React.Fragment>)
 };
