@@ -20,18 +20,18 @@ const Banner = () => {
 
 	return pathname !== HOME ? null : (
 		<div>
-			<div class="banner-1 cover-image sptb-2 bg-background serings" data-image-src="../assets/images/banners/auction.jpg" >
-				<div class="header-text1 mb-0">
-					<div class="container">
-						<div class="row">
-							<div class="col-xl-8 col-lg-12 col-md-12 d-block mx-auto">
-								<div class="text-center text-white ">
-									<h1 class="">DG Limpieza</h1>
+			<div className="banner-1 cover-image sptb-2 bg-background serings" data-image-src="../assets/images/banners/auction.jpg" >
+				<div className="header-text1 mb-0">
+					<div className="container">
+						<div className="row">
+							<div className="col-xl-8 col-lg-12 col-md-12 d-block mx-auto">
+								<div className="text-center text-white ">
+									<h1 className="">DG Limpieza</h1>
 								</div>
 								
                                 <>
-                                <div class="form row no-gutters">
-                                    <div class="form-group col-xl-6 col-lg-5 col-md-12 mb-0">
+                                <div className="form row no-gutters">
+                                    <div className="form-group col-xl-6 col-lg-5 col-md-12 mb-0">
                                     <SearchBar
                                         isLoading={store.isLoading}
                                         filter={store.filter}
@@ -39,7 +39,7 @@ const Banner = () => {
                                         productsLength={store.productsLength}
                                     />
                                     </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-0">
+                                    <div className="col-xl-4 col-lg-4 col-md-12 mb-0">
                                     <FiltersToggle
                                         filter={store.filter}
                                         isLoading={store.isLoading}

@@ -48,9 +48,9 @@ const Home = () => {
 	return (
 		<>
 			
-			<div class="col-xl-12 col-lg-12 col-md-12">
-				<div class="card mb-lg-0">	
-					<div class="card-body">
+			<div className="col-xl-12 col-lg-12 col-md-12">
+				<div className="card mb-lg-0">	
+					<div className="card-body">
 						
 
 				{!store.requestStatus && (
@@ -71,11 +71,11 @@ const Home = () => {
 					<ProductList {...store}>
 						{({ foundOnBasket }) => (
 							<>
-								<div class="item2-gl ">
+								<div className="item2-gl ">
 							
-									<div class="tab-content">
-										<div class="tab-pane active show" id="tab-12">
-											<div class="row">
+									<div className="tab-content">
+										<div className="tab-pane active show" id="tab-12">
+											<div className="row">
 									{store.filteredProducts.length === 0 ? new Array(12).fill({}).map((product, index) => (
 										<ProductItem
 											isItemOnBasket={false}
