@@ -6,6 +6,7 @@ import {
 	LOADING,
 	SET_REQUEST_STATUS,
 	GET_PRODUCTS,
+	GET_PRODUCTS_ONSALE,
 	ADD_PRODUCT,
 	EDIT_PRODUCT,
 	REMOVE_PRODUCT
@@ -13,6 +14,7 @@ import {
 
 import {
 	getProductsSuccess,
+	getProductsOnSaleSuccess,
 	addProductSuccess,
 	editProductSuccess,
 	removeProductSuccess
@@ -48,6 +50,23 @@ function* productSaga({ type, payload }) {
 				const result = yield call(firebase.getProducts, payload);
 
 				yield put(getProductsSuccess({
+					products: result.products,
+					lastKey: result.lastKey ? result.lastKey : state.products.lastRefKey,
+					total: result.total ? result.total : state.products.total
+				}));
+				// yield put({ type: SET_LAST_REF_KEY, payload: result.lastKey });
+				yield put(setLoading(false));
+			} catch (e) {
+				yield handleError(e);
+			}
+			break;
+		case GET_PRODUCTS_ONSALE:
+			try {
+				yield initRequest();
+				const state = yield select();
+				const result = yield call(firebase.getProductsOnSale, payload);
+
+				yield put(getProductsOnSaleSuccess({
 					products: result.products,
 					lastKey: result.lastKey ? result.lastKey : state.products.lastRefKey,
 					total: result.total ? result.total : state.products.total

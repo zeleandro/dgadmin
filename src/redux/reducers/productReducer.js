@@ -2,7 +2,8 @@ import {
 	ADD_PRODUCT_SUCCESS,
 	REMOVE_PRODUCT_SUCCESS,
 	EDIT_PRODUCT_SUCCESS,
-	GET_PRODUCTS_SUCCESS
+	GET_PRODUCTS_SUCCESS,
+	GET_PRODUCTS_ONSALE_SUCCESS
 } from 'constants/constants';
 
 export default (state = {
@@ -12,6 +13,13 @@ export default (state = {
 }, action) => {
 	switch (action.type) {
 		case GET_PRODUCTS_SUCCESS:
+			return {
+				...state,
+				lastRefKey: action.payload.lastKey,
+				total: action.payload.total,
+				items: [...state.items, ...action.payload.products]
+			};
+		case GET_PRODUCTS_ONSALE_SUCCESS:
 			return {
 				...state,
 				lastRefKey: action.payload.lastKey,

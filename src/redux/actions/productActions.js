@@ -7,7 +7,9 @@ import {
 	EDIT_PRODUCT_SUCCESS,
 	GET_PRODUCTS,
 	GET_PRODUCTS_SUCCESS,
-	CANCEL_GET_PRODUCTS
+	CANCEL_GET_PRODUCTS,
+	GET_PRODUCTS_ONSALE,
+	GET_PRODUCTS_ONSALE_SUCCESS,
 } from 'constants/constants';
 
 export const getProducts = lastRef => ({
@@ -17,6 +19,16 @@ export const getProducts = lastRef => ({
 
 export const getProductsSuccess = products => ({
 	type: GET_PRODUCTS_SUCCESS,
+	payload: products
+});
+
+export const getProductsOnSale = lastRef => ({
+	type: GET_PRODUCTS_ONSALE,
+	payload: lastRef
+});
+
+export const getProductsOnSaleSuccess = products => ({
+	type: GET_PRODUCTS_ONSALE_SUCCESS,
 	payload: products
 });
 

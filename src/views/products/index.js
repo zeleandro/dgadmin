@@ -1,29 +1,33 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectFilter } from 'selectors/selector';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 
 import ProductList from 'components/product/ProductList';
 import ProductItem from 'components/product/ProductItem';
-import Filters from 'components/ui/Filters'
+import { resetFilter, applyFilter } from 'redux/actions/filterActions';
 import ProductAppliedFilters from 'components/product/ProductAppliedFilters';
 import Boundary from 'components/ui/Boundary';
 import useDocumentTitle from 'hooks/useDocumentTitle';
 import useScrollTop from 'hooks/useScrollTop';
 
-const Home = () => {
+const Home = ({history}) => {
 	useDocumentTitle();
 	useScrollTop();
 
+	const dispatch = useDispatch();
+	const { category } = useParams();
 	const [columnCount, setColumnCount] = useState(6);
-	
-	// const { id } = useParams();
-	// if (id) {
-	// 	<Filters
-	// 		category = {id}
-	// 	>
-	// 	</Filters>
-	// }
+
+	const [field, setFilter] = useState({
+		category: category ? category.toLowerCase() : ''
+	});
+
+	const onCategoryParam = () => {
+		if (category) {
+			dispatch(applyFilter(field));
+		}
+	}
 
 	const store = useSelector(state => ({
 		filter: state.filter,
@@ -36,9 +40,6 @@ const Home = () => {
 		productsCount: state.products.items.length,
 		totalProductsCount: state.products.total,
 	}));
-
-	// console.log(store.filter);
-	// console.log(id);
 
 	const onProductsLengthChanged = () => {
 		const width = window.screen.width - 250; // minus 250px padding
@@ -53,6 +54,10 @@ const Home = () => {
 	useEffect(() => {
 		onProductsLengthChanged();
 	}, [store.filteredProducts]);
+
+	useEffect(() => {
+		onCategoryParam();
+	}, [category]);
 
 	const productListWrapper = useRef(null);
 
@@ -77,7 +82,7 @@ const Home = () => {
 								</div>
 							</div>
 						)}
-						<ProductAppliedFilters filter={store.filter} />
+						<ProductAppliedFilters filter={store.filter} from='/category'/>
 						<Boundary>
 							<ProductList {...store}>
 								{({ foundOnBasket }) => (
