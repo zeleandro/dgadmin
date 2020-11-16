@@ -11,7 +11,7 @@ import Boundary from 'components/ui/Boundary';
 import useDocumentTitle from 'hooks/useDocumentTitle';
 import useScrollTop from 'hooks/useScrollTop';
 
-const Home = ({history}) => {
+const Product = ({history}) => {
 	useDocumentTitle();
 	useScrollTop();
 
@@ -120,4 +120,4 @@ const Home = ({history}) => {
 	);
 };
 
-export default Home;
+export default Product;

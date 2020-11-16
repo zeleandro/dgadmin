@@ -32,12 +32,14 @@ const ProductAppliedFilters = ({ filter, from }) => {
 	};
 
 	const onRedirect = () => {
+		onRemoveCategoryFilter();
 		history.push(from);
 	};
 
 	if (from) {
 		return (
-			<div className="pill-wrapper">
+			<div className="pill-wrapper"
+				style={{visibility: (filter.category != '') ? 'visible' : 'hidden' }}>
 				<button onClick={onRedirect}>Volver</button>
 			</div>
 		)
