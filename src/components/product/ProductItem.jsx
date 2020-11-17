@@ -35,43 +35,50 @@ const ProductItem = ({
 
 	return (
 		<div className="col-lg-3 col-md-12">
-		<div className={`card ${!product.id ? 'product-loading' : ''}`}
-			style={{
-				border: isItemOnBasket ? '1px solid #cacaca' : '',
-				boxShadow: isItemOnBasket ? '0 10px 15px rgba(0, 0, 0, .07)' : 'none'
-			}}
-		>
-			{isItemOnBasket && <i className="fa fa-check product-card-check" />}
-			<div className="product-card-img-wrapper" onClick={onClickItem}>
-				{product.image ? (
-							<ImageLoader
-								className="product-card-img"
-								src={product.image}
-							/>
-						) : <Skeleton width={'100%'} height={'90%'} />}
-			</div>
-			<div className="card-body">
-				<div className="product-item2-desc">
-					<h4 className="font-weight-semibold text-dark">{product.brand || <Skeleton width={80} />}</h4>
-					<p>{product.name || <Skeleton width={60} />}</p>
-				</div>
-
-			</div>
-			<div className="card-footer">
-				<div className="product-item-wrap d-flex">
-				<button className={`btn btn-info btn-lg mr-auto ${isItemOnBasket ? 'btn btn-danger btn-lg mr-auto' : ''}`} onClick={onAddToBasket}>
-						{isItemOnBasket ? 'Quitar del carrito' : 'Agregar al carrito'}
-						</button>
-					<div className="product-item-price">
-						<span className="newprice text-dark">${product.price}</span>
+			<div className={`card ${!product.id ? 'product-loading' : ''}`}
+				style={{
+					border: isItemOnBasket ? '1px solid #cacaca' : '',
+					boxShadow: isItemOnBasket ? '0 10px 15px rgba(0, 0, 0, .07)' : 'none'
+				}}
+			>
+				{
+					(product.onSale == true)
+					? <div className="arrow-ribbon-2 bg-primary">
+						Oferta
 					</div>
-					
+					: <div></div>
+				}
+				{isItemOnBasket && <i className="fa fa-check product-card-check" />}
+				<div className="product-card-img-wrapper" onClick={onClickItem}>
+					{product.image ? (
+						<ImageLoader
+							className="product-card-img"
+							src={product.image}
+						/>
+					) : <Skeleton width={'100%'} height={'90%'} />}
+				</div>
+				<div className="card-body">
+					<div className="product-item2-desc">
+						<h4 className="font-weight-semibold text-dark">{product.brand || <Skeleton width={80} />}</h4>
+						<p>{product.name || <Skeleton width={60} />}</p>
+					</div>
+
+				</div>
+				<div className="card-footer">
+					<div className="product-item-wrap d-flex">
+						<button className={`btn btn-info btn-lg mr-auto ${isItemOnBasket ? 'btn btn-danger btn-lg mr-auto' : ''}`} onClick={onAddToBasket}>
+							{isItemOnBasket ? 'Quitar del carrito' : 'Agregar al carrito'}
+						</button>
+						<div className="product-item-price">
+							<span className="newprice text-dark">${product.price}</span>
+						</div>
+
+					</div>
 				</div>
 			</div>
 		</div>
-		</div>
-		
-		
+
+
 	);
 };
 
