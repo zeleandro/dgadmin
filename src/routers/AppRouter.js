@@ -41,6 +41,7 @@ import Contact from 'views/contact';
 import CheckOutStep1 from 'views/checkout/step1';
 import CheckOutStep2 from 'views/checkout/step2';
 import CheckOutStep3 from 'views/checkout/step3';
+import CheckOutFinal from 'views/checkout/stepfinal';
 import PageNotFound from 'views/error/PageNotFound';
 
 import ClientRoute from './ClientRoute';
@@ -129,6 +130,10 @@ const AppRouter = () => (
 			<ClientRoute
 				component={CheckOutStep3}
 				path={ROUTES.CHECKOUT_STEP_3}
+			/>
+			<ClientRoute
+				component={CheckOutFinal}
+				path={ROUTES.CHECKOUT_FINAL}
 			/>
 			<AdminRoute
 				component={Dashboard}

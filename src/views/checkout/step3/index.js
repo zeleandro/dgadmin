@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { CHECKOUT_STEP_2 } from 'constants/routes';
+import { CHECKOUT_FINAL } from 'constants/routes';
 import useDocumentTitle from 'hooks/useDocumentTitle';
 import useScrollTop from 'hooks/useScrollTop';
 import { setPaymentDetails } from 'redux/actions/checkoutActions';
@@ -117,6 +118,8 @@ const Payment = ({
 			dispatch(addOrder(order));
 			dispatch(clearBasket());
 
+			history.push(CHECKOUT_FINAL);
+
 		} else {
 			displayActionMessage('Debe seleccionar una forma de pago :)', 'info');
 		}
@@ -183,7 +186,7 @@ const Payment = ({
 						// eslint-disable-next-line no-extra-boolean-cast
 						disabledNext={!!!paymentMode}
 						history={history}
-						nextStepLabel="Confirm"
+						nextStepLabel="Confirmar"
 						onClickNext={onConfirm}
 						onClickPrevious={onClickBack}
 

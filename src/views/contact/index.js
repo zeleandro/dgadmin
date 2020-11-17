@@ -18,7 +18,7 @@ class Contact extends Component {
                                             <i className="fab fa-instagram"></i>
                                             <h6>Instagram</h6>
                                             <a className="social-icon text-dark" href="http://www.instagram.com/dg.clean"
-                                            target="_blank">@dg.clean</a>
+                                                target="_blank">@dg.clean</a>
                                         </div>
                                     </div>
                                     <div className="col-xl-4 col-lg-12 col-md-12">
@@ -26,7 +26,14 @@ class Contact extends Component {
                                             <i className="fab fa-facebook-square"></i>
                                             <h6>Facebook</h6>
                                             <a className="social-icon text-dark" href="http://www.facebook.com/DGClean"
-                                            target="_blank">@DGClean</a>
+                                                target="_blank">@DGClean</a>
+                                        </div>
+                                    </div>
+                                    <div className="col-xl-4 col-lg-12 col-md-12">
+                                        <div className="support-service bg-danger br-2 mb-4 mb-xl-0">
+                                            <i className="fas fa-info-circle"></i>
+                                            <h6>Su consulta no molesta!</h6>
+                                            <p>Atención las 24 hs</p>
                                         </div>
                                     </div>
                                 </div>
