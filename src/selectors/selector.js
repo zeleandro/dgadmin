@@ -55,3 +55,14 @@ export const selectMin = (products) => {
 
 	return Math.floor(low.price);
 };
+
+//Select products on sale
+export const selectOnSale = (products, filter) => {
+	if (!products || products.length === 0) return [];
+
+	return products.filter((product) => {
+		const matchOnSale = product.onSale ? product.onSale == true : false;
+
+		return (matchOnSale);
+	});
+};

@@ -67,7 +67,7 @@ function* productSaga({ type, payload }) {
 				const result = yield call(firebase.getProductsOnSale, payload);
 
 				yield put(getProductsOnSaleSuccess({
-					products: result.products,
+					productsOnSale: result.products,
 					lastKey: result.lastKey ? result.lastKey : state.products.lastRefKey,
 					total: result.total ? result.total : state.products.total
 				}));

@@ -165,7 +165,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 						</div>
 						&nbsp;
 						<div className="product-form-field">
-							<span class="d-block padding-s">Marca</span>
+							<span className="d-block padding-s">Marca</span>
 							<select
 								name="brand"
 								className="filters-brand"
@@ -181,7 +181,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 							</select>
 						</div>
 						<div className="product-form-field">
-							<span class="d-block padding-s">Categoría</span>
+							<span className="d-block padding-s">Categoría</span>
 							<select
 								name="category"
 								className="filters-category"
