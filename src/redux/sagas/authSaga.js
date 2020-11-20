@@ -33,19 +33,19 @@ function* handleError(e) {
 
 	switch (e.code) {
 		case 'auth/network-request-failed':
-			yield put(setAuthStatus({ ...obj, message: 'Network error has occured. Please try again.' }));
+			yield put(setAuthStatus({ ...obj, message: 'Ha ocurrido un error en la red. Intente nuevamente.' }));
 			break;
 		case 'auth/email-already-in-use':
-			yield put(setAuthStatus({ ...obj, message: 'Email is already in use. Please use another email' }));
+			yield put(setAuthStatus({ ...obj, message: 'Email ya está en uso. Use otro Email' }));
 			break;
 		case 'auth/wrong-password':
-			yield put(setAuthStatus({ ...obj, message: 'Incorrect email or password' }));
+			yield put(setAuthStatus({ ...obj, message: 'Email o contraseña incorrecta' }));
 			break;
 		case 'auth/user-not-found':
-			yield put(setAuthStatus({ ...obj, message: 'Incorrect email or password' }));
+			yield put(setAuthStatus({ ...obj, message: 'Email o contraseña incorrecta' }));
 			break;
 		case 'auth/reset-password-error':
-			yield put(setAuthStatus({ ...obj, message: 'Failed to send password reset email. Did you type your email correctly?' }));
+			yield put(setAuthStatus({ ...obj, message: 'Ha ocurrido un error. Escribió el email correctamente?' }));
 			break;
 		default:
 			yield put(setAuthStatus({ ...obj, message: e.message }));
@@ -145,7 +145,7 @@ function* authSaga({ type, payload }) {
 				yield put(setAuthStatus({
 					success: true,
 					type: 'reset',
-					message: 'Password reset email has been sent to your provided email.'
+					message: 'Se ha enviado un email para restablecer su contraseña.'
 				}));
 				yield put(setAuthenticating(false));
 			} catch (e) {
@@ -156,7 +156,7 @@ function* authSaga({ type, payload }) {
 			yield put(setAuthStatus({
 				success: true,
 				type: 'auth',
-				message: 'Successfully signed in. Redirecting...'
+				message: 'Ingreso exitoso. Redireccionando...'
 			}));
 			// yield call(history.push, '/');
 
