@@ -139,7 +139,7 @@ const SignIn = (props) => {
 											<span>Olvidó su contraseña?</span>
 										</Link>
 										<button
-											className="button signin-button"
+											className="btn btn-lg btn-info"
 											disabled={isSigningIn}
 											type="submit"
 										>

@@ -176,7 +176,7 @@ const SignUp = (props) => {
 							<br />
 							<div className="signup-field signup-action">
 								<button
-									className="button signup-button"
+									className="btn btn-lg btn-info"
 									disabled={isSigningUp}
 									type="submit"
 								>

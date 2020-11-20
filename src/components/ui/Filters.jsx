@@ -151,7 +151,7 @@ const Filters = (props) => {
 				<br />
 				<br />
 				<select
-					className="form-control select2-show-search border-bottom-0 select2-hidden-accessible"
+					className="filters-brand"
 					value={field.sortBy}
 					disabled={props.isLoading || props.productsCount === 0}
 					onChange={onSortFilterChange}
@@ -163,7 +163,7 @@ const Filters = (props) => {
 					<option value="price-asc">Precio Menor - Mayor</option>
 				</select>
 			</div>
-			<div className="filters-field">
+			{/* <div className="filters-field">
 				<span>Rango de Precios</span>
 				<br />
 				<br />
@@ -180,17 +180,17 @@ const Filters = (props) => {
 							productsLength={props.productsCount}
 						/>
 					)}
-			</div>
+			</div> */}
 			<div className="filters-action">
 				<button
-					className="btn btn-success"
+					className="btn btn-success btn-lg"
 					disabled={props.isLoading || props.productsCount === 0}
 					onClick={onApplyFilter}
 				>
 					Aplicar filtros
         		</button>
 				<button
-					className="btn btn-info"
+					className="btn btn-info btn-lg"
 					disabled={props.isLoading || props.productsCount === 0}
 					onClick={onResetFilter}
 				>

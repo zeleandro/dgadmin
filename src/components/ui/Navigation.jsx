@@ -17,21 +17,21 @@ const Navigation = ({ isAuth }) => {
 	const navbar = useRef(null);
 	const history = useHistory();
 	const { pathname } = useLocation();
-	const scrollHandler = () => {
-		if (navbar.current && window.screen.width > 480) {
-			if (window.pageYOffset >= 70) {
-				navbar.current.classList.add('is-nav-scrolled');
-			} else {
-				navbar.current.classList.remove('is-nav-scrolled');
-			}
-		}
-	};
+	// const scrollHandler = () => {
+	// 	if (navbar.current && window.screen.width > 480) {
+	// 		if (window.pageYOffset >= 70) {
+	// 			navbar.current.classList.add('is-nav-scrolled');
+	// 		} else {
+	// 			navbar.current.classList.remove('is-nav-scrolled');
+	// 		}
+	// 	}
+	// };
 
-	useEffect(() => {
-		window.addEventListener('scroll', scrollHandler);
+	// useEffect(() => {
+	// 	window.addEventListener('scroll', scrollHandler);
 
-		return () => window.removeEventListener('scroll', scrollHandler);
-	}, []);
+	// 	return () => window.removeEventListener('scroll', scrollHandler);
+	// }, []);
 
 	const store = useSelector(state => ({
 		filter: state.filter,
@@ -98,7 +98,7 @@ const Navigation = ({ isAuth }) => {
 								{pathname !== ROUTE.SIGNUP && (
 									<NavLink
 										activeClassName="navigation-menu-active"
-										className="button button-small"
+										className="btn btn-lg btn-block btn-secondary margin-right-s"
 										exact
 										onClick={onClickLink}
 										to={ROUTE.SIGNUP}
@@ -109,7 +109,7 @@ const Navigation = ({ isAuth }) => {
 								{pathname !== ROUTE.SIGNIN && (
 									<NavLink
 										activeClassName="navigation-menu-active"
-										className="button button-small button-muted margin-left-s"
+										className="btn btn-info btn-lg margin-right-s"
 										exact
 										onClick={onClickLink}
 										to={ROUTE.SIGNIN}

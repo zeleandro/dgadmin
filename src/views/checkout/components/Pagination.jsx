@@ -12,7 +12,7 @@ const Pagination = ({
 		<div className="checkout-shipping-action">
 			{previousVisible && (
 				<button
-					className="button button-muted"
+					className="btn btn-lg btn-secondary"
 					onClick={onClickPrevious}
 					type="button"
 				>
@@ -20,7 +20,7 @@ const Pagination = ({
 				</button>
 			)}
 			<button
-				className="button"
+				className="btn btn-lg btn-info"
 				disabled={disabledNext}
 				onClick={onClickNext}
 			>

@@ -27,7 +27,7 @@ const Menu = (props) => {
 						<div className={`overlapblackbg${isMenu ? ' dos-activo' : ''}`} onClick={handleMenu} ></div>
 							<ul className={`horizontalMenu-list${isMenu ? ' tres-activo' : ''}`}>
 							<li aria-haspopup="true">
-								<Link to="/products" onClick={handleMenu}>
+								<Link to="/" onClick={handleMenu}>
 									Productos
                                 </Link>
 							</li>
