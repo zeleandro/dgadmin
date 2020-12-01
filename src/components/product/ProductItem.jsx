@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { useDispatch } from 'react-redux';
@@ -14,6 +14,7 @@ const ProductItem = ({
 }) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
+	const [cantidad, setCantidad] = useState(1)
 
 	const onClickItem = () => {
 		if (isLoading) return;
@@ -28,10 +29,20 @@ const ProductItem = ({
 			dispatch(removeFromBasket(product.id));
 			displayActionMessage('Se eliminó el producto del carrito', 'info');
 		} else {
+			product.quantity = cantidad;
 			dispatch(addToBasket(product));
 			displayActionMessage('Se agregó el producto al carrito', 'success');
 		}
 	};
+
+	const onChange = (e) => {
+		switch (e.target.name) {
+			case 'cantidad': {
+				setCantidad(e.target.value)
+			}
+			default: { }
+		}
+	}
 
 	return (
 		<div className="col-lg-3 col-md-12">
@@ -43,10 +54,10 @@ const ProductItem = ({
 			>
 				{
 					(product.onSale == true)
-					? <div className="arrow-ribbon-2 bg-primary">
-						Oferta
+						? <div className="arrow-ribbon-2 bg-primary">
+							Oferta
 					</div>
-					: <div></div>
+						: <div></div>
 				}
 				{isItemOnBasket && <i className="fa fa-check product-card-check" />}
 				<div className="product-card-img-wrapper" onClick={onClickItem}>
@@ -66,13 +77,15 @@ const ProductItem = ({
 				</div>
 				<div className="card-footer">
 					<div className="product-item-wrap d-flex">
+						<div className="product-item-price">
+							<input placeholder="1" name="cantidad" value={cantidad} onChange={onChange}></input>
+						</div>
 						<button className={`btn btn-info btn-lg mr-auto ${isItemOnBasket ? 'btn btn-danger btn-lg mr-auto' : ''}`} onClick={onAddToBasket}>
 							{isItemOnBasket ? 'Quitar del carrito' : 'Agregar al carrito'}
 						</button>
 						<div className="product-item-price">
 							<span className="newprice text-dark">${product.price}</span>
 						</div>
-
 					</div>
 				</div>
 			</div>
