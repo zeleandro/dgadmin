@@ -25,14 +25,14 @@ class Contact extends Component {
                                         <div className="support-service bg-success br-2 mb-4 mb-xl-0">
                                             <i className="fab fa-facebook-square"></i>
                                             <h6>Facebook</h6>
-                                            <a className="social-icon text-dark" href="http://www.facebook.com/DGClean"
-                                                target="_blank">@DGClean</a>
+                                            <a className="social-icon text-dark" href="https://www.facebook.com/dgclean.limpieza"
+                                                target="_blank">@dgclean.limpieza</a>
                                         </div>
                                     </div>
                                     <div className="col-xl-4 col-lg-12 col-md-12">
                                         <div className="support-service bg-danger br-2 mb-4 mb-xl-0">
                                             <i className="fas fa-info-circle"></i>
-                                            <h6>Su consulta no molesta!</h6>
+                                            <h6>Su consulta no es molestia!</h6>
                                             <p>Atención las 24 hs</p>
                                         </div>
                                     </div>
