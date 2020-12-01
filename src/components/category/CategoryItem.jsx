@@ -23,7 +23,7 @@ const CategoryItem = ({
 	};
 
 	return (
-		<div class="col-xl-3  col-md-12">
+		<div className="col-xl-3  col-md-12">
 			<div className={`card ${!category.id ? 'product-loading' : ''}`}>
 						<div className="item-card">
 							<div className="item-card-desc">
@@ -31,7 +31,7 @@ const CategoryItem = ({
 								<div className="item-card-img">
 									<img src={img} alt="img" className="br-tr-7 br-tl-7" />
 								</div>
-								<div class="item-card-text">
+								<div className="item-card-text">
 									<h4 className="mb-0">{category.name}</h4>
 								</div>
 							</div>

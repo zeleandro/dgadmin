@@ -13,7 +13,8 @@ export const selectFilter = (products, filter) => {
 		const matchBrand = product.brand ? product.brand.toLowerCase().includes(filter.brand) : true;
 		const matchCategory = product.category ? product.category.toLowerCase().includes(filter.category) : true;
 
-		return ((matchKeyword || matchName || matchDescription) && matchBrand && matchCategory && isInRange);
+		// return ((matchKeyword || matchName || matchDescription) && matchBrand && matchCategory && isInRange);
+		return (matchName && matchBrand && matchCategory && isInRange);
 	}).sort((a, b) => {
 		if (filter.sortBy === 'name-desc') {
 			return a.name < b.name ? 1 : -1;
