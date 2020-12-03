@@ -42,7 +42,7 @@ const Category = () => {
             <div className="col-xl-12 col-lg-12 col-md-12">
                 <div className="card mb-lg-0">
                     <div className="card-body">
-                        {!store.requestStatus && (
+                        {/* {!store.requestStatus && (
                             <div className="product-list-header">
                                 <div className="product-list-header-title">
                                     {(
@@ -54,7 +54,7 @@ const Category = () => {
                                     )}
                                 </div>
                             </div>
-                        )}
+                        )} */}
                         <Boundary>
                             <CategoryList {...store}>
                                 {() => (

@@ -24,6 +24,7 @@ const ProductList = (props) => {
 
 		window.scrollTo(0, 0);
 		return () => dispatch(setLoading(false));
+		
 	}, []);
 
 	useEffect(() => {

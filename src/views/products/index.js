@@ -38,7 +38,7 @@ const Product = ({history}) => {
 		products: state.products.items,
 		lastRefKey: state.products.lastRefKey,
 		productsCount: state.products.items.length,
-		totalProductsCount: state.products.total,
+		totalProductsCount: state.products.total
 	}));
 
 	const onProductsLengthChanged = () => {
@@ -65,7 +65,6 @@ const Product = ({history}) => {
 
 	return (
 		<>
-
 			<div className="col-xl-12 col-lg-12 col-md-12">
 				<div className="card mb-lg-0">
 					<div className="card-body">
