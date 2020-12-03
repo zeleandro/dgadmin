@@ -92,12 +92,19 @@ video {
 }
 
 .desktoplogo {
-	padding: 1.5rem 0;
+	padding: 0.5rem 0;
 	margin: 0;
 	float: left;
 	img {
-		width: 100%;
+		width: 40%;
 	}
+}
+
+.img-header{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
 }
 
 .horizontalMenu {

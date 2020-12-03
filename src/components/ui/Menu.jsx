@@ -32,8 +32,10 @@ const Menu = (props) => {
 						<div className="desktoplogo">
 							<div className="text-center">
 								<Link to="/" onClick={handleMenu}>
-									{/* <span className="smllogo"><img src={logo} width="120" alt="" /></span> */}
-									<h1 className="font-weight-bold">DG Limpieza</h1>
+									<div className="row img-header">
+										<img src={logo} alt="" />
+										<h2 className="font-weight-bold">DG Limpieza</h2>
+									</div>
 								</Link>
 							</div>
 						</div>
