@@ -77,18 +77,26 @@ const ProductItem = ({
 				</div>
 
 				<div className="card-body">
-				
-					<div className="product-item-price">
-					
+
+					{/* <div className="product-item-price">
+
 						<span >Cantidad : </span>
-						<input  className="input-card" placeholder="1" name="cantidad" value={cantidad} onChange={onChange}></input>
-					</div> 
+						<input className="input-card" placeholder="1" name="cantidad" value={cantidad} onChange={onChange}></input>
+					</div> */}
+
+					<div className="input-group mb-3">
+						<div className="input-group-prepend">
+							<span className="input-group-text" id="basic-addon3">Cantidad</span>
+						</div>
+						<input type="text" className="form-control" id="cantidad" aria-describedby="basic-addon3"
+						placeholder="1" name="cantidad" value={cantidad} onChange={onChange}></input>
+					</div>
 
 				</div>
 				<div className="card-footer">
-					
+
 					<div className="product-item-wrap d-flex">
-						
+
 						<button className={`btn btn-info btn-lg mr-auto ${isItemOnBasket ? 'btn btn-danger btn-lg mr-auto' : ''}`} onClick={onAddToBasket}>
 							{isItemOnBasket ? 'Quitar del carrito' : 'Agregar al carrito'}
 						</button>

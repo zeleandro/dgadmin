@@ -26,11 +26,11 @@ const UserAccount = () => {
 					<UserAccountTab />
 				</Suspense>
 			</div>
-			<div index={1} label="Mi Lista de Deseos">
+			{/* <div index={1} label="Mi Lista de Deseos">
 				<Suspense fallback={<Loader />}>
 					<UserWishListTab />
 				</Suspense>
-			</div>
+			</div> */}
 			<div index={2} label="Mis Pedidos">
 				<Suspense fallback={<Loader />}>
 					<UserOrdersTab />

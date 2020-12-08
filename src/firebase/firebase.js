@@ -145,7 +145,8 @@ class Firebase {
 		return new Promise(async (resolve, reject) => {
 			if (lastRefKey) {
 				try {
-					const query = this.db.collection('products').orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey).limit(1000);
+					// const query = this.db.collection('products').orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey).limit(1000);
+					const query = this.db.collection('products').orderBy('name').startAfter(lastRefKey).limit(1000);
 					const snapshot = await query.get();
 					const products = [];
 					snapshot.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
@@ -170,7 +171,8 @@ class Firebase {
 
 					const totalQuery = await this.db.collection('products').get();
 					const total = totalQuery.docs.length;
-					const query = this.db.collection('products').orderBy(app.firestore.FieldPath.documentId()).limit(1000);
+					// const query = this.db.collection('products').orderBy(app.firestore.FieldPath.documentId()).limit(1000);
+					const query = this.db.collection('products').orderBy('name').limit(1000);
 					const snapshot = await query.get();
 
 					clearTimeout(timeout);

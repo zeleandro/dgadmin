@@ -125,7 +125,7 @@ const Basket = (props) => {
 						disabled={basket.length === 0 || pathname === '/checkout'}
 						onClick={onCheckOut}
 					>
-						Finalizar
+						Comprar
 					</button>
 				</div>
 			</div>

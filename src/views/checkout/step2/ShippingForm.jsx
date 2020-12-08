@@ -54,10 +54,10 @@ const ShippingForm = ({ setField, field }) => {
 						<Input
 							field="fullname"
 							isRequired
-							label="* Full Name"
+							label="* Nombre Completo"
 							maxLength={40}
 							onInputChange={onFullNameInput}
-							placeholder="Your Full Name"
+							placeholder="Nombre Completo"
 							style={{ textTransform: 'capitalize' }}
 							type="text"
 							value={field.fullname.value}
@@ -70,7 +70,7 @@ const ShippingForm = ({ setField, field }) => {
 							label="* Email"
 							maxLength={40}
 							onInputChange={onEmailInput}
-							placeholder="Your Email"
+							placeholder="Email"
 							type="email"
 							value={field.email.value}
 						/>
@@ -81,24 +81,24 @@ const ShippingForm = ({ setField, field }) => {
 						<Input
 							field="address"
 							isRequired
-							label="* Shipping Address"
+							label="* Direccion de Envio"
 							maxLength={120}
 							onInputChange={onAddressInput}
-							placeholder="Full Shipping Address"
+							placeholder="Direccion de Envio"
 							type="text"
 							value={field.address.value}
 						/>
 					</div>
 					<div className="d-block checkout-field">
 						{errorMobile ? <span className="input-message">{errorMobile}</span> : (
-							<span className="d-block padding-s">* Mobile Number</span>
+							<span className="d-block padding-s">* Telefono Celular</span>
 						)}
 						<PhoneInput
 							country={'ar'}
 							inputClass={`input-form d-block ${errorClassName('mobile')}`}
 							inputExtraProps={{ required: true }}
 							// eslint-disable-next-line quote-props
-							masks={{ 'ar': '+.. ..... ... ...' }}
+							masks={{ 'ar': '... .......' }}
 							onChange={onMobileInput}
 							placeholder="09264538861"
 							value={field.mobile.data.num}
