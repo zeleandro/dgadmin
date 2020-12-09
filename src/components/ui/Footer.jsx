@@ -20,7 +20,7 @@ const Footer = () => {
 							<div className="col-lg-2 col-md-12">
 								<h6>Redes Sociales</h6>
 								<ul className="list-unstyled mb-0">
-									<li><a target="blank" href="https://www.facebook.com/DGClean">Facebook: DGClean</a></li>
+									<li><a target="blank" href="https://www.facebook.com/dgclean.limpieza">Facebook: dgclean.limpieza</a></li>
 									<li><a target="blank" href="https://www.instagram.com/dg.clean/">Instagram: @dg.clean</a></li>
 								</ul>
 							</div>
@@ -50,7 +50,7 @@ const Footer = () => {
 							<div className="col-lg-4 col-sm-12 ml-auto mb-2 mt-2">
 								<ul className="social mb-0">
 									<li>
-										<a className="social-icon" target="blank" href="https://www.facebook.com/DGClean"><i className="fa fa-facebook"></i></a>
+										<a className="social-icon" target="blank" href="https://www.facebook.com/dgclean.limpieza"><i className="fa fa-facebook"></i></a>
 									</li>
 									<li>
 										<a className="social-icon" target="blank" href="https://www.instagram.com/dg.clean"><i className="fab fa-instagram"></i></a>
