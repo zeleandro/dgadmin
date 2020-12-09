@@ -21,6 +21,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 		brand: { value: product ? defaultProduct.brand : 'DGClean' },
 		category: { value: product ? defaultProduct.category : '' },
 		price: { value: product ? defaultProduct.price : 0 },
+		regularPrice: { value: product ? defaultProduct.regularPrice : 0 },
 		maxQuantity: { value: product ? defaultProduct.maxQuantity : 0 },
 		description: { value: product ? defaultProduct.description : '' },
 		keywords: { value: product ? defaultProduct.keywords : [''] },
@@ -101,6 +102,10 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 
 	const onProductPriceInput = (value, error) => {
 		setField({ ...field, price: { value: sanitizeNumber(value), error } });
+	};
+
+	const onProductRegularPriceInput = (value, error) => {
+		setField({ ...field, regularPrice: { value: sanitizeNumber(value), error } });
 	};
 
 	const onProductDescriptionInput = (value, error) => {
@@ -228,6 +233,18 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 						&nbsp;
 						<div className="product-form-field">
 							<Input
+								field="regularPrice"
+								label="Precio Anterior"
+								onInputChange={onProductRegularPriceInput}
+								placeholder="Solo números"
+								readOnly={isLoading}
+								type="number"
+								value={field.regularPrice.value}
+							/>
+						</div>
+						&nbsp;
+						<div className="product-form-field">
+							<Input
 								field="maxQuantity"
 								label="Stock"
 								onInputChange={onProductMaxQuantityInput}
@@ -350,6 +367,7 @@ ProductForm.propTypes = {
 		brand: PropTypes.string,
 		category: PropTypes.string,
 		price: PropTypes.number,
+		regularPrice: PropTypes.number,
 		maxQuantity: PropTypes.number,
 		description: PropTypes.string,
 		keywords: PropTypes.arrayOf(PropTypes.string),
