@@ -146,7 +146,7 @@ class Firebase {
 			if (lastRefKey) {
 				try {
 					// const query = this.db.collection('products').orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey).limit(1000);
-					const query = this.db.collection('products').orderBy('name').startAfter(lastRefKey).limit(1000);
+					const query = this.db.collection('products').orderBy('name').startAfter(lastRefKey);
 					const snapshot = await query.get();
 					const products = [];
 					snapshot.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
@@ -169,11 +169,12 @@ class Firebase {
 					// better than making a query from firebase
 					// NOT AVAILEBLE IN FIRESTORE const request = await fetch(`${process.env.FIREBASE_DB_URL}/products.json?shallow=true`);
 
-					const totalQuery = await this.db.collection('products').get();
-					const total = totalQuery.docs.length;
+					// const totalQuery = await this.db.collection('products').get();
+					// const total = totalQuery.docs.length;
 					// const query = this.db.collection('products').orderBy(app.firestore.FieldPath.documentId()).limit(1000);
-					const query = this.db.collection('products').orderBy('name').limit(1000);
+					const query = this.db.collection('products').orderBy('name');
 					const snapshot = await query.get();
+					const total = snapshot.docs.length;
 
 					clearTimeout(timeout);
 					if (!didTimeout) {
@@ -191,6 +192,51 @@ class Firebase {
 			}
 		});
 	}
+
+	// getProductsAdmin = (lastRefKey) => {
+	// 	let didTimeout = false;
+
+	// 	return new Promise(async (resolve, reject) => {
+	// 		if (lastRefKey) {
+	// 			try {
+	// 				const query = this.db.collection('products').orderBy('name').startAfter(lastRefKey);
+	// 				const snapshot = await query.get();
+	// 				const products = [];
+	// 				snapshot.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
+	// 				const lastKey = snapshot.docs[snapshot.docs.length - 1];
+
+	// 				resolve({ products, lastKey });
+	// 			} catch (e) {
+	// 				reject(new Error(':( Failed to fetch products.'));
+	// 			}
+	// 		} else {
+	// 			const timeout = setTimeout(() => {
+	// 				didTimeout = true;
+	// 				reject(new Error('Request timeout, please try again'));
+	// 			}, 15000);
+
+	// 			try {
+	// 				const totalQuery = await this.db.collection('products').get();
+	// 				const total = totalQuery.docs.length;
+	// 				const query = this.db.collection('products').orderBy('name');
+	// 				const snapshot = await query.get();
+
+	// 				clearTimeout(timeout);
+	// 				if (!didTimeout) {
+	// 					const products = [];
+	// 					snapshot.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
+	// 					const lastKey = snapshot.docs[snapshot.docs.length - 1];
+
+	// 					resolve({ products, lastKey, total });
+	// 				}
+	// 			} catch (e) {
+	// 				if (didTimeout) return;
+	// 				console.log('Failed to fetch products: An error occured while trying to fetch products or there may be no product ', e);
+	// 				reject(new Error(':( Failed to fetch products.'));
+	// 			}
+	// 		}
+	// 	});
+	// }
 
 
 	addProduct = (id, product) => this.db.collection('products').doc(id).set(product);
