@@ -74,6 +74,13 @@ const ViewProduct = () => {
                 </div>
             )}
             <div className="product-modal-image-wrapper">
+                {
+                    (product.onSale == true)
+                        ? <div className="arrow-ribbon-2 bg-primary">
+                            Oferta
+					</div>
+                        : <div></div>
+                }
                 <ImageLoader
                     className="product-modal-image"
                     src={selectedImage}
@@ -91,6 +98,12 @@ const ViewProduct = () => {
                 <br />
                 <span>{product.description}</span>
                 <br />
+                <br />
+                {
+                    (product.regularPrice)
+                        ? <h2 className="text-muted"><del>${product.regularPrice}</del></h2>
+                        : ''
+                }
                 <h1>{displayMoney(product.price)}</h1>
                 <div className="product-modal-action">
                     <button
