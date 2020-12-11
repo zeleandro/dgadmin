@@ -30,8 +30,8 @@ const BasketItemControl = ({ product, dispatch }) => {
 
 	return (
 		<React.Fragment>
-		<div className="basket-item-control">
-			{/*<button
+		{/* <div className="basket-item-control">
+			<button
 				className="button button-border button-border-gray button-small basket-control basket-control-add"
 				
 				onClick={onAddQty}
@@ -44,10 +44,10 @@ const BasketItemControl = ({ product, dispatch }) => {
 				onClick={onMinusQty}
 			>
 				-
-			</button>*/}
+			</button>
 			
 			
-		</div>
+		</div> */}
 			<input type="number" className="form-control h-5 input-basket" name="quantity" value={quantity}
 			onChange={onChange}></input>
 			</React.Fragment>)
