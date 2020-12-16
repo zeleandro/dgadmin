@@ -1,3 +1,21 @@
+.menu-activo{
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	visibility: visible !important;
+	z-index: 1000;
+	top: 0;
+	height: 100% !important;
+}
+
+.dos-activo{
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+.tres-activo{
+	transition: all 0.25s ease-in-out;
+	margin-left: 0 !important;
+}
 .horizontalMenu {
 	html,
 	body,
@@ -1090,7 +1108,7 @@ video {
 	}
 	/* ================== Mobile Overlay/Drawer CSS ================== */
 	.overlapblackbg {
-		right: 0;
+		right: 0 !important;
 		width: calc(100% - 240px);
 		height: 100vh;
 		min-height: 100%;
