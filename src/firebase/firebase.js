@@ -113,10 +113,11 @@ class Firebase {
 				}, 15000);
 
 				try {
-					const totalQuery = await this.db.collection('users').get();
-					const total = totalQuery.docs.length;
-					const query = this.db.collection('users').orderBy(app.firestore.FieldPath.documentId()).limit(12);
+					// const totalQuery = await this.db.collection('users').get();
+					// const total = totalQuery.docs.length;
+					const query = this.db.collection('users').orderBy(app.firestore.FieldPath.documentId()).limit(1000);
 					const snapshot = await query.get();
+					const total = snapshot.docs.length;
 
 					clearTimeout(timeout);
 					if (!didTimeout) {
@@ -197,46 +198,55 @@ class Firebase {
 	// 	let didTimeout = false;
 
 	// 	return new Promise(async (resolve, reject) => {
-	// 		if (lastRefKey) {
-	// 			try {
-	// 				const query = this.db.collection('products').orderBy('name').startAfter(lastRefKey);
-	// 				const snapshot = await query.get();
+	// 		try {
+	// 			const query = this.db.collection('products').orderBy('name');
+	// 			const snapshot = await query.get();
+	// 			const total = snapshot.docs.length;
+
+	// 			clearTimeout(timeout);
+	// 			if (!didTimeout) {
 	// 				const products = [];
 	// 				snapshot.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
 	// 				const lastKey = snapshot.docs[snapshot.docs.length - 1];
 
-	// 				resolve({ products, lastKey });
-	// 			} catch (e) {
-	// 				reject(new Error(':( Failed to fetch products.'));
+	// 				resolve({ products, lastKey, total });
 	// 			}
-	// 		} else {
-	// 			const timeout = setTimeout(() => {
-	// 				didTimeout = true;
-	// 				reject(new Error('Request timeout, please try again'));
-	// 			}, 15000);
-
-	// 			try {
-	// 				const totalQuery = await this.db.collection('products').get();
-	// 				const total = totalQuery.docs.length;
-	// 				const query = this.db.collection('products').orderBy('name');
-	// 				const snapshot = await query.get();
-
-	// 				clearTimeout(timeout);
-	// 				if (!didTimeout) {
-	// 					const products = [];
-	// 					snapshot.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
-	// 					const lastKey = snapshot.docs[snapshot.docs.length - 1];
-
-	// 					resolve({ products, lastKey, total });
-	// 				}
-	// 			} catch (e) {
-	// 				if (didTimeout) return;
-	// 				console.log('Failed to fetch products: An error occured while trying to fetch products or there may be no product ', e);
-	// 				reject(new Error(':( Failed to fetch products.'));
-	// 			}
+	// 		} catch (e) {
+	// 			if (didTimeout) return;
+	// 			console.log('Failed to fetch products: An error occured while trying to fetch products or there may be no product ', e);
+	// 			reject(new Error(':( Failed to fetch products.'));
 	// 		}
 	// 	});
 	// }
+
+	getProductsByCategory = (category) => {
+		let didTimeout = false;
+
+		return new Promise(async (resolve, reject) => {
+			const timeout = setTimeout(() => {
+				didTimeout = true;
+				reject(new Error('Request timeout, please try again'));
+			}, 15000);
+			try {
+				const query = this.db.collection('products').where("category", "==", category).orderBy('name');
+				const snapshot = await query.get();
+				const total = snapshot.docs.length;
+
+				clearTimeout(timeout);
+				if (!didTimeout) {
+					const products = [];
+					snapshot.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
+					const lastKey = snapshot.docs[snapshot.docs.length - 1];
+
+					resolve({ products, lastKey, total });
+				}
+			} catch (e) {
+				if (didTimeout) return;
+				console.log('Ha ocurrido un error o no hay productos que mostrar ', e);
+				reject(new Error(':( Ha ocurrido un error.'));
+			}
+		});
+	}
 
 
 	addProduct = (id, product) => this.db.collection('products').doc(id).set(product);
@@ -263,7 +273,7 @@ class Firebase {
 			if (lastRefKey) {
 				try {
 					const query = this.db.collection('products').where("onSale", "==", "true")
-						.orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey).limit(12);
+						.orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey);
 					const snapshot = await query.get();
 					const products = [];
 					snapshot.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
@@ -286,11 +296,12 @@ class Firebase {
 					// better than making a query from firebase
 					// NOT AVAILEBLE IN FIRESTORE const request = await fetch(`${process.env.FIREBASE_DB_URL}/products.json?shallow=true`);
 
-					const totalQuery = await this.db.collection('products').get();
-					const total = totalQuery.docs.length;
+					// const totalQuery = await this.db.collection('products').get();
+					// const total = totalQuery.docs.length;
 					const query = this.db.collection('products').where("onSale", "==", "true")
-						.orderBy(app.firestore.FieldPath.documentId()).limit(12);
+						.orderBy(app.firestore.FieldPath.documentId());
 					const snapshot = await query.get();
+					const total = snapshot.docs.length;
 
 					clearTimeout(timeout);
 					if (!didTimeout) {
@@ -389,10 +400,11 @@ class Firebase {
 				}, 15000);
 
 				try {
-					const totalQuery = await this.db.collection('brands').get();
-					const total = totalQuery.docs.length;
-					const query = this.db.collection('brands').orderBy(app.firestore.FieldPath.documentId()).limit(100);
+					// const totalQuery = await this.db.collection('brands').get();
+					// const total = totalQuery.docs.length;
+					const query = this.db.collection('brands').orderBy(app.firestore.FieldPath.documentId());
 					const snapshot = await query.get();
+					const total = snapshot.docs.length;
 
 					clearTimeout(timeout);
 					if (!didTimeout) {
@@ -442,10 +454,11 @@ class Firebase {
 				}, 15000);
 
 				try {
-					const totalQuery = await this.db.collection('categories').get();
-					const total = totalQuery.docs.length;
-					const query = this.db.collection('categories').orderBy(app.firestore.FieldPath.documentId()).limit(100);
+					// const totalQuery = await this.db.collection('categories').get();
+					// const total = totalQuery.docs.length;
+					const query = this.db.collection('categories').orderBy(app.firestore.FieldPath.documentId());
 					const snapshot = await query.get();
+					const total = snapshot.docs.length;
 
 					clearTimeout(timeout);
 					if (!didTimeout) {

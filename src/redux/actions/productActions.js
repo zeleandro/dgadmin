@@ -10,6 +10,8 @@ import {
 	CANCEL_GET_PRODUCTS,
 	GET_PRODUCTS_ONSALE,
 	GET_PRODUCTS_ONSALE_SUCCESS,
+	GET_PRODUCTS_BYCATEGORY,
+	GET_PRODUCTS_BYCATEGORY_SUCCESS
 } from 'constants/constants';
 
 export const getProducts = lastRef => ({
@@ -29,6 +31,16 @@ export const getProductsOnSale = lastRef => ({
 
 export const getProductsOnSaleSuccess = products => ({
 	type: GET_PRODUCTS_ONSALE_SUCCESS,
+	payload: products
+});
+
+export const getProductsByCategory = category => ({
+	type: GET_PRODUCTS_BYCATEGORY,
+	payload: category
+});
+
+export const getProductsByCategorySuccess = products => ({
+	type: GET_PRODUCTS_BYCATEGORY_SUCCESS,
 	payload: products
 });
 

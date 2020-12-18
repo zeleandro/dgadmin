@@ -7,14 +7,17 @@ import {
 	SET_REQUEST_STATUS,
 	GET_PRODUCTS,
 	GET_PRODUCTS_ONSALE,
+	GET_PRODUCTS_BYCATEGORY,
 	ADD_PRODUCT,
 	EDIT_PRODUCT,
-	REMOVE_PRODUCT
+	REMOVE_PRODUCT,
+	GET_PRODUCTS_BYCATEGORY_SUCCESS
 } from 'constants/constants';
 
 import {
 	getProductsSuccess,
 	getProductsOnSaleSuccess,
+	getProductsByCategorySuccess,
 	addProductSuccess,
 	editProductSuccess,
 	removeProductSuccess
@@ -24,6 +27,7 @@ import { setLoading, setRequestStatus } from 'redux/actions/miscActions'
 import { displayActionMessage } from 'helpers/utils';
 import { history } from 'routers/AppRouter';
 import { ADMIN_PRODUCTS } from 'constants/routes';
+import products from 'views/admin/products';
 
 function* initRequest() {
 	yield put(setLoading(true));
@@ -73,6 +77,31 @@ function* productSaga({ type, payload }) {
 				}));
 				// yield put({ type: SET_LAST_REF_KEY, payload: result.lastKey });
 				yield put(setLoading(false));
+			} catch (e) {
+				yield handleError(e);
+			}
+			break;
+		case GET_PRODUCTS_BYCATEGORY:
+			console.log('en saga');
+			try {
+				yield initRequest();
+				const state = yield select();
+
+				console.log(state.products.loadedCategories);
+				const categoriasCargadas = state.products.loadedCategories;
+
+				if (!categoriasCargadas.find(element => element == payload)) {
+					const result = yield call(firebase.getProductsByCategory, payload);
+
+					yield put(getProductsByCategorySuccess({
+						products: result.products,
+						loadedCategories: payload,
+						lastKey: result.lastKey,
+						total: result.total
+					}));
+
+					yield put(setLoading(false));
+				}
 			} catch (e) {
 				yield handleError(e);
 			}

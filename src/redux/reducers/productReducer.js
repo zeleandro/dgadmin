@@ -3,12 +3,14 @@ import {
 	REMOVE_PRODUCT_SUCCESS,
 	EDIT_PRODUCT_SUCCESS,
 	GET_PRODUCTS_SUCCESS,
-	GET_PRODUCTS_ONSALE_SUCCESS
+	GET_PRODUCTS_ONSALE_SUCCESS,
+	GET_PRODUCTS_BYCATEGORY_SUCCESS
 } from 'constants/constants';
 
 export default (state = {
 	lastRefKey: null,
 	total: 0,
+	loadedCategories: [],
 	items: []
 }, action) => {
 	switch (action.type) {
@@ -24,6 +26,13 @@ export default (state = {
 				...state,
 				lastRefKey: action.payload.lastKey,
 				total: action.payload.total,
+				items: [...state.items, ...action.payload.products]
+			};
+		case GET_PRODUCTS_BYCATEGORY_SUCCESS:
+			return {
+				...state,
+				loadedCategories: [...state.loadedCategories, action.payload.loadedCategories],
+				total: state.total ? state.total + action.payload.total : action.payload.total,
 				items: [...state.items, ...action.payload.products]
 			};
 		case ADD_PRODUCT_SUCCESS:
