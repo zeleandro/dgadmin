@@ -20,38 +20,37 @@ const BasketItem = ({ dispatch, product }) => {
 				{/* <div className="position-relative margin-right-m margin-left-s">
 					<Badge count={product.quantity} />
 				</div> */}
-				<div className="basket-item-img-wrapper">
-					<ImageLoader
-						className="basket-item-img"
-						src={product.image}
-					/>
+				<div className="row">
+					<div className="basket-item-img-wrapper col-2">
+						<ImageLoader
+							className="basket-item-img"
+							src={product.image}
+						/>
+					</div>
+					<div className="basket-item-details col-5">
+						<h5 className="basket-item-name">
+							{product.name}
+						</h5>
+						<h5 className="basket-item-price">
+							{displayMoney(product.price)}
+							<span>{` (x ${product.quantity}) `}</span>
+						</h5>
+					</div>
+					<div className="basket-item-subtotal col-3">
+						<h5 className="basket-item-name">
+							Subtotal
+						</h5>
+						<h5 className="basket-item-price">
+							<span>{displayMoney(product.price * product.quantity)}</span>
+						</h5>
+					</div>
+					<button
+						className="col-1 basket-item-remove button button-border button-border-gray button-small"
+						onClick={onRemoveFromBasket}
+					>
+						<i className="fa fa-trash" />
+					</button>
 				</div>
-				<div className="basket-item-details">
-					<h5 className="basket-item-name">
-						{product.name}
-					</h5>
-					<h5 className="basket-item-price">
-						{displayMoney(product.price)}
-						<span>{` (x ${product.quantity}) `}</span>
-					</h5>
-				</div>
-				<div className="basket-item-subtotal">
-					<h5 className="basket-item-name">
-						Subtotal
-					</h5>
-					<h5 className="basket-item-price">
-						<span>{displayMoney(product.price * product.quantity)}</span>
-					</h5>
-				</div>
-				<div align="right"> 
-				<button
-					className="basket-item-remove button button-border button-border-gray button-small"
-					onClick={onRemoveFromBasket}
-				>
-					<i className="fa fa-trash" />
-				</button>
-				</div> 
-				
 			</div>
 		</div>
 	);

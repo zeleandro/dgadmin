@@ -142,10 +142,11 @@ class Firebase {
 
 	getProducts = (lastRefKey) => {
 		let didTimeout = false;
-
+		console.log("entrocua");
 		return new Promise(async (resolve, reject) => {
 			if (lastRefKey) {
 				try {
+					
 					// const query = this.db.collection('products').orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey).limit(1000);
 					const query = this.db.collection('products').orderBy('name').startAfter(lastRefKey);
 					const snapshot = await query.get();

@@ -9,7 +9,8 @@ const Menu = (props) => {
 	const [isMenu, setMenu] = useState(false);
 
 	const handleMenu = e => {
-		// isMenu ? setMenu(false) : setMenu(true)
+		 //isMenu ? setMenu(false) : setMenu(true)
+		 console.log("menu");
 		if (isMenu) {
 			dispatch(resetFilter());
 			setMenu(false)
@@ -20,7 +21,7 @@ const Menu = (props) => {
 	}
 	return (
 		<React.Fragment>
-			<div className={`horizontal-header clearfix sticky trelu${props.movil}`}>
+			<div className={`horizontal-header clearfix sticky trelu ${props.movil}`}>
 				<div className="container">
 					<a id="horizontal-navtoggle" onClick={handleMenu} className="animated-arrow"><span></span></a>
 					<span className="smllogo"><img src="../assets/images/brand/logo1.png" width="120" alt="" /></span>
