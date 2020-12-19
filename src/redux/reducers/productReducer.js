@@ -4,7 +4,8 @@ import {
 	EDIT_PRODUCT_SUCCESS,
 	GET_PRODUCTS_SUCCESS,
 	GET_PRODUCTS_ONSALE_SUCCESS,
-	GET_PRODUCTS_BYCATEGORY_SUCCESS
+	GET_PRODUCTS_BYCATEGORY_SUCCESS,
+	GET_PRODUCTS_FEATURED_SUCCESS
 } from 'constants/constants';
 
 export default (state = {
@@ -33,6 +34,13 @@ export default (state = {
 				...state,
 				loadedCategories: [...state.loadedCategories, action.payload.loadedCategories],
 				total: state.total ? state.total + action.payload.total : action.payload.total,
+				items: [...state.items, ...action.payload.products]
+			};
+		case GET_PRODUCTS_FEATURED_SUCCESS:
+			return {
+				...state,
+				lastRefKey: action.payload.lastKey,
+				total: action.payload.total,
 				items: [...state.items, ...action.payload.products]
 			};
 		case ADD_PRODUCT_SUCCESS:

@@ -11,13 +11,14 @@ import {
 	ADD_PRODUCT,
 	EDIT_PRODUCT,
 	REMOVE_PRODUCT,
-	GET_PRODUCTS_BYCATEGORY_SUCCESS
+	GET_PRODUCTS_FEATURED
 } from 'constants/constants';
 
 import {
 	getProductsSuccess,
 	getProductsOnSaleSuccess,
 	getProductsByCategorySuccess,
+	getProductsFeaturedSuccess,
 	addProductSuccess,
 	editProductSuccess,
 	removeProductSuccess
@@ -102,6 +103,23 @@ function* productSaga({ type, payload }) {
 
 					yield put(setLoading(false));
 				}
+			} catch (e) {
+				yield handleError(e);
+			}
+			break;
+		case GET_PRODUCTS_FEATURED:
+			try {
+				yield initRequest();
+				const state = yield select();
+				const result = yield call(firebase.getProductsFeatured, payload);
+
+				yield put(getProductsFeaturedSuccess({
+					productsFeatured: result.products,
+					lastKey: result.lastKey ? result.lastKey : state.products.lastRefKey,
+					total: result.total ? result.total : state.products.total
+				}));
+				// yield put({ type: SET_LAST_REF_KEY, payload: result.lastKey });
+				yield put(setLoading(false));
 			} catch (e) {
 				yield handleError(e);
 			}

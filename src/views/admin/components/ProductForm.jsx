@@ -27,7 +27,8 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 		keywords: { value: product ? defaultProduct.keywords : [''] },
 		imageUrl: { value: product ? defaultProduct.image : '' },
 		imageCollection: { value: product ? defaultProduct.imageCollection : [] },
-		onSale: { value: product ? defaultProduct.onSale : false }
+		onSale: { value: product ? defaultProduct.onSale : false },
+		featured: { value: product ? defaultProduct.featured : false }
 	});
 
 	const {
@@ -84,6 +85,15 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 		}
 	}
 
+	const onChangeFeatured = (e) => {
+		switch (e.target.name) {
+			case 'featured': {
+				onProductFeaturedInput(e.target.checked)
+			}
+			default: { }
+		}
+	}
+
 	const sanitizeNumber = (num) => {
 		return Number(num.toString().replace(/^0*/, ''));
 	};
@@ -118,6 +128,10 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 
 	const onProductOnSaleInput = (value, error) => {
 		setField({ ...field, onSale: { value, error } });
+	};
+
+	const onProductFeaturedInput = (value, error) => {
+		setField({ ...field, featured: { value, error } });
 	};
 
 	const onSubmitForm = (e) => {
@@ -264,6 +278,20 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 									type="checkbox"
 									checked={field.onSale.value}
 									onChange={onChangeOnSale}
+								>
+								</input>
+							</label>
+						</div>
+						&nbsp;
+						&nbsp;
+						<div className="product-form-field">
+							<label>
+								Destacado:
+          						<input
+									name="featured"
+									type="checkbox"
+									checked={field.featured.value}
+									onChange={onChangeFeatured}
 								>
 								</input>
 							</label>

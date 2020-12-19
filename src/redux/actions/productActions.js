@@ -11,7 +11,9 @@ import {
 	GET_PRODUCTS_ONSALE,
 	GET_PRODUCTS_ONSALE_SUCCESS,
 	GET_PRODUCTS_BYCATEGORY,
-	GET_PRODUCTS_BYCATEGORY_SUCCESS
+	GET_PRODUCTS_BYCATEGORY_SUCCESS,
+	GET_PRODUCTS_FEATURED,
+	GET_PRODUCTS_FEATURED_SUCCESS
 } from 'constants/constants';
 
 export const getProducts = lastRef => ({
@@ -41,6 +43,16 @@ export const getProductsByCategory = category => ({
 
 export const getProductsByCategorySuccess = products => ({
 	type: GET_PRODUCTS_BYCATEGORY_SUCCESS,
+	payload: products
+});
+
+export const getProductsFeatured = lastRef => ({
+	type: GET_PRODUCTS_FEATURED,
+	payload: lastRef
+});
+
+export const getProductsFeaturedSuccess = products => ({
+	type: GET_PRODUCTS_FEATURED_SUCCESS,
 	payload: products
 });
 

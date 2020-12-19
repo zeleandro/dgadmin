@@ -146,7 +146,7 @@ class Firebase {
 		return new Promise(async (resolve, reject) => {
 			if (lastRefKey) {
 				try {
-					
+
 					// const query = this.db.collection('products').orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefKey).limit(1000);
 					const query = this.db.collection('products').orderBy('name').startAfter(lastRefKey);
 					const snapshot = await query.get();
@@ -317,6 +317,37 @@ class Firebase {
 					console.log('Failed to fetch products: An error occured while trying to fetch products or there may be no product ', e);
 					reject(new Error(':( Failed to fetch products.'));
 				}
+			}
+		});
+	}
+
+	getProductsFeatured = () => {
+		let didTimeout = false;
+
+		return new Promise(async (resolve, reject) => {
+			const timeout = setTimeout(() => {
+				didTimeout = true;
+				reject(new Error('Request timeout, please try again'));
+			}, 15000);
+
+			try {
+				const query = this.db.collection('products').where("featured", "==", "true")
+					.orderBy(app.firestore.FieldPath.documentId());
+				const snapshot = await query.get();
+				const total = snapshot.docs.length;
+
+				clearTimeout(timeout);
+				if (!didTimeout) {
+					const products = [];
+					snapshot.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
+					const lastKey = snapshot.docs[snapshot.docs.length - 1];
+
+					resolve({ products, lastKey, total });
+				}
+			} catch (e) {
+				if (didTimeout) return;
+				console.log('Failed to fetch products: An error occured while trying to fetch products or there may be no product ', e);
+				reject(new Error(':( Failed to fetch products.'));
 			}
 		});
 	}
