@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectFilter } from 'selectors/selector';
 import { Redirect, useParams } from 'react-router-dom';
 
-import ProductList from 'components/product/ProductList';
-// import ProductList from 'components/product/ProductListCategory';
+// import ProductList from 'components/product/ProductList';
+import ProductList from 'components/product/ProductListCategory';
 import ProductItem from 'components/product/ProductItem';
 import { resetFilter, applyFilter } from 'redux/actions/filterActions';
 import ProductAppliedFilters from 'components/product/ProductAppliedFilters';
@@ -52,9 +52,9 @@ const Product = ({history}) => {
 		}
 	};
 
-	useEffect(() => {
-		onProductsLengthChanged();
-	}, [store.filteredProducts]);
+	// useEffect(() => {
+	// 	onProductsLengthChanged();
+	// }, [store.filteredProducts]);
 
 	useEffect(() => {
 		onCategoryParam();

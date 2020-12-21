@@ -103,7 +103,9 @@ const ProductItem = ({
 						{
 							(product.regularPrice) 
 							? <div className="product-item-price">
-								<span className="text-muted"><del>${product.regularPrice} </del></span>
+								&nbsp;
+								<span className="h2 text-muted"><del>${product.regularPrice}</del></span>
+								&nbsp;
 							</div>
 							: ''
 						}

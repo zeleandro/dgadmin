@@ -47,63 +47,57 @@ const Sale = () => {
 
 	return (
 		<>
-			
 			<div className="col-xl-12 col-lg-12 col-md-12">
-				<div className="card mb-lg-0">	
+				<div className="card mb-lg-0">
 					<div className="card-body">
-						
-
-				{!store.requestStatus && (
-					<div className="product-list-header">
-						<div className="product-list-header-title">
-							{isFiltered && (
-								<h5>
-									{store.filteredProducts.length > 0
-										&& `Se encontraron ${store.filteredProducts.length} ${store.filteredProducts.length > 1 ? 'productos' : 'producto'}`
-									}
-								</h5>
-							)}
-						</div>
-					</div>
-				)}
-				<ProductAppliedFilters filter={store.filter} />
-				<Boundary>
-					<ProductList {...store}>
-						{({ foundOnBasket }) => (
-							<>
-								<div className="item2-gl ">
-							
-									<div className="tab-content">
-										<div className="tab-pane active show" id="tab-12">
-											<div className="row">
-									{store.filteredProducts.length === 0 ? new Array(12).fill({}).map((product, index) => (
-										<ProductItem
-											isItemOnBasket={false}
-											key={`product-skeleton ${index}`}
-											product={product}
-										/>
-									)) : store.filteredProducts.map(product => (
-										<ProductItem
-											isItemOnBasket={foundOnBasket(product.id)}
-											key={product.id}
-											isLoading={store.isLoading}
-											product={product}
-										/>
-									))}
-									</div>
+						{!store.requestStatus && (
+							<div className="product-list-header">
+								<div className="product-list-header-title">
+									{isFiltered && (
+										<h5>
+											{store.filteredProducts.length > 0
+												&& `Se encontraron ${store.filteredProducts.length} ${store.filteredProducts.length > 1 ? 'productos' : 'producto'}`
+											}
+										</h5>
+									)}
 								</div>
 							</div>
-						</div>
-							</>
 						)}
-					</ProductList>
-				</Boundary>
+						<ProductAppliedFilters filter={store.filter} />
+						<Boundary>
+							<ProductList {...store}>
+								{({ foundOnBasket }) => (
+									<>
+										<div className="item2-gl ">
 
+											<div className="tab-content">
+												<div className="tab-pane active show" id="tab-12">
+													<div className="row">
+														{store.filteredProducts.length === 0 ? new Array(12).fill({}).map((product, index) => (
+															<ProductItem
+																isItemOnBasket={false}
+																key={`product-skeleton ${index}`}
+																product={product}
+															/>
+														)) : store.filteredProducts.map(product => (
+															<ProductItem
+																isItemOnBasket={foundOnBasket(product.id)}
+																key={product.id}
+																isLoading={store.isLoading}
+																product={product}
+															/>
+														))}
+													</div>
+												</div>
+											</div>
+										</div>
+									</>
+								)}
+							</ProductList>
+						</Boundary>
 					</div>
 				</div>
-
-			</div>		
-			
+			</div>
 		</>
 	);
 };

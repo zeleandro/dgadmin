@@ -101,7 +101,7 @@ const ViewProduct = () => {
                 <br />
                 {
                     (product.regularPrice)
-                        ? <h2 className="text-muted"><del>${product.regularPrice}</del></h2>
+                        ? <h1 className="text-muted"><del>${product.regularPrice}</del></h1>
                         : ''
                 }
                 <h1>{displayMoney(product.price)}</h1>

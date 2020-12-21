@@ -63,7 +63,16 @@ export const selectOnSale = (products, filter) => {
 
 	return products.filter((product) => {
 		const matchOnSale = product.onSale ? product.onSale == true : false;
-
 		return (matchOnSale);
+	});
+};
+
+//Select products featured
+export const selectFeatured = (products, filter) => {
+	if (!products || products.length === 0) return [];
+
+	return products.filter((product) => {
+		const matchFeatured = product.featured ? product.featured == true : false;
+		return (matchFeatured);
 	});
 };
