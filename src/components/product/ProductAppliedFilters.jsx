@@ -31,10 +31,10 @@ const ProductAppliedFilters = ({ filter, from }) => {
 		dispatch(applyFilter({ sortBy: '' }));
 	};
 
-	const onRedirect = () => {
-		onRemoveCategoryFilter();
-		history.push(from);
-	};
+	// const onRedirect = () => {
+	// 	onRemoveCategoryFilter();
+	// 	history.push(from);
+	// };
 
 	// if (from) {
 	// 	return (

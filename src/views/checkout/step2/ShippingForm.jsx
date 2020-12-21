@@ -25,7 +25,7 @@ const ShippingForm = ({ setField, field }) => {
 		};
 
 		if (value.length === 0) {
-			setErrorMobile('Mobile number is required.');
+			setErrorMobile('Debe ingresar un telefono celular.');
 		} else {
 			setErrorMobile('');
 		}
