@@ -21,14 +21,14 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 		brand: { value: product ? defaultProduct.brand : 'DGClean' },
 		category: { value: product ? defaultProduct.category : '' },
 		price: { value: product ? defaultProduct.price : 0 },
-		regularPrice: { value: product.regularPrice ? defaultProduct.regularPrice : 0 },
+		regularPrice: { value: product ? defaultProduct.regularPrice : 0 },
 		maxQuantity: { value: product ? defaultProduct.maxQuantity : 0 },
 		description: { value: product ? defaultProduct.description : '' },
 		keywords: { value: product ? defaultProduct.keywords : [''] },
 		imageUrl: { value: product ? defaultProduct.image : '' },
 		imageCollection: { value: product ? defaultProduct.imageCollection : [] },
-		onSale: { value: product.onSale ? defaultProduct.onSale : false },
-		featured: { value: product.featured ? defaultProduct.featured : false }
+		onSale: { value: product ? defaultProduct.onSale : false },
+		featured: { value: product ? defaultProduct.featured : false }
 	});
 
 	const {

@@ -25,10 +25,9 @@ const Banner = () => {
 					<div className="container">
 						<div className="row">
 							<div className="col-xl-8 col-lg-12 col-md-12 d-block mx-auto">
-								{/* <div className="text-center text-white ">
-									<h1 className="">Tu felicidad y confort en nuestras manos!</h1>
+								<div className="text-center text-white ">
+									<h1 className="">Somos el <strong>10</strong> de la limpieza!</h1>
 								</div>
-								 */}
                                 <>
                                 <div className="form row no-gutters">
                                     <div className="form-group col-xl-6 col-lg-5 col-md-12 mb-0">

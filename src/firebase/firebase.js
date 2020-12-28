@@ -142,7 +142,7 @@ class Firebase {
 
 	getProducts = (lastRefKey) => {
 		let didTimeout = false;
-		console.log("entrocua");
+		// console.log("entrocua");
 		return new Promise(async (resolve, reject) => {
 			if (lastRefKey) {
 				try {
