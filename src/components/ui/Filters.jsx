@@ -7,6 +7,8 @@ import { selectMax, selectMin } from 'selectors/selector';
 import { getBrands } from 'redux/actions/brandActions';
 import { getCategories } from 'redux/actions/categoryActions';
 
+import { useHistory } from 'react-router-dom';
+
 import PriceRange from './PriceRange';
 
 const Filters = (props) => {
@@ -21,6 +23,7 @@ const Filters = (props) => {
 	const dispatch = useDispatch();
 	const max = selectMax(props.products);
 	const min = selectMin(props.products);
+	const history = useHistory();
 
 	useEffect(() => {
 		if (isMounted && window.screen.width <= 480) {
@@ -82,6 +85,7 @@ const Filters = (props) => {
 
 		if (isChanged) {
 			dispatch(applyFilter(field));
+			history.push('/Home2');
 		} else {
 			props.closeModal();
 		}

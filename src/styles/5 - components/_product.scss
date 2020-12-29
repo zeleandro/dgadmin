@@ -113,9 +113,7 @@
   background: #f6f6f6;
   @include bezier-transition();
 
-  @include mobile {
-    height: 8rem;
-  }
+  
 }
 
 .product-details {

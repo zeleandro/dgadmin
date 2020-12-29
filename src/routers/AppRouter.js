@@ -32,6 +32,7 @@ import ForgotPassword from 'views/auth/forgot_password';
 import UserAccount from 'views/account/user_account';
 import EditAccount from 'views/account/edit_account';
 import Home from 'views/home';
+import Home2 from 'views/home2';
 import Product from 'views/products';
 import ProductByCategory from 'views/products';
 import Category from 'views/category';
@@ -62,6 +63,11 @@ const AppRouter = () => (
 				component={Home}
 				exact
 				path={ROUTES.HOME}
+			/>
+			<PublicRoute
+				component={Home2}
+				exact
+				path={ROUTES.HOME2}
 			/>
 			<PublicRoute
 				component={Category}

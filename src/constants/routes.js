@@ -1,4 +1,5 @@
 export const HOME = '/';
+export const HOME2 = '/Home2';
 export const ACCOUNT = '/account';
 export const CATEGORY = '/category';
 export const PRODUCT = '/products';

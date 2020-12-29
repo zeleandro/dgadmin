@@ -2,8 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import SearchBar from './SearchBar';
 import FiltersToggle from './FiltersToggle';
-import { HOME } from 'constants/routes';
+import { HOME, HOME2 } from 'constants/routes';
 import { useHistory, useLocation, NavLink, Link } from 'react-router-dom';
+import img from "../../../static/banner.jpg"
 
 const Banner = () => {
     const { pathname } = useLocation();
@@ -18,9 +19,9 @@ const Banner = () => {
 		productsLength: state.products.items.length
 	}));
 
-	return pathname !== HOME ? null : (
+	return (pathname !== HOME && pathname !== HOME2) ? null : (
 		<div>
-			<div className="banner-1 cover-image sptb-2 bg-background serings" data-image-src="../assets/images/banners/auction.jpg" >
+			<div className="banner-1 cover-image sptb-2 bg-background serings" data-image-src={img}>
 				<div className="header-text1 mb-0">
 					<div className="container">
 						<div className="row">

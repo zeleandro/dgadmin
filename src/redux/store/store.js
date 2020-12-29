@@ -18,7 +18,7 @@ const authPersistConfig = {
 	key: 'root',
 	storage,
 	stateReconciler: autoMergeLevel2,
-	whitelist: ['auth', 'profile', 'basket', 'checkout', 'products']
+	whitelist: ['auth', 'profile', 'basket', 'checkout']
 };
 
 export default () => {

@@ -34,10 +34,10 @@ const SearchBar = ({
 			dispatch(setTextFilter(searchInput));
 			e.target.blur();
 			searchbarRef.current.classList.remove('is-open-recent-search');
-
-			if (isMobile) {
-				history.push('/');
-			}
+			history.push('/Home2');
+			// if (isMobile) {
+			// 	history.push('/Home2');
+			// }
 		}
 	};
 
