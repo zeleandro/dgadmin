@@ -153,10 +153,10 @@ const Payment = ({
 						onTransferModeChange={onTransferModeChange}
 						paymentMode={paymentMode}
 					/>
-					<CardPayment
+					{/* <CardPayment
 						onCardModeChange={onCardModeChange}
 						paymentMode={paymentMode}
-					/>
+					/> */}
 					<MPPayment
 						onMpModeChange={onMpModeChange}
 						paymentMode={paymentMode}
