@@ -22,10 +22,13 @@ class About extends Component {
 									</div>
 									<div className="col-md-12 col-lg-6  pl-0 ">
 										<div className="card-body p-7 about-con pabout">
-											<h2 className="mb-4 font-weight-semibold">Por que {this.props.empresa}?</h2>
-											<h4 className="leading-normal">majority have suffered alteration in some form, by injected humour</h4>
-											<p className="leading-normal">There are many variations of passages of Lorem Ipsum available, but the majority have suffered  by injected humour, or randomised words which don't look even slightly believable.
-											If you are going to use a passage of Lorem Ipsum, you need to as necessary All the Lorem Ipsum generators on the Internet tend to repeat</p>
+											<h2 className="mb-4 font-weight-semibold">Por que <strong>DG Limpieza</strong>?</h2>
+											<h3 className="leading-normal">Porque tratamos a cada cliente como si fuera único</h3>
+											<p className="leading-normal">Porque estamos concentrados 100% en la calidad.
+											La calidad es nuestro compromiso con las empresas que confían en nosotros. Evaluamos todo, nuestros procesos están sometidos a una constante evaluación, así como nuestros productos y compromiso.</p>
+											<p className="leading-normal">Porque su casa y su empresa son importantes para nosotros.</p>
+											<p className="leading-normal">En nuestros clientes, grandes o pequeños, encontrará excelentes relatos y buenas experiencias con nuestra empresa.</p>
+											<p className="leading-normal">Confiamos en que ofrecer un trato personal, amable, flexible, adaptado a las necesidades del cliente puede suponer la diferencia que haga que los clientes escojan nuestra empresa.</p>
 										</div>
 									</div>
 								</div>
@@ -36,7 +39,7 @@ class About extends Component {
 										<img src={image2} alt="img" className="br-tl-2 br-tr-2" ></img>
 										<div className="card-body">
 											<h3 className="mb-3">Historia</h3>
-											<p>I must explain to you how all this mistaken idea of denouncing pleasure and you a complete account of the system</p>
+											<p>Desde nuestros inicios trabajamos para ser una empresa ética y honesta, mantenemos relaciones a largo plazo con nuestros clientes y recibimos muchas recomendaciones que nos demuestran que vamos en un correcto camino de mejora contínua. Logramos ser una buena empresa con quién trabajar.</p>
 										</div>
 									</div>
 								</div>
@@ -44,8 +47,8 @@ class About extends Component {
 									<div className="card text-center">
 										<img src={image3} alt="img" className="br-tl-2 br-tr-2" ></img>
 										<div className="card-body">
-											<h3 className="mb-3">Sobre {this.props.nombre}</h3>
-											<p>I must explain to you how all this mistaken idea of denouncing pleasure and you a complete account of the system</p>
+											<h3 className="mb-3">Sobre <strong>DG Limpieza</strong></h3>
+											<p>Buscamos la excelencia. Nuestros trabajos y negocios son muy importantes para nosotros, por lo tanto, todo lo que hacemos por nuestros clientes lo consideramos muy valioso. No dudamos en tomar su éxito como nuestro, así que sepa que haremos todo lo posible para que Ud. desarrolle sus actividades del hogar o su empresa con nuestra colaboración.</p>
 										</div>
 									</div>
 								</div>
@@ -54,7 +57,7 @@ class About extends Component {
 										<img src={image4} alt="img" className="br-tl-2 br-tr-2" ></img>
 										<div className="card-body">
 											<h3 className="mb-3">Crecimiento</h3>
-											<p>I must explain to you how all this mistaken idea of denouncing pleasure and you a complete account of the system</p>
+											<p>Nuestra visión es convertirnos en una empresa modelo, referente en la zona, no solo por la calidad de nuestros productos y asesoramiento, sino también cumpliendo con la Responsabilidad Social Empresaria</p>
 										</div>
 									</div>
 								</div>
@@ -64,9 +67,10 @@ class About extends Component {
 									<div className="col-md-12 col-lg-6  pr-0 ">
 										<div className="card-body p-7 pabout">
 											<h2 className="mb-4 font-weight-semibold">Que ofrecemos?</h2>
-											<h4 className="leading-normal">majority have suffered alteration in some form, by injected humour</h4>
-											<p className="leading-normal">There are many variations of passages of Lorem Ipsum available, but the majority have suffered  by injected humour, or randomised words which don't look even slightly believable.
-											If you are going to use a passage of Lorem Ipsum, you need to as necessary All the Lorem Ipsum generators on the Internet tend to repeat</p>
+											<h3 className="leading-normal">Aseguramos el cumplimiento de los plazos establecidos</h3>
+											<p className="leading-normal">DG Limpieza realiza entregas en toda la ciudad de Resistencia y el Gran Resistencia con una compra mínima</p>
+											<p className="leading-normal">Brindamos asesoramiento para toda necesidad</p>
+											<p className="leading-normal">Calidad, compromiso y rapidez al mejor precio!</p>
 										</div>
 									</div>
 									<div className="col-md-12 col-lg-6 pl-0 d-none d-lg-block">

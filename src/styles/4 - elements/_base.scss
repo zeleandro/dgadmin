@@ -64,12 +64,13 @@ span {
   width: 100%;
   min-height: 100vh;
   position: relative;
-  padding: $top $xxl-size;
+  // padding: $top $xxl-size;
+  padding: 4rem $xxl-size;
   display: flex;
   animation: fadeIn .5s ease;
 
   @media (max-width: $mobile) {
-    padding: 5rem $m-size;
+    padding: 3rem $m-size;
     flex-direction: column;
   }
 }

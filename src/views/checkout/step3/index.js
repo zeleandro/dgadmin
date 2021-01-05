@@ -12,6 +12,7 @@ import Pagination from '../components/Pagination';
 import CashPayment from './CashPayment';
 import CardPayment from './CardPayment';
 import TransferPayment from './TransferPayment';
+import MPPayment from './MPPayment';
 import withAuth from '../hoc/withAuth';
 import { addOrder } from 'redux/actions/orderActions';
 import { clearBasket } from 'redux/actions/basketActions';
@@ -72,6 +73,12 @@ const Payment = ({
 	const onCardModeChange = () => {
 		setPaymentMode('card');
 		setTaxes(subtotal * 0.21);
+		collapseCreditHeight.current.parentElement.style.height = '97px';
+	};
+
+	const onMpModeChange = () => {
+		setPaymentMode('mp');
+		setTaxes(0);
 		collapseCreditHeight.current.parentElement.style.height = '97px';
 	};
 
@@ -148,6 +155,10 @@ const Payment = ({
 					/>
 					<CardPayment
 						onCardModeChange={onCardModeChange}
+						paymentMode={paymentMode}
+					/>
+					<MPPayment
+						onMpModeChange={onMpModeChange}
 						paymentMode={paymentMode}
 					/>
 					{/* <CreditPayment
