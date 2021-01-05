@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 class Contact extends Component {
+    
     render() {
+        const position = [-27.4329993,-58.9939531];
+        const market = [-27.4209528, -58.9794135]
         return (
             <div className="container app-content  my-3 my-md-5">
                 <div className="side-app">
@@ -9,7 +13,7 @@ class Contact extends Component {
                         <div className="container">
                             <div className="section-title center-block text-center">
                                 <h1>Información de Contacto</h1>
-                                <p>En que podemos ayudarlo?</p>
+                                <p>En que podemos ayudarte?</p>
                             </div>
                             <div className="support">
                                 <div className="row text-white">
@@ -64,6 +68,35 @@ class Contact extends Component {
                                 </div>
                             </div>
                         </div>
+
+                        
+                    </section>
+
+                    <section className="sptb bg-white">
+                        <div className="container">
+                            <div className="section-title center-block text-center">
+                                    <h1>Nuestra ubicación</h1>
+                            </div>
+                            
+
+                            
+
+                            <div className="section-title center-block text-center">
+                                <MapContainer center={position} zoom={13} scrollWheelZoom={true}>
+                                <TileLayer
+                                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                />
+                                    <Marker position={market}>
+                                    <Popup>
+                                        DG Limpieza <br /> <a href="https://www.google.com/maps/search/?api=1&query=-27.4209528, -58.9794135&zoom=20" target="_blank">Abrir mapa</a>.
+                                    </Popup>
+                                    </Marker>
+                                </MapContainer>
+                            </div>
+                        </div>
+
+                        
                     </section>
 
                 </div>
