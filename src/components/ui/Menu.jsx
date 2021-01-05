@@ -45,12 +45,12 @@ const Menu = (props) => {
 							<ul className={`horizontalMenu-list${isMenu ? ' tres-activo' : ''}`}>
 								<li aria-haspopup="true">
 									<Link to="/" onClick={handleMenu}>
-										Productos
+										Inicio
                                 </Link>
 								</li>
 								<li aria-haspopup="true">
 									<Link to="/category" onClick={handleMenu}>
-										Categorías
+										Productos
                                 </Link>
 								</li>
 								<li aria-haspopup="true">
