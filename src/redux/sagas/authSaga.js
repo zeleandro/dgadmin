@@ -101,7 +101,7 @@ function* authSaga({ type, payload }) {
 				const user = {
 					fullname,
 					avatar: defaultAvatar,
-					banner: defaultBanner,
+					// banner: defaultBanner,
 					email: payload.email,
 					address: payload.address,
 					mobile: {
@@ -115,9 +115,11 @@ function* authSaga({ type, payload }) {
 					role: 'USER',
 					dateJoined: ref.user.metadata.creationTime || new Date().getTime()
 				};
-
+				// console.log('antes de llamar al addUser de Firebase en Saga');
 				yield call(firebase.addUser, ref.user.uid, user);
+				// console.log('antes de llamar al setProfile en Saga');
 				yield put(setProfile(user));
+				// console.log('despues de llamar al setProfile en Saga');
 				yield put(setAuthenticating(false));
 			} catch (e) {
 				yield handleError(e);
