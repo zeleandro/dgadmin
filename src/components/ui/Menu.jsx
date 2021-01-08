@@ -10,7 +10,7 @@ const Menu = (props) => {
 
 	const handleMenu = e => {
 		 //isMenu ? setMenu(false) : setMenu(true)
-		 console.log("dos");
+		//  console.log("dos");
 		if (isMenu) {
 			dispatch(resetFilter());
 			setMenu(false)
