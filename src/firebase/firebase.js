@@ -39,7 +39,13 @@ class Firebase {
 
 	passwordReset = email => this.auth.sendPasswordResetEmail(email);
 
-	addUser = (id, user) => this.db.collection('users').doc(id).set(user);
+	addUser = (id, user) => this.db.collection('users').doc(id).set(user)
+	.then(function() {
+		console.log("Document successfully written!");
+	})
+	.catch(function(error) {
+		console.error("Error writing document: ", error);
+	});
 
 	getUser = id => this.db.collection('users').doc(id).get();
 

@@ -101,7 +101,7 @@ function* authSaga({ type, payload }) {
 				const user = {
 					fullname,
 					avatar: defaultAvatar,
-					// banner: defaultBanner,
+					banner: defaultBanner,
 					email: payload.email,
 					address: payload.address,
 					mobile: {
@@ -115,11 +115,9 @@ function* authSaga({ type, payload }) {
 					role: 'USER',
 					dateJoined: ref.user.metadata.creationTime || new Date().getTime()
 				};
-				// console.log('antes de llamar al addUser de Firebase en Saga');
+
 				yield call(firebase.addUser, ref.user.uid, user);
-				// console.log('antes de llamar al setProfile en Saga');
 				yield put(setProfile(user));
-				// console.log('despues de llamar al setProfile en Saga');
 				yield put(setAuthenticating(false));
 			} catch (e) {
 				yield handleError(e);
@@ -161,7 +159,9 @@ function* authSaga({ type, payload }) {
 				message: 'Ingreso exitoso. Redireccionando...'
 			}));
 			// yield call(history.push, '/');
-
+			
+			//El timeout es para que espere un poco que grabe el registro porque sino le da indefinido en el getUser
+			yield new Promise(resolve => setTimeout(resolve, 3000));
 			const snapshot = yield call(firebase.getUser, payload.uid);
 
 			if (snapshot.data()) { // if user exists in database
@@ -174,14 +174,24 @@ function* authSaga({ type, payload }) {
 					provider: payload.providerData[0].providerId
 				}));
 			} else if (payload.providerData[0].providerId !== 'password' && !snapshot.data()) {
+				// } else {
 				// add the user if auth provider is not password
+				const fullname = payload.fullname.split(' ').map(name => name[0].toUpperCase().concat(name.substring(1))).join(' ');
 				const user = {
-					fullname: payload.displayName ? payload.displayName : 'User',
+					// fullname: payload.displayName ? payload.displayName : 'User',
+					fullname,
 					avatar: payload.photoURL ? payload.photoURL : defaultAvatar,
 					banner: defaultBanner,
 					email: payload.email,
-					address: '',
-					mobile: {},
+					address: payload.address,
+					mobile: {
+						data: {
+							countryCode: "ar",
+							dialCode: "54",
+							num: payload.mobile
+						},
+						value: payload.mobile
+					},
 					role: 'USER',
 					dateJoined: payload.metadata.creationTime
 				};

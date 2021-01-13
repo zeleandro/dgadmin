@@ -84,6 +84,7 @@ const SignUp = (props) => {
 						<CircularProgress />
 					</h3>
 				</div>
+				
 			)}
 			{signUpStatus.message && (
 				<h5 className="text-center toast-error">
@@ -139,7 +140,7 @@ const SignUp = (props) => {
 									field="email"
 									isRequired
 									label="* Email"
-									maxLength={40}
+									maxLength={60}
 									onInputChange={onEmailInput}
 									placeholder="test@ejemplo.com"
 									readOnly={isSigningUp}
