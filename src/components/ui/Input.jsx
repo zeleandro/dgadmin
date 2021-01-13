@@ -29,6 +29,9 @@ const InputField = React.forwardRef(({
 			case 'Mobile': {
 				return 'Celular'
 			}
+			case 'Email': {
+				return 'Email'
+			}
 			default: {
 
 			}
