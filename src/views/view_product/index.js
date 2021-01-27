@@ -26,6 +26,8 @@ const ViewProduct = () => {
     const [product, setProduct] = useState(store.product || null);
     const foundOnBasket = () => store.basket.find(item => item.id === product.id);
 
+    const isAuth = useSelector(state => state.app.authStatus.success)
+
     const onAddToBasket = () => {
         if (foundOnBasket()) {
             dispatch(removeFromBasket(product.id));
@@ -100,19 +102,21 @@ const ViewProduct = () => {
                 <br />
                 <br />
                 {
-                    (product.regularPrice)
-                        ? <h1 className="text-muted"><del>${product.regularPrice}</del></h1>
-                        : ''
+                    (isAuth == true)
+                        ? <>
+                            (product.regularPrice) ? <h1 className="text-muted"><del>${product.regularPrice}</del></h1> : ''
+                        <h1>{displayMoney(product.price)}</h1>
+                            <div className="product-modal-action">
+                                <button
+                                    className={`button button-small ${foundOnBasket() ? 'button-border button-border-gray' : ''}`}
+                                    onClick={onAddToBasket}
+                                >
+                                    {foundOnBasket() ? 'Quitar del carrito' : 'Agregar al carrito'}
+                                </button>
+                            </div>
+                        </>
+                        : <h1>Para ver el precio debe ingresar o registrarse</h1>
                 }
-                <h1>{displayMoney(product.price)}</h1>
-                <div className="product-modal-action">
-                    <button
-                        className={`button button-small ${foundOnBasket() ? 'button-border button-border-gray' : ''}`}
-                        onClick={onAddToBasket}
-                    >
-                        {foundOnBasket() ? 'Quitar del carrito' : 'Agregar al carrito'}
-                    </button>
-                </div>
             </div>
         </div>
     ) : (

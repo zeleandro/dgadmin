@@ -12,7 +12,9 @@ import Boundary from 'components/ui/Boundary';
 import useDocumentTitle from 'hooks/useDocumentTitle';
 import useScrollTop from 'hooks/useScrollTop';
 
-const Product = ({history}) => {
+import MessageDisplay from '../../components/ui/MessageDisplay';
+
+const Product = ({ history }) => {
 	useDocumentTitle();
 	useScrollTop();
 
@@ -52,9 +54,7 @@ const Product = ({history}) => {
 		}
 	};
 
-	// useEffect(() => {
-	// 	onProductsLengthChanged();
-	// }, [store.filteredProducts]);
+	const isAuth = useSelector(state => state.app.authStatus.success)
 
 	useEffect(() => {
 		onCategoryParam();
@@ -68,6 +68,13 @@ const Product = ({history}) => {
 		<>
 			<div className="col-xl-12 col-lg-12 col-md-12">
 				<div className="card mb-lg-0">
+					{(isAuth != true) ?
+						<MessageDisplay
+							message="Para acceder a los precios y poder realizar la compra, debe registrarse"
+							desc=""
+						/>
+						: ''
+					}
 					<div className="card-body">
 						{!store.requestStatus && (
 							<div className="product-list-header">
@@ -82,7 +89,7 @@ const Product = ({history}) => {
 								</div>
 							</div>
 						)}
-						<ProductAppliedFilters filter={store.filter} from='/category'/>
+						<ProductAppliedFilters filter={store.filter} from='/category' />
 						<Boundary>
 							<ProductList {...store} category={category}>
 								{({ foundOnBasket }) => (

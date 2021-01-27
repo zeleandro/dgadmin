@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { removeFromBasket, addToBasket } from 'redux/actions/basketActions';
 import { displayMoney, displayActionMessage } from 'helpers/utils';
@@ -15,6 +15,8 @@ const ProductItem = ({
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const [cantidad, setCantidad] = useState(1)
+
+	const isAuth = useSelector(state => state.app.authStatus.success)
 
 	const onClickItem = () => {
 		if (isLoading) return;
@@ -33,6 +35,10 @@ const ProductItem = ({
 			dispatch(addToBasket(product));
 			displayActionMessage('Se agregó el producto al carrito', 'success');
 		}
+	};
+
+	const onNotAuthButton = () => {
+		history.push(`/signin`);
 	};
 
 	const onChange = (e) => {
@@ -76,44 +82,46 @@ const ProductItem = ({
 
 				</div>
 
-				<div className="card-body">
-
-					{/* <div className="product-item-price">
-
-						<span >Cantidad : </span>
-						<input className="input-card" placeholder="1" name="cantidad" value={cantidad} onChange={onChange}></input>
-					</div> */}
-
-					<div className="input-group mb-3">
-						<div className="input-group-prepend">
-							<span className="input-group-text" id="basic-addon3">Cantidad</span>
+				{(isAuth == true)
+					? <>
+						<div className="card-body">
+							<div className="input-group mb-3">
+								<div className="input-group-prepend">
+									<span className="input-group-text" id="basic-addon3">Cantidad</span>
+								</div>
+								<input type="text" className="form-control" id="cantidad" aria-describedby="basic-addon3"
+									placeholder="1" name="cantidad" value={cantidad} onChange={onChange}></input>
+							</div>
 						</div>
-						<input type="text" className="form-control" id="cantidad" aria-describedby="basic-addon3"
-						placeholder="1" name="cantidad" value={cantidad} onChange={onChange}></input>
-					</div>
-
-				</div>
-				<div className="card-footer">
-
-					<div className="product-item-wrap d-flex">
-
-						<button className={`btn btn-info btn-lg mr-auto ${isItemOnBasket ? 'btn btn-danger btn-lg mr-auto' : ''}`} onClick={onAddToBasket}>
-							{isItemOnBasket ? 'Quitar del carrito' : 'Agregar al carrito'}
-						</button>
-						{
-							(product.regularPrice) 
-							? <div className="product-item-price">
-								&nbsp;
+						<div className="card-footer">
+							<div className="product-item-wrap d-flex">
+								<button className={`btn btn-info btn-lg mr-auto ${isItemOnBasket ? 'btn btn-danger btn-lg mr-auto' : ''}`} onClick={onAddToBasket}>
+									{isItemOnBasket ? 'Quitar del carrito' : 'Agregar al carrito'}
+								</button>
+								{
+									(product.regularPrice)
+										? <div className="product-item-price">
+											&nbsp;
 								<span className="h2 text-muted"><del>${product.regularPrice}</del></span>
 								&nbsp;
 							</div>
-							: ''
-						}
-						<div className="product-item-price">
-							<span className="newprice text-dark">${product.price}</span>
+										: ''
+								}
+								<div className="product-item-price">
+									<span className="newprice text-dark">${product.price}</span>
+								</div>
+							</div>
+						</div>
+					</>
+					:
+					<div className="card-footer">
+						<div className="product-item-wrap d-flex">
+							<button className={`btn btn-info btn-lg mr-auto`} onClick={onNotAuthButton}>
+								Ingresar o Registrarse
+				</button>
 						</div>
 					</div>
-				</div>
+				}
 			</div>
 		</div>
 
