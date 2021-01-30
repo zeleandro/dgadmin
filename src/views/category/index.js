@@ -8,7 +8,7 @@ import useDocumentTitle from 'hooks/useDocumentTitle';
 import useScrollTop from 'hooks/useScrollTop';
 
 const Category = () => {
-    useDocumentTitle();
+    useDocumentTitle('DG Limpieza | Categorias');
     useScrollTop();
 
     const [columnCount, setColumnCount] = useState(6);

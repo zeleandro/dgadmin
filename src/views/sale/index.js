@@ -10,7 +10,7 @@ import useDocumentTitle from 'hooks/useDocumentTitle';
 import useScrollTop from 'hooks/useScrollTop';
 
 const Sale = () => {
-	useDocumentTitle();
+	useDocumentTitle('DG Limpieza | Ofertas');
 	useScrollTop();
 
 	const [columnCount, setColumnCount] = useState(6);

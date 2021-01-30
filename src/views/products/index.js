@@ -15,7 +15,6 @@ import useScrollTop from 'hooks/useScrollTop';
 import MessageDisplay from '../../components/ui/MessageDisplay';
 
 const Product = ({ history }) => {
-	useDocumentTitle();
 	useScrollTop();
 
 	const dispatch = useDispatch();
@@ -41,8 +40,10 @@ const Product = ({ history }) => {
 		products: state.products.items,
 		lastRefKey: state.products.lastRefKey,
 		productsCount: state.products.items.length,
-		totalProductsCount: state.products.total
+		totalProductsCount: state.products.total,
 	}));
+
+	useDocumentTitle(`DG Limpieza | ${store.filter.category}`);
 
 	const onProductsLengthChanged = () => {
 		const width = window.screen.width - 250; // minus 250px padding
