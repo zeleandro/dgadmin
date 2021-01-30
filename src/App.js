@@ -4,14 +4,14 @@ import { PersistGate } from 'redux-persist/integration/react';
 import AppRouter from 'routers/AppRouter';
 import Preloader from 'components/ui/Preloader';
 
-import ReactGA from 'react-ga';
-ReactGA.initialize('G-8EW9Q8WFDQ');
+// import ReactGA from 'react-ga';
+// ReactGA.initialize('G-8EW9Q8WFDQ');
 
 
 const App = ({ store, persistor }) => {
-			useEffect(()=>{
-				ReactGA.pageview(window.location.pathname + window.location.search);
-			})
+			// useEffect(()=>{
+			// 	ReactGA.pageview(window.location.pathname + window.location.search);
+			// })
 			return(
 				<StrictMode>
 					<Provider store={store}>
