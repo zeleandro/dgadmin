@@ -104,7 +104,7 @@ const ViewProduct = () => {
                 {
                     (isAuth == true)
                         ? <>
-                            (product.regularPrice) ? <h1 className="text-muted"><del>${product.regularPrice}</del></h1> : ''
+                            {(product.regularPrice) ? <h1 className="text-muted"><del>${product.regularPrice}</del></h1> : ''}
                         <h1>{displayMoney(product.price)}</h1>
                             <div className="product-modal-action">
                                 <button
