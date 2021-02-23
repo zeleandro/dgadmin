@@ -22,24 +22,17 @@ const CategoryItem = ({
 	// };
 
 	return (
-		<div className="col-xl-3  col-md-6 col-xs-12">
-			<div className={`card ${!category.id ? 'product-loading' : ''}`}>
-						<div className="item-card">
-							<div className="item-card-desc">
-								<Link to={{
-								pathname: `/products/${category.name}`,
-
-								}} />
-								<div className="item-card-img">
-									<img src={img} alt="img" className="br-tr-7 br-tl-7" />
-								</div>
-								<div className="item-card-text">
-									<h4 className="mb-0"><strong>{category.name}</strong></h4>
-								</div>
-							</div>
-						</div>
-					</div>
+		<div className="col-xl-3 col-lg-4 col-md-6">
+			<div className={`item-all-card text-dark text-center p-4 bg-white ${!category.id ? 'product-loading' : ''}`}>
+				<Link to={{
+				pathname: `/products/${category.name}`,
+				}} />
+				<div className="item-all-text">
+					<h3 className="mb-0 text-body font-weight-bold">{category.name}</h3>
 				</div>
+			</div>
+			
+		</div>
 		
 		
 		

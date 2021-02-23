@@ -59,9 +59,12 @@ const Category = () => {
                             <CategoryList {...store}>
                                 {() => (
                                     <>
-                                        <div className="item2-gl ">
-                                            <div className="tab-content">
-                                                <div className="tab-pane active show" id="tab-12">
+                                        <div className="section-title center-block text-center">
+                                            <h1>Categorias</h1>
+                                            </div>
+                                        <div className="item-all-cat center-block text-center doctor-categories closed ">
+                                            
+                                                
                                                     <div className="row">
                                                         {store.categories.length === 0 ? new Array(12).fill({}).map((category, index) => (
                                                             <CategoryItem
@@ -76,8 +79,6 @@ const Category = () => {
                                                             />
                                                         ))}
                                                     </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </>
                                 )}
