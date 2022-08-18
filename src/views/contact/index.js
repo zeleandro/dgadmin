@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+// import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { TileLayer, Marker, Popup } from 'react-leaflet'
 
 class Contact extends Component {
     
@@ -72,14 +73,11 @@ class Contact extends Component {
                         
                     </section>
 
-                    <section className="sptb bg-white">
+                    {/* <section className="sptb bg-white">
                         <div className="container">
                             <div className="section-title center-block text-center">
                                     <h1>Nuestra ubicación</h1>
                             </div>
-                            
-
-                            
 
                             <div className="section-title center-block text-center">
                                 <MapContainer center={position} zoom={13} scrollWheelZoom={true}>
@@ -94,11 +92,8 @@ class Contact extends Component {
                                     </Marker>
                                 </MapContainer>
                             </div>
-                        </div>
-
-                        
-                    </section>
-
+                        </div>  
+                    </section> */}
                 </div>
             </div>
         )
