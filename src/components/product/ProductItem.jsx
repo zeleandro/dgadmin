@@ -98,7 +98,7 @@ const ProductItem = ({
 								<button className={`btn btn-info btn-lg mr-auto ${isItemOnBasket ? 'btn btn-danger btn-lg mr-auto' : ''}`} onClick={onAddToBasket}>
 									{isItemOnBasket ? 'Quitar del carrito' : 'Agregar al carrito'}
 								</button>
-								{
+								{/* {
 									(product.regularPrice)
 										? <div className="product-item-price">
 											&nbsp;
@@ -106,9 +106,9 @@ const ProductItem = ({
 								&nbsp;
 							</div>
 										: ''
-								}
+								} */}
 								<div className="product-item-price">
-									<span className="newprice text-dark">${product.price}</span>
+									{/* <span className="newprice text-dark">${product.price}</span> */}
 								</div>
 							</div>
 						</div>

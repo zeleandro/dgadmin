@@ -32,7 +32,7 @@ const BasketItem = ({ dispatch, product }) => {
 							{product.name}
 						</h5>
 						<h5 className="basket-item-price">
-							{displayMoney(product.price)}
+							{/* {displayMoney(product.price)} */}
 							<span>{` (x ${product.quantity}) `}</span>
 						</h5>
 					</div>
@@ -41,7 +41,8 @@ const BasketItem = ({ dispatch, product }) => {
 							Subtotal
 						</h5>
 						<h5 className="basket-item-price">
-							<span>{displayMoney(product.price * product.quantity)}</span>
+							{/* <span>{displayMoney(product.price * product.quantity)}</span> */}
+							<span>{product.quantity}</span>
 						</h5>
 					</div>
 					<button

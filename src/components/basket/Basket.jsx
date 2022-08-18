@@ -114,10 +114,10 @@ const Basket = (props) => {
 							dispatch={dispatch}
 						/>
 					))}
-					<div className="basket-total">
+					{/* <div className="basket-total">
 						<p className="basket-total-title">Subtotal General:</p>
 						<h2 className="basket-total-amount">{calculateTotal()}</h2>
-					</div>
+					</div> */}
 				</div>
 				<div className="basket-checkout">
 					<button
