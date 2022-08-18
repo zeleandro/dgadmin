@@ -56,3 +56,17 @@ $ npm run build
 * Firebase auth provider authentication
 * Account creation and edit
 
+## Deploy to Firebase
+
+* npm run build
+* cd dist
+* firebase deploy
+
+##
+* FIREBASE_API_KEY=AIzaSyDLhKU910PPmRNja-tk5kR70XvZ7nq-lqM
+* FIREBASE_AUTH_DOMAIN=dglimpieza-75f83.firebaseapp.com
+* FIREBASE_DB_URL=https://dglimpieza-75f83.firebaseio.com
+* FIREBASE_PROJECT_ID=dglimpieza-75f83
+* FIREBASE_STORAGE_BUCKET=dglimpieza-75f83.appspot.com
+* FIREBASE_MSG_SENDER_ID=283530166516
+* FIREBASE_APP_ID=1:283530166516:web:dd03b58bf438543cbf9ea1
