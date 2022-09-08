@@ -62,11 +62,16 @@ const Products = ({ history }) => {
 		if (!filteredProducts) {
 			dispatch(getProducts());
 		}
-		setFilteredProducts(
-			store.products.filter(
-				item => item.category.toLowerCase() == category
+		if (category == '')
+		{
+			setFilteredProducts(store.products)
+		} else {
+			setFilteredProducts(
+				store.products.filter(
+					item => item.category.toLowerCase() == category
+				)
 			)
-		)
+		}
 	}, [category]);
 
 	// TODO insufficient permission
@@ -88,6 +93,7 @@ const Products = ({ history }) => {
 							// disabled={store.isLoading || store.productsCount === 0}
 							onChange={onCategoryFilterChange}
 						>
+							<option value="">Todas las categorias</option>
 							{
 								categories &&
 								categories.map(item => (
