@@ -1,36 +1,73 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import useDocumentTitle from 'hooks/useDocumentTitle';
 import useScrollTop from 'hooks/useScrollTop';
 import { ADD_PRODUCT } from 'constants/routes';
 import ProductAppliedFilters from 'components/product/ProductAppliedFilters';
 import { selectFilter } from 'selectors/selector';
-import ProductList from 'components/product/ProductList';
+import ProductAdminList from 'components/product/ProductAdminList';
 import Boundary from 'components/ui/Boundary';
 import SearchBar from 'components/ui/SearchBar';
 import FiltersToggle from 'components/ui/FiltersToggle';
 import ProductItem from '../components/ProductItem';
 
+import { getCategories } from 'redux/actions/categoryActions';
+import { getProducts } from 'redux/actions/productActions';
+
 const Products = ({ history }) => {
 	useDocumentTitle('DG Limpieza | Productos');
 	useScrollTop();
 
+	const dispatch = useDispatch();
+
+	const [category, setCategory] = useState(null);
+	const [categories, setCategories] = useState(null);
+	const [filteredProducts, setFilteredProducts] = useState(null)
+	const [isFetching, setFetching] = useState(false);
+
 	const store = useSelector(state => ({
 		filter: state.filter,
 		basket: state.basket,
-		filteredProducts: selectFilter(state.products.items, state.filter),
+		// filteredProducts: selectFilter(state.products.items, state.filter),
 		requestStatus: state.app.requestStatus,
 		isLoading: state.app.loading,
 		products: state.products.items,
 		productsCount: state.products.items.length,
 		totalProductsCount: state.products.total,
+		categories: state.categories.items
 	}));
 
 	const onClickAddProduct = () => {
 		history.push(ADD_PRODUCT);
 	};
+
+	const onCategoryFilterChange = (e) => {
+		setCategory(e.target.value)
+	};
+
+	useEffect(() => {
+		if (!categories) {
+			dispatch(getCategories());
+		}
+		setCategories(store.categories)
+		if (!category && categories) 
+		{
+			setCategory(categories[0])
+		}
+	}, [store.categories]);
+
+	useEffect(() => {
+		if (!filteredProducts) {
+			dispatch(getProducts());
+		}
+		setFilteredProducts(
+			store.products.filter(
+				item => item.category.toLowerCase() == category
+			)
+		)
+	}, [category]);
 
 	// TODO insufficient permission
 	// TODO fix filters modal
@@ -41,22 +78,24 @@ const Products = ({ history }) => {
 					Productos &nbsp;
 					({`${store.productsCount} / ${store.totalProductsCount}`})
 				</h3>
-				<SearchBar
-					filter={store.filter}
-					isLoading={store.isLoading}
-					productsCount={store.productsCount}
-				/>
-				&nbsp;
-				<FiltersToggle
-					filter={store.filter}
-					isLoading={store.isLoading}
-					products={store.products}
-					productsCount={store.productsCount}
-				>
-					<button className="button-muted button-small">
-						Mas Filtros &nbsp;<i className="fa fa-chevron-right" />
-					</button>
-				</FiltersToggle>
+				{store.productsCount === 0 && store.isLoading ? (
+					<h5 className="text-subtle">Cargando</h5>
+				) : (
+						<select
+							name="category"
+							className="filters-brand"
+							value={category ? category.value : null}
+							// disabled={store.isLoading || store.productsCount === 0}
+							onChange={onCategoryFilterChange}
+						>
+							{
+								categories &&
+								categories.map(item => (
+									<option key={item.id} value={item.name.toLowerCase()}>{item.name}</option>
+								))
+							}
+						</select>
+					)}
 				<button
 					className="button button-small"
 					onClick={onClickAddProduct}
@@ -65,11 +104,11 @@ const Products = ({ history }) => {
 				</button>
 			</div>
 			<div className="product-admin-items">
-				<ProductList {...store}>
+				<ProductAdminList filteredProducts >
 					{() => (
 						<>
-							<ProductAppliedFilters filter={store.filter} />
-							{store.filteredProducts.length > 0 && (
+							{/* <ProductAppliedFilters filter={store.filter} /> */}
+							{filteredProducts && (
 								<div className="grid grid-product grid-count-6">
 									<div className="grid-col" />
 									<div className="grid-col">
@@ -92,20 +131,18 @@ const Products = ({ history }) => {
 									</div>
 								</div>
 							)}
-							{store.filteredProducts.length === 0 ? new Array(10).fill({}).map((product, index) => (
-								<ProductItem
-									key={`product-skeleton ${index}`}
-									product={product}
-								/>
-							)) : store.filteredProducts.map(product => (
-								<ProductItem
-									key={product.id}
-									product={product}
-								/>
-							))}
+							{
+								filteredProducts &&
+								filteredProducts.map(product => (
+									<ProductItem
+										key={product.id}
+										product={product}
+									/>
+								))
+							}
 						</>
 					)}
-				</ProductList>
+				</ProductAdminList>
 			</div>
 		</Boundary>
 	);
